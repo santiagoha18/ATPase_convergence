@@ -292,7 +292,7 @@ ggplot(data_sum,aes(x=new_x,y=meanActivity)) +
 
 ## Panel F
 
-```{r panelF, fig.width=6, fig.height=5}
+```{r panelF, fig.width=8, fig.height=5}
 data <- read.csv("../data/percent_activity_changes.csv",h=T)
 
 #Standard error of the percent change of means
@@ -362,7 +362,7 @@ p1 + inset_element(p2, left=0.4, bottom=0, right=1, top=0.5)
 
 Check visually the results of the two-way ANOVAs for panels D and E
 
-```{r anovas, fig.width=8, fig.height=5}
+```{r anovas, fig.width=10, fig.height=5}
 rev <- read.csv("../data/Reversibility.csv",h=T)
 eq <- read.csv("../data/Equivalence.csv",h=T)
 
