@@ -113,35 +113,7 @@ data_sum$new_x <- c(1.17,0.15,0.8,1.85,0.85,0,-0.15,0.85,0.9,2.1)
 native_prots <- data_sum[c(1,2,3,7),]
 
 #Plot
-p1 <- ggplot(data_sum,aes(x=factor(mutation),y=meanIC50),color=state) +
-  geom_pointrange(aes(ymin=meanIC50-se, ymax=meanIC50+se,fill=state), size=1.5,shape=21,alpha=0.85) +
-  scale_fill_manual(values = c("#0072B2","#E69F00","#CC79A7","#4c04b8","#0fbfbf","#D55E00")) +
-  labs(x = "# substitutions at sites 111+122", y = expression(bold(paste("log"["10"],"(IC50)"))),fill="States") +
-  theme(
-    panel.background = element_rect(fill = NA),
-    panel.border = element_rect(linetype = 1, fill = NA),
-    panel.grid.major = element_line(colour = "grey92"),
-    axis.text.x = element_text(face="bold", size=16),
-    axis.text.y = element_text(face="bold", size=15), 
-    axis.title = element_text(face="bold", size=25)
-  ) +
-  scale_y_continuous(limits = c(-6.5,-2)) +
-  theme(legend.box.background = element_blank(),
-        legend.key = element_rect(fill = "white"),
-        legend.text = element_text(size=16),
-        legend.title = element_text(size=16)) #+
-  geom_text_repel(data=data_sum,aes(label=construct), color = 'grey40', box.padding = unit(0.35, "lines"), 
-                point.padding = unit(0.5, "lines"),force=1,direction="both",size=3)
-```
-
-    ## mapping: label = ~construct 
-    ## geom_text_repel: parse = FALSE, na.rm = FALSE, box.padding = 0.35, point.padding = 0.5, segment.colour = NULL, segment.size = 0.5, segment.alpha = NULL, min.segment.length = 0.5, arrow = NULL, force = 1, max.iter = 2000, nudge_x = 0, nudge_y = 0, xlim = c(NA, NA), ylim = c(NA, NA), direction = both, seed = NA
-    ## stat_identity: na.rm = FALSE
-    ## position_identity
-
-``` r
-#Alternative plot
-p2 <- ggplot(data_sum,aes(x=new_x,y=meanIC50),color=state) +
+ggplot(data_sum,aes(x=new_x,y=meanIC50),color=state) +
     geom_pointrange(aes(ymin=meanIC50-se, ymax=meanIC50+se,fill=state), size=1.5,shape=21,alpha=0.85,
                     position=position_dodge2(width=0.3)) +
     scale_fill_manual(values = c("#0072B2","#E69F00","#CC79A7","#4c04b8","#0fbfbf","#D55E00")) +
@@ -160,13 +132,14 @@ p2 <- ggplot(data_sum,aes(x=new_x,y=meanIC50),color=state) +
           legend.key = element_rect(fill = "white"),
           legend.text = element_text(size=16),
           legend.title = element_text(size=16)) #+
-  #geom_text_repel(data=data_sum,aes(label=construct), color = 'grey40', box.padding = unit(0.35, "lines"), 
-  #                point.padding = unit(0.5, "lines"),force=1,direction="both",size=3)
-
-p1 
 ```
 
 ![](mutation_effects_files/figure-markdown_github/panelC-1.png)
+
+``` r
+  #geom_text_repel(data=data_sum,aes(label=construct), color = 'grey40', box.padding = unit(0.35, "lines"), 
+  #                point.padding = unit(0.5, "lines"),force=1,direction="both",size=3)
+```
 
 Panel D
 -------
