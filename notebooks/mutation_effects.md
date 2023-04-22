@@ -296,7 +296,7 @@ ggplot(data_sum,aes(x=new_x,y=meanActivity)) +
 Panel F
 -------
 
-``` panelf
+``` r
 data <- read.csv("../data/percent_activity_changes.csv",h=T)
 
 #Standard error of the percent change of means
@@ -344,7 +344,7 @@ p1 <- data %>%
         legend.title = element_text(size=16)) +
   guides(fill = guide_legend(override.aes=list(shape=21)))
 
-
+brks <- hist(data$t.testp, breaks=15, plot=F)$breaks
 p2 <- ggplot(data,aes(x=t.testp)) + 
   geom_histogram(binwidth=0.05,color="black", fill="gray56",stat="bin",breaks=brks) +
   labs(x = "P-value", y = "Frequency") +
@@ -352,14 +352,16 @@ p2 <- ggplot(data,aes(x=t.testp)) +
     panel.background = element_rect(fill = NA),
     panel.border = element_rect(linetype = 1, fill = NA),
     panel.grid.major = element_line(colour = "white"),
-    axis.text.x = element_text(size=20),
-    axis.text.y = element_text(size=20), 
-    axis.title = element_text(face="bold", size=20)
+    axis.text.x = element_text(size=10),
+    axis.text.y = element_text(size=10), 
+    axis.title = element_text(face="bold", size=11)
   ) +
   geom_hline(yintercept=1, linetype="dashed", color="black", size=1.1)
  
-p1 + inset_element(p2, left=0.6, bottom=0, right=0.9, top=0.5)
+p1 + inset_element(p2, left=0.4, bottom=0, right=1, top=0.5)
 ```
+
+![](mutation_effects_files/figure-markdown_github/panelF-1.png)
 
 Visually check the ANOVAs
 -------------------------
