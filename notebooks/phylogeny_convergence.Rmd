@@ -9,8 +9,8 @@ editor_options:
 
 ```{r setup, include=FALSE, message=FALSE, purl = TRUE}
 require("knitr")
-knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_chunk$set(fig.width=6, fig.height=6)
+knitr::opts_chunk$set(echo = TRUE,warning = FALSE)
+knitr::opts_chunk$set(fig.width=5, fig.height=5)
 
 # check for packages and install any that are missing
 packages <- c("dplyr", "ggplot2", "doParallel","foreach","ape",
@@ -27,12 +27,13 @@ invisible(lapply(packages, library, character.only=TRUE))
 
 ```
 
-Code to replicate figure 6. 
-- The `rst` file contains the ASR output: posterior probabilities per site and reconstructed sequences (codeml - PAML)
-- `A1-A3_AA_alignment_convergence_modified_codeml.fasta` --> sequence alignment of ATP1A gene family
-- `codeml_brlens_tree.tre` --> phylogenetic tree of ATP1A gene family
+Code to replicate figure 6: 
 
-# Functions
+* `rst` file: contains the ASR output: posterior probabilities per site and reconstructed sequences (codeml - PAML)
+* `A1-A3_AA_alignment_convergence_modified_codeml.fasta` file: sequence alignment of ATP1A gene family
+* `codeml_brlens_tree.tre` file: phylogenetic tree of ATP1A gene family
+
+## Functions
 
 ```{r functions}
 # imports a fasta-formatted alignment and converts it into a matrix
@@ -64,7 +65,11 @@ import_ancestral_sequences <- function(rst_dir, node_list) {
   sequences <- rep(NA_character_, length(node_list))
   pps <- rep(NA_character_,length(node_list))
   
-  rst <- readLines(rst_dir)
+  if(grepl("gz",rst_dir)){
+    rst <- readLines(gzfile(rst_dir))
+  }
+  else {rst <- readLines(rst_dir)}
+
   rst <- rst[rst != '']
   
   for(i in 1L:length(node_list)) {
@@ -275,7 +280,9 @@ get_density <- function(x, y, ...) {
 
 ```
 
-# Import data
+## Import data
+
+Import ASR dataset (codeml output), the alignment of ATP1A gene family, and extract the reconstructed ancestral sequences with the posterior probabilities per site. 
 
 ```{r readdata}
 # Codeml output tree: tree with annotated nodes (from `rst` file)
@@ -283,7 +290,7 @@ tree_asr <- ape::read.tree("../data/codeml/asr_codeml__nodes_tree.tre")
 nodes <- tree_asr$node.label
 
 # `rst` file
-rst_file <- "../data/codeml/rst"
+rst_file <- "../data/codeml/rst.gz"
 
 # Import ancestral sequences and posterior probabilities distributions
 f1 <- file.path("..", "data", "convergence", "anc_seqs_atp1-3_codeml.csv")
@@ -318,7 +325,9 @@ colnames(edges) <- c("anc_node","descendant_node")
 
 ```
 
-# Check ASR results
+## Check ASR results
+
+Check quality of ASR: 1) the mean posterior probabilities (PPs) per site, and 2) the number of sites in each PP category.
 
 ```{r asr, fig.width=10, fig.height=5}
 pps <- pps_per_site_anc
@@ -362,9 +371,9 @@ anc_pps + anc_pps2
 
 ```
 
-# Phylogenetic pairwise comparison
+## Phylogenetic pairwise comparison
 
-First, modify the `edges` data frame to include the ancestral and derived states along each branch for every site in the protein. Then, use this new data set to compute all the amino acid changes along every pair of branches in the phylogeny
+Here we will extract the substitutions per site per branch and perform the pairwise comparisons. First, we modify the `edges` data frame to include the ancestral and derived states along each branch for every site in the protein. Then, we use this new data set to compute all the amino acid changes along every pair of branches in the phylogeny
 
 ```{r edges}
 # Get states at anc and des nodes for all sites
@@ -392,7 +401,7 @@ if(!file.exists(file.path("..", "data", "convergence", "convergence_total.RData"
   rownames(edges) <- NULL
   
   ## Perform all pairwise comparisons between branches
-  pdist_nodes <- dist.nodes(tree) # get patristic distances for every pair of nodes
+  pdist_nodes <- dist.nodes(tree) # get patristic distances for every pair of nodes (expected number of substitutions per site)
 
   molecular_convergence_a1_3 <- branch_pairwise_comparisons_entire_prot(edges,pdist_nodes,tree)
   save.image("../data/convergence/convergence_total.RData")
@@ -404,6 +413,8 @@ if(!file.exists(file.path("..", "data", "convergence", "convergence_total.RData"
 ```
 
 # Global trend in convergence rate
+
+Plot the relationship between the rate of protein-wide convergence per site across the phylogeny as a function of genetic distance (expected number of substitutions per site). Show the rate of convergence for sites 111 and 122 individually.
 
 ```{r globalconv}
 m <- molecular_convergence_a1_3
@@ -495,9 +506,11 @@ m3 <- glm(pairwise_comp_122$convergence ~ pairwise_comp_122$patristic_dist, bino
 summary(m3)
 ```
 
-# Occurrence of convergent derived states along the genetic distance axis
+## Convergent derived states along the genetic distance axis
 
-```{r convergence, fig.width=7, fig.height=9}
+For sites 111 and 122, extract each substitution and plot the frequency of convergence events along the sequence divergence axis (expected number of substitutions per site)
+
+```{r convergence, fig.width=5, fig.height=6}
 # Combine amino acid subs. datasets for sites 111 and 122
 pairwise_comp_111$site <- rep("111",dim(pairwise_comp_111)[1])
 pairwise_comp_122$site <- rep("122",dim(pairwise_comp_122)[1])
@@ -518,8 +531,8 @@ ggplot(df) +
         panel.grid.minor = element_blank(),
         axis.title.y = element_text(face="bold",size=15),
         axis.title.x = element_text(face="bold",size=15),
-        axis.text.y = element_text(size=10),
-        axis.text.x = element_text(size=10))
+        axis.text.y = element_text(size=15),
+        axis.text.x = element_text(size=15))
 
 
 # Branches where convergent events ocurred (e.g. branches where 111R ocurred)
