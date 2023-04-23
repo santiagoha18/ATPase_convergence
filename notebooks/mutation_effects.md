@@ -8,6 +8,8 @@ This notebook contains the code for all panels in fig 4.
 Panel B
 -------
 
+Levels of CTS resistance (IC50) among wild-type enzymes.
+
 ``` r
 data <- read.csv("../data/mut_effects/IC50_and_ATPase_Data.csv",h=TRUE)
 data <- data[data$native=="YES",]
@@ -19,6 +21,7 @@ se <- c()
 ci95 <- c()
 mutation <- c()
 
+# Compute SE of IC50 using triplicate measurements
 for(i in 1:length(construct)){
   t <- data[data$construct==construct[i],]
   meanIC50 <- c(meanIC50,mean(t$IC50))
@@ -30,11 +33,7 @@ for(i in 1:length(construct)){
   ci95 <- c(ci95,ci95_i)
   mutation <- c(mutation,unique(t$mutations_111.122))
 }
-```
 
-    ## Warning in qt(0.025, length(t$IC50) - 1, lower.tail = FALSE): NaNs produced
-
-``` r
 data_sum <- data.frame(construct,meanIC50,sd,se,ci95,mutation)
 data_sum$state <- c("RD","EN","HH","EN","TN","QH","QN","RN","QN","RD","QN")
 data_sum$state <- factor(data_sum$state, levels=c("QN","EN","RN","TN","QH","HH","RD"))
@@ -62,8 +61,6 @@ ggplot(data_sum,aes(x=factor(mutation),y=meanIC50),color=state) +
         legend.title = element_text(size=16)) #+
 ```
 
-    ## Warning: Removed 1 rows containing missing values (geom_segment).
-
 ![](mutation_effects_files/figure-markdown_github/panelB-1.png)
 
 ``` r
@@ -73,6 +70,8 @@ ggplot(data_sum,aes(x=factor(mutation),y=meanIC50),color=state) +
 
 Panel C
 -------
+
+Effects on CTS resistance (IC50) of changing the number of substitutions at 111 or 122.
 
 ``` r
 data <- read.csv("../data/mut_effects/IC50_and_ATPase_Data.csv",h=TRUE)
@@ -90,6 +89,7 @@ se <- c()
 ci95 <- c()
 mutation <- c()
 
+# Compute SE of IC50 using triplicate measurements
 for(i in 1:length(construct)){
   t <- data[data$construct==construct[i],]
   meanIC50 <- c(meanIC50,mean(t$IC50))
@@ -108,7 +108,7 @@ data_sum$state <- factor(data_sum$state, levels=c("QN","EN","RN","QD","ED","RD")
 data_sum$sp <- c("Chinchilla","Ostrich","Sandgrouse","Chinchilla","Ostrich","Sandgrouse","Leptodactylus","Leptodactylus",
              "Leptodactylus","Leptodactylus")
 
-data_sum$new_x <- c(1.17,0.15,0.8,1.85,0.85,0,-0.15,0.85,0.9,2.1)
+data_sum$new_x <- c(1.17,0.15,0.8,1.85,0.85,0,-0.15,0.85,0.9,2.1) # make x-axis continuous 
 
 native_prots <- data_sum[c(1,2,3,7),]
 
@@ -144,6 +144,8 @@ ggplot(data_sum,aes(x=new_x,y=meanIC50),color=state) +
 Panel D
 -------
 
+Evidence for epistasis for CTS resistance (IC50)
+
 ``` r
 data <- read.csv("../data/mut_effects/Five_cases_mutations.csv",h=TRUE)
 
@@ -161,6 +163,7 @@ is.integer0 <- function(x)
   is.integer(x) && length(x) == 0L
 }
 
+# Compute SE of IC50 using triplicate measurements
 for(i in 1:length(construct)){
   t <- data[data$construct==construct[i],]
   meanIC50 <- c(meanIC50,mean(t$IC50))
@@ -207,6 +210,8 @@ ggplot(data_sum,aes(x=new_x,y=meanIC50)) +
 Panel E
 -------
 
+Lack of for epistasic effects for enzyme activity.
+
 ``` r
 data <- read.csv("../data/mut_effects/Five_cases_mutations.csv",h=TRUE)
 
@@ -224,6 +229,7 @@ is.integer0 <- function(x)
   is.integer(x) && length(x) == 0L
 }
 
+# Compute SE of activity using triplicate measurements
 for(i in 1:length(construct)){
   t <- data[data$construct==construct[i],]
   meanActivity <- c(meanActivity,mean(t$Activity))
@@ -275,8 +281,10 @@ data <- read.csv("../data/mut_effects/percent_activity_changes.csv",h=T)
 #Standard error of the percent change of means
 #https://stats.stackexchange.com/questions/376639/what-is-the-standard-error-of-the-difference-in-means-scaled-as-percent-differen
 #https://www2.census.gov/programs-surveys/acs/tech_docs/accuracy/percchg.pdf
+
+# This function was used to create the 'SE_%change' column
 se_perc_change <- function(d1,d2){
-  # d1 and d2 are the trplicate measurements of each construct
+  # d1 and d2 are the trplicate measurements of each wt and mutant constructs, respectively (from 'IC50_and_ATPase_Data.csv')
   m1 <- mean(d1)
   m2 <- mean(d2)
   se1 <- sd(d1)/sqrt(length(d1))
@@ -331,7 +339,7 @@ p2 <- ggplot(data,aes(x=t.testp)) +
   ) +
   geom_hline(yintercept=1, linetype="dashed", color="black", size=1.1)
  
-p1 + inset_element(p2, left=0.4, bottom=0, right=1, top=0.5)
+p1 + inset_element(p2, left=0.5, bottom=0.01, right=1, top=0.4)
 ```
 
 ![](mutation_effects_files/figure-markdown_github/panelF-1.png)
@@ -339,13 +347,14 @@ p1 + inset_element(p2, left=0.4, bottom=0, right=1, top=0.5)
 Visually check the ANOVAs
 -------------------------
 
-Check visually the results of the two-way ANOVAs for panels D and E
+Check visually the results of the two-way ANOVAs for panels D and E. Here, instead of 'wild-type' and 'mutant', we will recode the constructs as '0' and '1' so that all constructs have the same "direction" (i.e., the effect when a mutation is introduced 0 --&gt; 1).
 
 ``` r
 rev <- read.csv("../data/mut_effects/Reversibility.csv",h=T)
 eq <- read.csv("../data/mut_effects/Equivalence.csv",h=T)
 
-#H111E
+####################
+# H111E
 h111e <- rev[rev$State=="H111E",]
 h111e$Background <- as.factor(h111e$Background)
 h111e$Sub <- as.factor(h111e$Sub)
@@ -371,7 +380,8 @@ a1 <- ggline(h111e, x = "Sub", y = "Activity", color = "Bg",
             add = c("mean_ci",  error.plot = "pointrange"),
             palette = c("#00AFBB", "#E7B800"),title="H111E")
 
-#H111T
+####################
+# H111T
 h111t <- rev[rev$State=="H111T",]
 h111t$Background <- as.factor(h111t$Background)
 h111t$Sub <- as.factor(h111t$Sub)
@@ -397,8 +407,8 @@ b1 <- ggline(h111t, x = "Sub", y = "Activity", color = "Bg",
             add = c("mean_ci",  error.plot = "pointrange"),
             palette = c("#00AFBB", "#E7B800"),title="H111T")
 
-
-#Q111R
+####################
+# Q111R
 q111r <- rev[rev$State=="Q111R",]
 q111r$Background <- as.factor(q111r$Background)
 q111r$Sub <- as.factor(q111r$Sub)
@@ -427,7 +437,8 @@ c1 <- ggline(q111r, x = "Sub", y = "Activity", color = "Bg",
             add = c("mean_ci",  error.plot = "pointrange"),
             palette = c("#00AFBB", "#E7B800","#9d3dba"),title="Q111R")
 
-#H122D
+####################
+# H122D
 h122d <- rev[rev$State=="H122D",]
 h122d$Background <- as.factor(h122d$Background)
 h122d$Sub <- as.factor(h122d$Sub)
@@ -454,7 +465,8 @@ d1 <- ggline(h122d, x = "Sub", y = "Activity", color = "Bg",
          add = c("mean_ci",  error.plot = "pointrange"),
          palette = c("#00AFBB", "#E7B800","#9d3dba"),title="H122D")
 
-#N122D
+####################
+# N122D
 n122d <- eq[eq$State=="N122D",]
 n122d$Background <- as.factor(n122d$Background)
 n122d$Sub <- as.factor(n122d$Sub)
@@ -492,3 +504,74 @@ a1+b1+c1+d1+e1
 ```
 
 ![](mutation_effects_files/figure-markdown_github/anovas-2.png)
+
+Global relationship between IC50 and activity
+---------------------------------------------
+
+Explore the relationship between IC50 and activity for wild-type constructs.
+
+``` r
+data <- read.csv("../data/mut_effects/IC50_and_ATPase_Data.csv",h=TRUE)
+data <- data[data$native=="YES",]
+
+construct <- unique(data$construct)
+meanIC50 <- c()
+meanAct <- c()
+se_ic50 <- c()
+se_act <- c()
+mutation <- c()
+
+# Compute SE of IC50 and activity using triplicate measurements
+for(i in 1:length(construct)){
+  t <- data[data$construct==construct[i],]
+  meanIC50 <- c(meanIC50,mean(t$IC50))
+  meanAct <- c(meanAct,mean(t$Activity))
+  se_i <- sd(t$IC50)/sqrt(length(t$IC50)) #standard error of the mean
+  se_ic50 <- c(se_ic50,se_i)
+  se_i2 <- sd(t$Activity)/sqrt(length(t$Activity))
+  se_act <- c(se_act,se_i2)
+  mutation <- c(mutation,unique(t$mutations_111.122))
+}
+
+data_sum <- data.frame(construct,meanIC50,se_ic50,meanAct,se_act,mutation)
+
+#Plot
+ggplot(data_sum,aes(x=meanIC50,y=meanAct,fill=as.factor(mutation))) +
+  geom_pointrange(aes(xmin=meanIC50-se_ic50, xmax=meanIC50+se_ic50),shape = 21,size=1.5) +
+  geom_pointrange(aes(ymin=meanAct-se_act, ymax=meanAct+se_act),shape = 21,size=1.5) +
+  labs(y = "Activity", x = expression(bold(paste("log"["10"],"(IC50)")))) +
+  theme(
+    panel.background = element_rect(fill = NA),
+    panel.border = element_rect(linetype = 1, fill = NA),
+    panel.grid.major = element_line(colour = "grey92"),
+    axis.text.x = element_text(face="bold", size=16),
+    axis.text.y = element_text(face="bold", size=15), 
+    axis.title = element_text(face="bold", size=20)
+  ) +
+  scale_fill_manual("Derived states\n at 111 or 122",values=c("#32a852","#8744ad","#3361c4"))
+```
+
+![](mutation_effects_files/figure-markdown_github/globalrelation-1.png)
+
+``` r
+# Person's correlation
+print(paste("Correlation between activity and IC50",cor(data_sum$meanIC50,data_sum$meanAct,use = "pairwise.complete.obs")))
+```
+
+    ## [1] "Correlation between activity and IC50 -0.12779131635488"
+
+``` r
+cor.test(data_sum$meanIC50,data_sum$meanAct)
+```
+
+    ## 
+    ##  Pearson's product-moment correlation
+    ## 
+    ## data:  data_sum$meanIC50 and data_sum$meanAct
+    ## t = -0.36444, df = 8, p-value = 0.725
+    ## alternative hypothesis: true correlation is not equal to 0
+    ## 95 percent confidence interval:
+    ##  -0.7010135  0.5457461
+    ## sample estimates:
+    ##        cor 
+    ## -0.1277913
