@@ -1,0 +1,1675 @@
+#NEXUS
+[R-package PHYTOOLS, Fri Jan 28 09:09:46 2022]
+
+BEGIN TAXA;
+	DIMENSIONS NTAX = 831;
+	TAXLABELS
+		bird|Acanthisitta_chloris_A1
+		bird|Acrocephalus_arundinaceus_A1
+		bird|Aegotheles_bennettii_A1
+		bird|Agelaius_phoeniceus_A1
+		bird|Alaudala_cheleensis_A1
+		bird|Alca_torda_A1
+		bird|Alcedo_cyanopectus_A1
+		bird|Aleadryas_rufinucha_A1
+		bird|Alectura_lathami_A1
+		bird|Amazona_guildingii_A1
+		bird|Anas_platyrhynchos_A1
+		bird|Anser_cygnoides_A1
+		bird|Anseranas_semipalmata_A1
+		bird|Anthoscopus_minutus_A1
+		bird|Apaloderma_vittatum_A1
+		bird|Aphelocoma_coerulescens_A1
+		bird|Aptenodytes_forsteri_A1
+		bird|Apteryx_australis_mantelli_A1
+		bird|Apteryx_rowi_A1
+		bird|Aquila_chrysaetos_canadensis_A1
+		bird|Aramus_guarauna_A1
+		bird|Arenaria_interpres_A1
+		bird|Aythya_fuligula_A1
+		bird|Belearica_regulorum_A1
+		bird|Bombycilla_garrulus_A1
+		bird|Bucco_capensis_A1
+		bird|Bucorvus_abyssinicus_A1
+		bird|Calidris_pugnax_A1
+		bird|Caloenas_nicobarica_A1
+		bird|Calypte_anna_A1
+		bird|Camarhynchus_parvulus_A3
+		bird|Caprimulgus_carolinensis_A1
+		bird|Cardinalis_cardinalis_A1
+		bird|Cariama_cristata_A1
+		bird|Catharus_fuscecens_A1
+		bird|Catharus_ustulatus_A1
+		bird|Catharus_ustulatus_A3
+		bird|Cephalopterus_ornatus_A1
+		bird|Certhia_brachydactyla_A1
+		bird|Chaetorhynchus_papuensis_A1
+		bird|Chaetura_pelagica_A1
+		bird|Charadrius_vociferus_A1
+		bird|Chlamydotis_mcaqueenii_A1
+		bird|Chloroceryle_aenea_A1
+		bird|Ciccaba_nigrolineata_A1
+		bird|Ciconia_maguari_A1
+		bird|Cinclus_mexicanus_A1
+		bird|Cisticola_juncidis_A1
+		bird|Cnemophilus_loriae_A1
+		bird|Colinus_virginianus_A1
+		bird|Colius_striatus_A1
+		bird|Columba_livia_A1
+		bird|Columba_livia_A1_2
+		bird|Corvus_brachyrhynchos_A1
+		bird|Corvus_cornix_cornix_A1
+		bird|Corvus_moneduloides_A3
+		bird|Coturnix_japonica_A1
+		bird|Crypturellus_soui_A1
+		bird|Crypturellus_undulatus_A1
+		bird|Cuculus_canorus_A1
+		bird|Cyanistes_caeruleus_A1
+		bird|Daphoenositta_chrysoptera_A1
+		bird|Dasyornis_broadbenti_A1
+		bird|Dicaeum_eximium_A1
+		bird|Dicrurus_megarhynchus_A1
+		bird|Dromaius_novaehollandiae_A1
+		bird|Dromas_ardeola_A1
+		bird|Dyaphorphyia_castanea_A1
+		bird|Edolisoma_coerulescens_A1
+		bird|Egretta_garzetta_A1
+		bird|Emberiza_fucata_A1
+		bird|Erithacus_rubecula_A1
+		bird|Erpornis_zantholeuca_A1
+		bird|Erythrocercus_mccallii_A1
+		bird|Eubucco_bourcierii_A1
+		bird|Eudromia_elegans_A1
+		bird|Eudyptes_robustus_A2
+		bird|Eudyptes_sclateri_A2
+		bird|Eulacestoma_nigropectus_A1
+		bird|Eurystomus_gularis_A1
+		bird|Falco_cherrug_A1
+		bird|Falco_cherrug_A2
+		bird|Falco_naumanni_A1
+		bird|Falco_peregrinus_A1
+		bird|Falco_peregrinus_A2
+		bird|Falco_rusticolus_A1
+		bird|Falcunculus_frontatus_A1
+		bird|Ficedula_albicollis_A1
+		bird|Formicarius_rufipectus_A1
+		bird|Fregetta_grallaria_A2
+		bird|Fulmarus_glacialis_A1
+		bird|Furnarius_figulus_A1
+		bird|Furnarius_figulus_A2
+		bird|Galbula_dea_A2
+		bird|Gallus_gallus_A1
+		bird|Gallus_gallus_A2
+		bird|Gallus_gallus_A3
+		bird|Gavia_stellata_A1
+		bird|Geospiza_fortis_A1
+		bird|Glaucidium_brasilianum_A1
+		bird|Grallaria_varia_A1
+		bird|Grantiella_picta_A1
+		bird|Gymnorhina_tibicen_A1
+		bird|Haliaeetus_albicilla_A1
+		bird|Haliaeetus_albicilla_A2
+		bird|Haliaeetus_leucocephalus_A1
+		bird|Haliaetus_leucocephalus_A2
+		bird|Heliornis_fulica_A1
+		bird|Hirundo_rustica_A1
+		bird|Hydrobates_tethys_A1
+		bird|Hylia_prasina_A1
+		bird|Ibidorhyncha_struthersii_A1
+		bird|Ifrita_kowaldi_A1
+		bird|Illadopsis_cleaveri_A1
+		bird|Indicator_maculatus_A1
+		bird|Indicator_maculatus_A2
+		bird|Irena_cyanogastra_A1
+		bird|Jacana_jacana_A1
+		bird|Lanius_ludovicianus_A1
+		bird|Leiothrix_lutea_A1
+		bird|Lepidothrix_coronata_A1
+		bird|Leptosomus_discolor_A1
+		bird|Leucopsar_rothschildi_A1
+		bird|Locustella_ochotensis_A1
+		bird|Lonchura_striata_A1
+		bird|Loxia_leucoptera_A1
+		bird|Machaerirhynchus_nigripectus_A1
+		bird|Manacus_vitellinus_A1
+		bird|Melanocharis_versteri_A1
+		bird|Meleagris_gallopavo_A1
+		bird|Meleagris_gallopavo_A2
+		bird|Melopisittacus_undulatus_A1
+		bird|Melopsittacus_undulatus_A3
+		bird|Melospiza_melodia_A1
+		bird|Merops_nubicus_A1
+		bird|Mesitornis_unicolor_A1
+		bird|Mohoua_ochrocephala_A1
+		bird|Motacilla_alba_A1
+		bird|Motacilla_alba_alba_A1
+		bird|Myiagra_hebetior_A1
+		bird|Mystacornis_crossleyi_A1
+		bird|Nesospiza_acunhae_A2
+		bird|Nestor_notabilis_A1
+		bird|Nipponia_nippon_A1
+		bird|Nothoprocta_perdicaria_A1
+		bird|Numida_meleagris_A1
+		bird|Nyctibius_bracteatus_A1
+		bird|Nyctibius_grandis_A1
+		bird|Nyctiprogne_leucopyga_A1
+		bird|Oceanites_oceanicus_A1
+		bird|Odontophorus_gujanensis_A1
+		bird|Onychorhynchus_coronatus_A1
+		bird|Opisthocomus_hoazin_A1
+		bird|Oreocharis_arfaki_A1
+		bird|Oreotrochilus_melanogaster_A1
+		bird|Origma_solitaria_A1
+		bird|Oriolus_oriolus_A1
+		bird|Orthonyx_spaldingii_A1
+		bird|Oxyruncus_cristatus_A1
+		bird|Oxyura_jamaicensis_A1
+		bird|Pachycephala_philippiensis_A1
+		bird|Pachyramphus_minor_A1
+		bird|Pandion_halaetus_A1
+		bird|Paradoxornis_webbianius_A1
+		bird|Pardalotus_punctatus_A1
+		bird|Parus_major_A1
+		bird|Patagioenas_fasciata_monilis_A1
+		bird|Pedionomus_torquatus_A1
+		bird|Pelecanus_crispus_A1
+		bird|Phaethon_lepturus_A1
+		bird|Phalacrocorax_carbo_A1
+		bird|Phasianus_colchicus_A1
+		bird|Phasianus_colchicus_A2
+		bird|Pheucticus_melanocephalus_A1
+		bird|Picoides_pubescens_A1
+		bird|Pipra_filicauda_A1
+		bird|Piprites_chloris_A1
+		bird|Ploceus_nigricollis_A1
+		bird|Pluvianellus_socialis_A1
+		bird|Poliptila_caerulea_A1
+		bird|Pomatorhinus_ruficollis_A1
+		bird|Pomatostomus_ruficeps_A1
+		bird|Probosciger_aterrimus_A1
+		bird|Promerops_cafer_A1
+		bird|Prunella_fulvescens_A1
+		bird|Pseudopodoces_humilis_A1
+		bird|Pseudopodoces_humilis_A2
+		bird|Psophia_crepitans_A1
+		bird|Pterocles_gutturalis_A1
+		bird|Ptilonorhynchus_violaceus_A1
+		bird|Pycnonotus_jocosus_A1
+		bird|Pygoscelis_adeliae_A1
+		bird|Quiscalus_mexicanus_A1
+		bird|Rhabdornis_inornatus_A1
+		bird|Rhadina_sibilatrix_A1
+		bird|Rhagologus_leucostigma_A1
+		bird|Rhegmatorhina_hoffmannsi_A1
+		bird|Rhinopomastus_cyanomelas_A1
+		bird|Rhipidura_dahli_A1
+		bird|Rhodinocichla_rosea_A1
+		bird|Rhynochetos_jubatus_A1
+		bird|Rynchops_niger_A1
+		bird|Sagittarius_serpentarius_A1
+		bird|Sclerurus_mexicanus_A1
+		bird|Scytalopus_superciliaris_A1
+		bird|Serilophus_lunatus_A1
+		bird|Serinus_canaria_A1
+		bird|Setophaga_kirklandii_A1
+		bird|Simutsornis_africanus_A1
+		bird|Sitta_europaea_A1
+		bird|Smithornis_capensis_A2
+		bird|Spizaetus_tyrannus_A2
+		bird|Sterrhoptilus_dennistourni_A1
+		bird|Strigops_habroptila_A1
+		bird|Strigops_habroptila_A1_2
+		bird|Struthidea_cinerea_A1
+		bird|Struthio_camelus_A1
+		bird|Sylvia_atricapilla_A1
+		bird|Sylvia_borin_A1
+		bird|Sylvietta_virens_A1
+		bird|Taeniopygia_guttata_A1
+		bird|Taeniopygia_guttata_A2
+		bird|Taenipygia_guttata_A3
+		bird|Tauraco_erythrolophus_A1
+		bird|Thalassarche_chlororhynchos_A1
+		bird|Thinocorus_orbignyianus_A1
+		bird|Thryothorus_ludovicianus_A1
+		bird|Tinamus_guttatus_A1
+		bird|Tinamus_guttatus_A2
+		bird|Toxostoma_redivivum_A1
+		bird|Turnix_velox_A1
+		bird|Tyto_alba_A1
+		bird|Upupa_epops_A1
+		bird|Upupa_epops_A2
+		bird|Urocynchramus_pylzowi_A1
+		bird|Vireo_altiloquus_A1
+		bird|Zapornia_atra_A1
+		caecilian|Geotrypetes_seraphini_A1
+		caecilian|Geotrypetes_seraphini_A3
+		caecilian|Microcaecilia_unicolor_A1
+		caecilian|Microcaecilia_unicolor_A3
+		caecilian|Rhinatrema_bivittatum_A1
+		crocodilian|Alligator_mississippiensis_A1
+		crocodilian|Alligator_mississippiensis_A2
+		crocodilian|Alligator_sinensis_A1
+		crocodilian|Alligator_sinensis_A2
+		crocodilian|Crocodylus_porosus_A1
+		crocodilian|Crocodylus_porosus_A3
+		crocodilian|Gavialis_gangeticus_A1
+		fish|Latimeria_chalumnae_A1
+		fish|Latimeria_chalumnae_A2
+		frog|Atelopus_glyphus_A1
+		frog|Atelopus_sp_A1
+		frog|Atelopus_zeteki_A1
+		frog|Bombina_maxima_A1
+		frog|Bufotes_viridis_A1
+		frog|Bufotes_viridis_A2
+		frog|Bufotes_viridis_A3
+		frog|Ceratophrys_calcarata_A1
+		frog|Ceratophrys_calcarata_A3
+		frog|Ceratophrys_cranwelli_A1
+		frog|Ceratophrys_cranwelli_A2
+		frog|Ceratophrys_cranwelli_A3
+		frog|Ceratophrys_ornata_A2
+		frog|Ceratophrys_ornatus_A1
+		frog|Ceratophrys_ornatus_A3
+		frog|Craugastor_fitzingeri_A1
+		frog|Craugastor_fitzingeri_A2
+		frog|Cyclorana_alboguttata_A1
+		frog|Cyclorana_alboguttata_A2
+		frog|Dendrobates_auratus_A1
+		frog|Dendrobates_auratus_A2
+		frog|Dendrobates_auratus_A3
+		frog|Duttaphrynus_melanostictus_A1
+		frog|Duttaphrynus_melanostictus_A2
+		frog|Duttaphrynus_melanostictus_A3
+		frog|Engystomops_pustulosus_A1
+		frog|Engystomops_pustulosus_A2
+		frog|Engystomops_pustulosus_A3
+		frog|Fejervarya_cancrivora_A1
+		frog|Fejervarya_cancrivora_A2
+		frog|Fejervarya_limnocharis_A1
+		frog|Fejervarya_limnocharis_A2
+		frog|Fejervarya_limnocharis_A3
+		frog|Hoplobatrachus_rugulosus_A1
+		frog|Hoplobatrachus_rugulosus_A2
+		frog|Hoplobatrachus_rugulosus_A3
+		frog|Hyla_arborea_A1
+		frog|Hyla_arborea_A2
+		frog|Hyla_arborea_A3
+		frog|Kaloula_pulchra_A1
+		frog|Kaloula_pulchra_A2
+		frog|Lepidobatrachus_laevis_A2
+		frog|Lepidobatrachus_laevis_A3
+		frog|Leptobrachium_boringii_A3
+		frog|Leptodactylus_macrosternum_A2
+		frog|Leptodactylus_macrosternum_A3
+		frog|Leptodactylus_macrosternumR_A1
+		frog|Leptodactylus_macrosternumS_A1
+		frog|Limnodynastes_peronii_A1
+		frog|Limnodynastes_peronii_A2
+		frog|Limnodynastes_peronii_A3
+		frog|Lithobates_catesbeianus_A1
+		frog|Lithobates_sphenocephalus_A1
+		frog|Lithodytes_lineatus_A1
+		frog|Lithodytes_lineatus_A2
+		frog|Mantella_betsileo_A1
+		frog|Megophrys_nasuta_A1
+		frog|Megophrys_nasuta_A2
+		frog|Megophrys_nasuta_A3
+		frog|Melanophryniscus_stelzneri_A1
+		frog|Melanophryniscus_stelzneri_A2
+		frog|Melanophryniscus_stelzneri_A3
+		frog|Nanorana_parkeri_A3
+		frog|Odorrana_margaretae_A1
+		frog|Odorrana_margaretae_A2
+		frog|Odorrana_margaretae_A3
+		frog|Odorrana_tormota_A1
+		frog|Odorrana_tormota_A2
+		frog|Odorrana_tormota_A3
+		frog|Oophaga_pumilioR_A1
+		frog|Oophaga_pumilioS_A1
+		frog|Oreobates_cruralis_A1
+		frog|Oreolalax_rhodostigmatus_A1
+		frog|Oreolalax_rhodostigmatus_A2
+		frog|Oreolalax_rhodostigmatus_A3
+		frog|Pelobates_fuscus_A1
+		frog|Pelobates_fuscus_A2
+		frog|Pelobates_fuscus_A3
+		frog|Pelophylax_lessonae_A1
+		frog|Pelophylax_lessonae_A2
+		frog|Pelophylax_lessonae_A3
+		frog|Pyxicephalus_adspersus_A2
+		frog|Quasipaa_boulengeri_A1
+		frog|Rana_catesbeiana_A3
+		frog|Rana_catessbeiana_A2
+		frog|Rana_sphenocephala_A2
+		frog|Rana_sphenocephala_A3
+		frog|Rana_temporaria_A1
+		frog|Rana_temporaria_A3
+		frog|Ranitomeya_imitator_A3
+		frog|Rhinatrema_bivittatum_A3
+		frog|Rhinella_granulosa_A1
+		frog|Rhinella_marina_A1
+		frog|Rhinella_marina_A3
+		frog|Xenopus_laevis_A1
+		frog|Xenopus_laevis_A2
+		frog|Xenopus_laevis_A3
+		frog|Xenopus_tropicalis_A1
+		frog|Xenopus_tropicalis_A2
+		frog|Xenopus_tropicalis_A3
+		lizard|Ameiva_ameiva_A1
+		lizard|Ameiva_ameiva_A2
+		lizard|Anolis_carolinensis_A1
+		lizard|Anolis_carolinensis_A2
+		lizard|Lacerta_agilis_A1
+		lizard|Lacerta_agilis_A2
+		lizard|Lacerta_agilis_A3
+		lizard|Podacris_muralis_A1
+		lizard|Podacris_muralis_A2
+		lizard|Podacris_muralis_A3
+		lizard|Pogona_vitticeps_A1
+		lizard|Pogona_vitticeps_A2
+		lizard|Pogona_vitticeps_A3
+		lizard|Tupinambis_teguixin_A3
+		lizard|Tupinambis_teguxin_A1
+		lizard|Varanus_acanthus_A1
+		lizard|Varanus_acanthus_A2
+		lizard|Varanus_acanthus_A3
+		lizard|Varanus_dumerilii_A2
+		lizard|Varanus_dumerilii_A3
+		lizard|Varanus_dumerlii_A1
+		lizard|Varanus_exanthemathicus_A1
+		lizard|Varanus_exanthematicus_A2
+		lizard|Varanus_exanthematicus_A3
+		lizard|Varanus_komodoensis_A1
+		lizard|Varanus_niloticus_A1
+		lizard|Varanus_niloticus_A2
+		lizard|Varanus_niloticus_A3
+		lizard|Varanus_similis_A1
+		lizard|Varanus_similis_A2
+		lizard|Varanus_similis_A3
+		lizard|Varanus_timorensis_A1
+		lizard|Varanus_timorensis_A2
+		lizard|Varanus_timorensis_A3
+		lizard|Zootoca_vivipara_A1
+		lizard|Zootoca_vivipara_A3
+		lungfish|Protopterus_annectens_A1
+		lungfish|Protopterus_annectens_A2
+		lungfish|Protopterus_annectens_A3
+		mammal|Acionyx_jubatus_A1
+		mammal|Acionyx_jubatus_A2
+		mammal|Acionyx_jubatus_A3
+		mammal|Ailuropoda_melanoleuca_A1
+		mammal|Ailuropoda_melanoleuca_A2
+		mammal|Ailuropoda_melanoleuca_A3
+		mammal|Aotus_nancymaae_A1
+		mammal|Aotus_nancymaae_A2
+		mammal|Artibeus_jamaicensis_A1
+		mammal|Artibeus_jamaicensis_A3
+		mammal|Arvicanthis_niloticus_A1
+		mammal|Arvicanthis_niloticus_A3
+		mammal|Arvicola_amphibius_A2
+		mammal|Balaenoptera_acutorostrata_scammoni_A2
+		mammal|Balanoptera_acutorostrata_A1
+		mammal|Bison_bison_A3
+		mammal|Bison_bison_bison_A2
+		mammal|Bos_indicus_A1
+		mammal|Bos_indicus_A3
+		mammal|Bos_mutus_A2
+		mammal|Bos_mutus_A3
+		mammal|Bos_taurus_A1
+		mammal|Bos_taurus_A2
+		mammal|Bos_taurus_A3
+		mammal|Bubalus_bubalis_A2
+		mammal|Bubalus_bubalis_A3
+		mammal|Bubalus_bubalus_A1
+		mammal|Callithrix_jacchus_A1
+		mammal|Callithrix_jacchus_A2
+		mammal|Callithrix_jacchus_A3
+		mammal|Callorhinus_ursinus_A1
+		mammal|Callorhinus_ursinus_A2
+		mammal|Camelus_bactrianus_A1
+		mammal|Camelus_bactrianus_A2
+		mammal|Camelus_bactrianus_A3
+		mammal|Camelus_dromedarius_A1
+		mammal|Camelus_dromedarius_A2
+		mammal|Camelus_dromedarius_A3
+		mammal|Camelus_ferus_A1
+		mammal|Camelus_ferus_A2
+		mammal|Camelus_ferus_A3
+		mammal|Canis_lupus_dingo_A1
+		mammal|Canis_lupus_dingo_A2
+		mammal|Canis_lupus_dingo_A3
+		mammal|Canis_lupus_familiaris_A1
+		mammal|Canis_lupus_familiaris_A2
+		mammal|Canis_lupus_familiaris_A3
+		mammal|Capra_hircus_A1
+		mammal|Capra_hircus_A2
+		mammal|Capra_hircus_A3
+		mammal|Carlito_syrichta_A1
+		mammal|Carlito_syrichta_A3
+		mammal|Castor_canadensis_A2
+		mammal|Castor_canadensis_A3
+		mammal|Cavia_porcellus_A2
+		mammal|Cavia_porcellus_A3
+		mammal|Cebus_capucinus_imitator_A3
+		mammal|Ceratotherium_simum_simum_A2
+		mammal|Ceratotherium_simum_simum_A3
+		mammal|Cercocebus_atys_A1
+		mammal|Cercocebus_atys_A2
+		mammal|Cercocebus_atys_A3
+		mammal|Chinchilla_lanigera_A1
+		mammal|Chinchilla_lanigera_A2
+		mammal|Chinchilla_lanigera_A3
+		mammal|Chlorocebus_sabaeus_A1
+		mammal|Chlorocebus_sabaeus_A2
+		mammal|Chlorocebus_sabaeus_A3
+		mammal|Cholepus_didactylus_A2
+		mammal|Choloepus_didactylus_A3
+		mammal|Chrysochloris_asiatica_A2
+		mammal|Chrysochloris_asiatica_A3
+		mammal|Colobus_angolensis_palliatus_A1
+		mammal|Colobus_angolensis_palliatus_A3
+		mammal|Condylura_cristata_A1
+		mammal|Condylura_cristata_A2
+		mammal|Condylura_cristata_A3
+		mammal|Cricetulus_griseus_A1
+		mammal|Cricetulus_griseus_A2
+		mammal|Crocuta_crocuta_A1
+		mammal|Crocuta_crocuta_A2
+		mammal|Crocuta_crocuta_A3
+		mammal|Dasypus_novemcinctus_A2
+		mammal|Delphinapterus_leucas_A1
+		mammal|Delphinapterus_leucas_A2
+		mammal|Delphinapterus_leucas_A3
+		mammal|Desmodus_rotundus_A2
+		mammal|Desmodus_rotundus_A3
+		mammal|Dipodomys_ordii_A1
+		mammal|Dipodomys_ordii_A2
+		mammal|Dipodomys_ordii_A3
+		mammal|Echinops_telfairi_A1
+		mammal|Echinops_telfairi_A2
+		mammal|Elephantulus_edwardii_A2
+		mammal|Elephantulus_edwardii_A3
+		mammal|Enhydra_lutris_kenyoni_A2
+		mammal|Enhydra_lutris_kenyoni_A3
+		mammal|Eptesicus_fuscus_A1
+		mammal|Eptesicus_fuscus_A3
+		mammal|Equus_asinus_A1
+		mammal|Equus_asinus_A2
+		mammal|Equus_asinus_A3
+		mammal|Equus_caballus_A1
+		mammal|Equus_caballus_A2
+		mammal|Equus_caballus_A3
+		mammal|Equus_przewalskii_A1
+		mammal|Erinaceus_europaeus_A1
+		mammal|Erinaceus_europaeus_A2
+		mammal|Erinaceus_europaeus_A3
+		mammal|Eumetopias_jubatus_A1
+		mammal|Felis_catus_A1
+		mammal|Felis_catus_A2
+		mammal|Felis_catus_A3
+		mammal|Fukomys_damarensis_A1
+		mammal|Fukomys_damarensis_A2
+		mammal|Fukomys_damarensis_A3
+		mammal|Galeopterus_variegatus_A1
+		mammal|Galeopterus_variegatus_A2
+		mammal|Globicephala_melas_A3
+		mammal|Gorilla_gorilla_gorilla_A1
+		mammal|Gorilla_gorilla_gorilla_A2
+		mammal|Gorilla_gorilla_gorilla_A3
+		mammal|Grammomys_surdaster_A1
+		mammal|Grammomys_surdaster_A3
+		mammal|Halichoerus_grypus_A2
+		mammal|Heterocephalus_glaber_A1
+		mammal|Heterocephalus_glaber_A2
+		mammal|Heterocephalus_glaber_A3
+		mammal|Hipposideros_armiger_A1
+		mammal|Hipposideros_armiger_A3
+		mammal|Homo_sapiens_A1
+		mammal|Homo_sapiens_A2
+		mammal|Homo_sapiens_A3
+		mammal|Hyaena_hyaena_A1
+		mammal|Hyaena_hyaena_A3
+		mammal|Hylobates_moloch_A2
+		mammal|Ictidomys_tridecemlineatus_A2
+		mammal|Ictidomys_tridecemlineatus_A3
+		mammal|Ictidomys_tridecremlineatus_A1
+		mammal|Jaculus_jaculus_A1
+		mammal|Jaculus_jaculus_A2
+		mammal|Leptonychotes_weddellii_A3
+		mammal|Lepus_yarkandensis_A1
+		mammal|Lipotes_vexillifer_A2
+		mammal|Lipotes_vexillifer_A3
+		mammal|Lontra_canadensis_A1
+		mammal|Lontra_canadensis_A2
+		mammal|Lontra_canadensis_A3
+		mammal|Loxodonta_africana_A1
+		mammal|Loxodonta_africana_A2
+		mammal|Lynx_canadensis_A1
+		mammal|Lynx_canadensis_A2
+		mammal|Lynx_canadensis_A3
+		mammal|Macaca_fascicularis_A3
+		mammal|Macaca_fasicularis_A1
+		mammal|Macaca_mulatta_A1
+		mammal|Macaca_mulatta_A2
+		mammal|Macaca_mulatta_A3
+		mammal|Macaca_nemestrina_A1
+		mammal|Macaca_nemestrina_A2
+		mammal|Mandrillus_leucophaeus_A1
+		mammal|Mandrillus_leucophaeus_A2
+		mammal|Manis_javanica_A1
+		mammal|Manis_javanica_A3
+		mammal|Manis_pentadactyla_A3
+		mammal|Marmota_marmota_marmota_A1
+		mammal|Marmota_marmota_marmota_A2
+		mammal|Marmota_marmota_marmota_A3
+		mammal|Mastomys_coucha_A1
+		mammal|Mastomys_coucha_A3
+		mammal|Meriones_unguiculatus_A2
+		mammal|Mesocricetus_auratus_A1
+		mammal|Microcebus_murinus_A2
+		mammal|Microcebus_murinus_A3
+		mammal|Microtus_ochrogaster_A1
+		mammal|Microtus_ochrogaster_A2
+		mammal|Microtus_ochrogaster_A3
+		mammal|Miniopterus_natalensis_A1
+		mammal|Miniopterus_natalensis_A3
+		mammal|Mirounga_leonina_A1
+		mammal|Mirounga_leonina_A2
+		mammal|Mirounga_leonina_A3
+		mammal|Molossus_molossus_A1
+		mammal|Molossus_molossus_A2
+		mammal|Molossus_molossus_A3
+		mammal|Monodelphis_domestica_A1
+		mammal|Monodelphis_domestica_A2
+		mammal|Mus_caroli_A1
+		mammal|Mus_caroli_A3
+		mammal|Mus_musculus_A1
+		mammal|Mus_musculus_A2
+		mammal|Mus_musculus_A3
+		mammal|Mus_pahari_A1
+		mammal|Mus_pahari_A3
+		mammal|Mustela_erminea_A1
+		mammal|Mustela_erminea_A3
+		mammal|Mustela_putorius_furo_A1
+		mammal|Mustela_putorius_furo_A2
+		mammal|Mustela_putorius_furo_A3
+		mammal|Myotis_brandtii_A1
+		mammal|Myotis_brandtii_A2
+		mammal|Myotis_brandtii_A3
+		mammal|Myotis_davidii_A3
+		mammal|Myotis_lucifugus_A3
+		mammal|Myotis_myotis_A1
+		mammal|Myotis_myotis_A2
+		mammal|Myotis_myotis_A3
+		mammal|Nannospalax_galili_A1
+		mammal|Nannospalax_galili_A2
+		mammal|Nannospalax_galili_A3
+		mammal|Neomonachus_schauinslandi_A3
+		mammal|Neophocaena_asiaeorientalis_A2
+		mammal|Neophocaena_asiaeorientalis_A3
+		mammal|Nomascus_leucogenys_A2
+		mammal|Nomascus_leucogenys_A3
+		mammal|Ochotona_princeps_A2
+		mammal|Ochotona_princeps_A3
+		mammal|Ochtona_princeps_A1
+		mammal|Octodon_degus_A1
+		mammal|Octodon_degus_A2
+		mammal|Octodon_degus_A3
+		mammal|Odobenus_rosmarus_A1
+		mammal|Odobenus_rosmarus_divergens_A2
+		mammal|Odobenus_rosmarus_divergens_A3
+		mammal|Odocoileus_virginianus_texanus_A1
+		mammal|Odocoileus_virginianus_texanus_A2
+		mammal|Odocoileus_virginianus_texanus_A3
+		mammal|Orcinus_orca_A1
+		mammal|Orcinus_orca_A2
+		mammal|Orcinus_orca_A3
+		mammal|Ornithorhynchus_anatinus_A1
+		mammal|Ornithorhynchus_anatinus_A2
+		mammal|Ornithorhynchus_anatinus_A3
+		mammal|Orycteropus_afer_afer_A1
+		mammal|Orycteropus_afer_afer_A2
+		mammal|Orycteropus_afer_afer_A3
+		mammal|Oryctolagus_cuniculus_A1
+		mammal|Oryctolagus_cuniculus_A2
+		mammal|Oryx_dammah_A1
+		mammal|Oryx_dammah_A2
+		mammal|Oryx_dammah_A3
+		mammal|Otolemur_garnettii_A1
+		mammal|Otolemur_garnettii_A2
+		mammal|Otolemur_garnettii_A3
+		mammal|Ovis_aries_A1
+		mammal|Ovis_aries_A2
+		mammal|Ovis_aries_A3
+		mammal|Pan_paniscus_A1
+		mammal|Pan_paniscus_A2
+		mammal|Pan_paniscus_A3
+		mammal|Pan_troglodytes_A1
+		mammal|Pan_troglodytes_A2
+		mammal|Pan_troglodytes_A3
+		mammal|Panthera_pardus_A1
+		mammal|Panthera_pardus_A2
+		mammal|Panthera_pardus_A3
+		mammal|Panthera_tigris_altaica_A1
+		mammal|Pantholops_hodgsonii_A2
+		mammal|Papio_anubis_A1
+		mammal|Papio_anubis_A3
+		mammal|Peromyscus_leucopus_A1
+		mammal|Peromyscus_leucopus_A2
+		mammal|Peromyscus_leucopus_A3
+		mammal|Peromyscus_maniculatus_bairdii_A1
+		mammal|Peromyscus_maniculatus_bairdii_A2
+		mammal|Peromyscus_maniculatus_bairdii_A3
+		mammal|Phascolarctos_cinereus_A1
+		mammal|Phascolarctos_cinereus_A2
+		mammal|Phascolarctos_cinereus_A3
+		mammal|Phoca_vitulina_A1
+		mammal|Phoca_vitulina_A3
+		mammal|Phocoena_sinus_A1
+		mammal|Phocoena_sinus_A2
+		mammal|Phocoena_sinus_A3
+		mammal|Phyllostomus_discolor_A3
+		mammal|Phyllostromus_discolor_A2
+		mammal|Physeter_catodon_A1
+		mammal|Physeter_catodon_A2
+		mammal|Physeter_catodon_A3
+		mammal|Physeter_macrocephalus_A3
+		mammal|Piliocolobus_tephrosceles_A1
+		mammal|Piliocolobus_tephrosceles_A2
+		mammal|Pipistrellus_kuhlii_A1
+		mammal|Pipistrellus_kuhlii_A2
+		mammal|Pipistrellus_kuhlii_A3
+		mammal|Pongo_abelii_A1
+		mammal|Pongo_abelii_A2
+		mammal|Pongo_abelii_A3
+		mammal|Propithecus_coquereli_A2
+		mammal|Propithecus_coquereli_A3
+		mammal|Pteropus_alecto_A1
+		mammal|Pteropus_alecto_A2
+		mammal|Pteropus_alecto_A3
+		mammal|Pteropus_giganteus_A1
+		mammal|Pteropus_giganteus_A3
+		mammal|Pteropus_vampyrus_A2
+		mammal|Pteropus_vampyrus_A3
+		mammal|Puma_concolor_A1
+		mammal|Puma_yagouaroundi_A1
+		mammal|Rattus_norvegicus_A1
+		mammal|Rattus_norvegicus_A2
+		mammal|Rattus_norvegicus_A3
+		mammal|Rattus_rattus_A3
+		mammal|Rhinolophus_ferrumequinum_A1
+		mammal|Rhinolophus_ferrumequinum_A3
+		mammal|Rhinopithecus_bieti_A1
+		mammal|Rhinopithecus_bieti_A2
+		mammal|Rhinopithecus_bieti_A3
+		mammal|Rhinopithecus_roxellana_A1
+		mammal|Rhinopithecus_roxellana_A2
+		mammal|Rhinopithecus_roxellana_A3
+		mammal|Rousettus_aegyptiacus_A1
+		mammal|Rousettus_aegyptiacus_A2
+		mammal|Rousettus_aegyptiacus_A3
+		mammal|Saimiri_boliviensis_A1
+		mammal|Saimiri_boliviensis_A3
+		mammal|Saimiri_boliviensis_boliviensis_A2
+		mammal|Sapajus_apella_A1
+		mammal|Sapajus_apella_A2
+		mammal|Sapajus_apella_A3
+		mammal|Sarcophilus_harrisii_A1
+		mammal|Sarcophilus_harrisii_A2
+		mammal|Sorex_araneus_A1
+		mammal|Sorex_araneus_A2
+		mammal|Sorex_araneus_A3
+		mammal|Sturnira_hondurensis_A3
+		mammal|Suricata_suricatta_A1
+		mammal|Suricata_suricatta_A2
+		mammal|Suricata_suricatta_A3
+		mammal|Sus_scrofa_A1
+		mammal|Sus_scrofa_A2
+		mammal|Sus_scrofa_A3
+		mammal|Talpa_occidentalis_A3
+		mammal|Theropithecus_gelada_A1
+		mammal|Theropithecus_gelada_A3
+		mammal|Trachypithecus_francoisi_A1
+		mammal|Trachypithecus_francoisi_A3
+		mammal|Trichechus_manatus_A1
+		mammal|Trichechus_manatus_latirostris_A2
+		mammal|Trichechus_manatus_latirostris_A3
+		mammal|Trichosurus_vulpecula_A3
+		mammal|Tupaia_chinensis_A1
+		mammal|Tupaia_chinensis_A3
+		mammal|Tursiops_truncatus_A1
+		mammal|Tursiops_truncatus_A3
+		mammal|Urocitellus_parryii_A1
+		mammal|Urocitellus_parryii_A2
+		mammal|Urocitellus_parryii_A3
+		mammal|Ursus_americanus_A2
+		mammal|Ursus_arctos_A1
+		mammal|Ursus_arctos_horribilis_A3
+		mammal|Ursus_maritimus_A1
+		mammal|Ursus_maritimus_A2
+		mammal|Ursus_maritimus_A3
+		mammal|Vicugna_pacos_A1
+		mammal|Vicugna_pacos_A2
+		mammal|Vicugna_pacos_A3
+		mammal|Vombatus_ursinus_A1
+		mammal|Vombatus_ursinus_A2
+		mammal|Vompatus_ursinus_A3
+		mammal|Vulpes_vulpes_A1
+		mammal|Vulpes_vulpes_A3
+		mammal|Zalophus_californianus_A1
+		mammal|Zalophus_californianus_A2
+		mammal|Zalophus_californianus_A3
+		snake|Atractus_crassicaudatus_A1
+		snake|Boa_constrictor_A1
+		snake|Boa_constrictor_A2
+		snake|Boa_constrictor_A3
+		snake|Bothrops_atrox_A1
+		snake|Bothrops_atrox_A2
+		snake|Bothrops_atrox_A3
+		snake|Burmese_python_A3
+		snake|Crotalus_tigris_A1
+		snake|Crotalus_tigris_A3
+		snake|Dendrophidion_bivittatus_A1
+		snake|Dendrophidion_bivittatus_A2
+		snake|Dendrophidion_bivittatus_A3
+		snake|Diadophis_punctatus_A1
+		snake|Dipsas_catesbyi_A1
+		snake|Dipsas_catesbyi_A2
+		snake|Dipsas_catesbyi_A3
+		snake|Helicops_angulatus_A1
+		snake|Helicops_angulatus_A3
+		snake|Helicops_pastazae_A1
+		snake|Helicops_pastazae_A2
+		snake|Helicops_pastazae_A3
+		snake|Heterodon_nasicus_A1
+		snake|Heterodon_nasicus_A2
+		snake|Heterodon_nasicus_A3
+		snake|Leptodeira_annulata_A1
+		snake|Leptodeira_annulata_A2
+		snake|Leptodeira_annulata_A3
+		snake|Leptodeira_septentrionalis_A1
+		snake|Leptodeira_septentrionalis_A3
+		snake|Notechis_scutatus_A1
+		snake|Notechis_scutatus_A2
+		snake|Notechis_scutatus_A3
+		snake|Ophiophagus_hannah_A2
+		snake|Ophiophagus_hannah_A3
+		snake|Oxyrhopus_petolarius_A1
+		snake|Oxyrhopus_petolarius_A2
+		snake|Oxyrhopus_petolarius_A3
+		snake|Pantherophis_guttatus_A1
+		snake|Pantherophis_guttatus_A2
+		snake|Pantherophis_guttatus_A3
+		snake|Protobothrops_mucrosquamatus_A1
+		snake|Protobothrops_muscosquamatus_A2
+		snake|Pseudonaja_textilis_A2
+		snake|Pseudonaja_textilis_A3
+		snake|Pseudonaja_textillis_A1
+		snake|Python_bivittatus_A1
+		snake|Python_bivittatus_A3
+		snake|Rhabdophis_subminiatus_A1
+		snake|Thamnohpis_sauritus_A1
+		snake|Thamnophis_elegans_A1
+		snake|Thamnophis_elegans_A2
+		snake|Thamnophis_elegans_A3
+		snake|Thamnophis_sauritus_A2
+		snake|Thamnophis_sauritus_A3
+		snake|Thamnophis_sirtalis_A1
+		snake|Thamnophis_sirtalis_A2
+		snake|Thamnophis_sirtalis_A3
+		snake|Xenodon_rhabdocephalus_A1
+		snake|Xenodon_rhabdocephalus_A2
+		snake|Xenodon_rhabdocephalus_A3
+		turtle|Chelonia_mydas_A1
+		turtle|Chrysemys_picta_A2
+		turtle|Chrysemys_picta_bellii_A1
+		turtle|Dermochelys_coriacea_A1
+		turtle|Dermochelys_coriacea_A3
+		turtle|Gopherus_evgoodei_A2
+		turtle|Gopherus_evgoodei_A3
+		turtle|Gopherus_evgoodi_A1
+		turtle|Mauremys_reevesii_A1
+		turtle|Mauremys_reevesii_A3
+		turtle|Pelodiscus_sinensis_A1
+		turtle|Pelodiscus_sinensis_A2
+		turtle|Terrapene_carolina_triunguis_A1
+		turtle|Terrapene_mexicana_A1
+		turtle|Trachemys_scripta_elegans_A1
+	;
+END;
+BEGIN TREES;
+	TRANSLATE
+		1	bird|Acanthisitta_chloris_A1,
+		2	bird|Acrocephalus_arundinaceus_A1,
+		3	bird|Aegotheles_bennettii_A1,
+		4	bird|Agelaius_phoeniceus_A1,
+		5	bird|Alaudala_cheleensis_A1,
+		6	bird|Alca_torda_A1,
+		7	bird|Alcedo_cyanopectus_A1,
+		8	bird|Aleadryas_rufinucha_A1,
+		9	bird|Alectura_lathami_A1,
+		10	bird|Amazona_guildingii_A1,
+		11	bird|Anas_platyrhynchos_A1,
+		12	bird|Anser_cygnoides_A1,
+		13	bird|Anseranas_semipalmata_A1,
+		14	bird|Anthoscopus_minutus_A1,
+		15	bird|Apaloderma_vittatum_A1,
+		16	bird|Aphelocoma_coerulescens_A1,
+		17	bird|Aptenodytes_forsteri_A1,
+		18	bird|Apteryx_australis_mantelli_A1,
+		19	bird|Apteryx_rowi_A1,
+		20	bird|Aquila_chrysaetos_canadensis_A1,
+		21	bird|Aramus_guarauna_A1,
+		22	bird|Arenaria_interpres_A1,
+		23	bird|Aythya_fuligula_A1,
+		24	bird|Belearica_regulorum_A1,
+		25	bird|Bombycilla_garrulus_A1,
+		26	bird|Bucco_capensis_A1,
+		27	bird|Bucorvus_abyssinicus_A1,
+		28	bird|Calidris_pugnax_A1,
+		29	bird|Caloenas_nicobarica_A1,
+		30	bird|Calypte_anna_A1,
+		31	bird|Camarhynchus_parvulus_A3,
+		32	bird|Caprimulgus_carolinensis_A1,
+		33	bird|Cardinalis_cardinalis_A1,
+		34	bird|Cariama_cristata_A1,
+		35	bird|Catharus_fuscecens_A1,
+		36	bird|Catharus_ustulatus_A1,
+		37	bird|Catharus_ustulatus_A3,
+		38	bird|Cephalopterus_ornatus_A1,
+		39	bird|Certhia_brachydactyla_A1,
+		40	bird|Chaetorhynchus_papuensis_A1,
+		41	bird|Chaetura_pelagica_A1,
+		42	bird|Charadrius_vociferus_A1,
+		43	bird|Chlamydotis_mcaqueenii_A1,
+		44	bird|Chloroceryle_aenea_A1,
+		45	bird|Ciccaba_nigrolineata_A1,
+		46	bird|Ciconia_maguari_A1,
+		47	bird|Cinclus_mexicanus_A1,
+		48	bird|Cisticola_juncidis_A1,
+		49	bird|Cnemophilus_loriae_A1,
+		50	bird|Colinus_virginianus_A1,
+		51	bird|Colius_striatus_A1,
+		52	bird|Columba_livia_A1,
+		53	bird|Columba_livia_A1_2,
+		54	bird|Corvus_brachyrhynchos_A1,
+		55	bird|Corvus_cornix_cornix_A1,
+		56	bird|Corvus_moneduloides_A3,
+		57	bird|Coturnix_japonica_A1,
+		58	bird|Crypturellus_soui_A1,
+		59	bird|Crypturellus_undulatus_A1,
+		60	bird|Cuculus_canorus_A1,
+		61	bird|Cyanistes_caeruleus_A1,
+		62	bird|Daphoenositta_chrysoptera_A1,
+		63	bird|Dasyornis_broadbenti_A1,
+		64	bird|Dicaeum_eximium_A1,
+		65	bird|Dicrurus_megarhynchus_A1,
+		66	bird|Dromaius_novaehollandiae_A1,
+		67	bird|Dromas_ardeola_A1,
+		68	bird|Dyaphorphyia_castanea_A1,
+		69	bird|Edolisoma_coerulescens_A1,
+		70	bird|Egretta_garzetta_A1,
+		71	bird|Emberiza_fucata_A1,
+		72	bird|Erithacus_rubecula_A1,
+		73	bird|Erpornis_zantholeuca_A1,
+		74	bird|Erythrocercus_mccallii_A1,
+		75	bird|Eubucco_bourcierii_A1,
+		76	bird|Eudromia_elegans_A1,
+		77	bird|Eudyptes_robustus_A2,
+		78	bird|Eudyptes_sclateri_A2,
+		79	bird|Eulacestoma_nigropectus_A1,
+		80	bird|Eurystomus_gularis_A1,
+		81	bird|Falco_cherrug_A1,
+		82	bird|Falco_cherrug_A2,
+		83	bird|Falco_naumanni_A1,
+		84	bird|Falco_peregrinus_A1,
+		85	bird|Falco_peregrinus_A2,
+		86	bird|Falco_rusticolus_A1,
+		87	bird|Falcunculus_frontatus_A1,
+		88	bird|Ficedula_albicollis_A1,
+		89	bird|Formicarius_rufipectus_A1,
+		90	bird|Fregetta_grallaria_A2,
+		91	bird|Fulmarus_glacialis_A1,
+		92	bird|Furnarius_figulus_A1,
+		93	bird|Furnarius_figulus_A2,
+		94	bird|Galbula_dea_A2,
+		95	bird|Gallus_gallus_A1,
+		96	bird|Gallus_gallus_A2,
+		97	bird|Gallus_gallus_A3,
+		98	bird|Gavia_stellata_A1,
+		99	bird|Geospiza_fortis_A1,
+		100	bird|Glaucidium_brasilianum_A1,
+		101	bird|Grallaria_varia_A1,
+		102	bird|Grantiella_picta_A1,
+		103	bird|Gymnorhina_tibicen_A1,
+		104	bird|Haliaeetus_albicilla_A1,
+		105	bird|Haliaeetus_albicilla_A2,
+		106	bird|Haliaeetus_leucocephalus_A1,
+		107	bird|Haliaetus_leucocephalus_A2,
+		108	bird|Heliornis_fulica_A1,
+		109	bird|Hirundo_rustica_A1,
+		110	bird|Hydrobates_tethys_A1,
+		111	bird|Hylia_prasina_A1,
+		112	bird|Ibidorhyncha_struthersii_A1,
+		113	bird|Ifrita_kowaldi_A1,
+		114	bird|Illadopsis_cleaveri_A1,
+		115	bird|Indicator_maculatus_A1,
+		116	bird|Indicator_maculatus_A2,
+		117	bird|Irena_cyanogastra_A1,
+		118	bird|Jacana_jacana_A1,
+		119	bird|Lanius_ludovicianus_A1,
+		120	bird|Leiothrix_lutea_A1,
+		121	bird|Lepidothrix_coronata_A1,
+		122	bird|Leptosomus_discolor_A1,
+		123	bird|Leucopsar_rothschildi_A1,
+		124	bird|Locustella_ochotensis_A1,
+		125	bird|Lonchura_striata_A1,
+		126	bird|Loxia_leucoptera_A1,
+		127	bird|Machaerirhynchus_nigripectus_A1,
+		128	bird|Manacus_vitellinus_A1,
+		129	bird|Melanocharis_versteri_A1,
+		130	bird|Meleagris_gallopavo_A1,
+		131	bird|Meleagris_gallopavo_A2,
+		132	bird|Melopisittacus_undulatus_A1,
+		133	bird|Melopsittacus_undulatus_A3,
+		134	bird|Melospiza_melodia_A1,
+		135	bird|Merops_nubicus_A1,
+		136	bird|Mesitornis_unicolor_A1,
+		137	bird|Mohoua_ochrocephala_A1,
+		138	bird|Motacilla_alba_A1,
+		139	bird|Motacilla_alba_alba_A1,
+		140	bird|Myiagra_hebetior_A1,
+		141	bird|Mystacornis_crossleyi_A1,
+		142	bird|Nesospiza_acunhae_A2,
+		143	bird|Nestor_notabilis_A1,
+		144	bird|Nipponia_nippon_A1,
+		145	bird|Nothoprocta_perdicaria_A1,
+		146	bird|Numida_meleagris_A1,
+		147	bird|Nyctibius_bracteatus_A1,
+		148	bird|Nyctibius_grandis_A1,
+		149	bird|Nyctiprogne_leucopyga_A1,
+		150	bird|Oceanites_oceanicus_A1,
+		151	bird|Odontophorus_gujanensis_A1,
+		152	bird|Onychorhynchus_coronatus_A1,
+		153	bird|Opisthocomus_hoazin_A1,
+		154	bird|Oreocharis_arfaki_A1,
+		155	bird|Oreotrochilus_melanogaster_A1,
+		156	bird|Origma_solitaria_A1,
+		157	bird|Oriolus_oriolus_A1,
+		158	bird|Orthonyx_spaldingii_A1,
+		159	bird|Oxyruncus_cristatus_A1,
+		160	bird|Oxyura_jamaicensis_A1,
+		161	bird|Pachycephala_philippiensis_A1,
+		162	bird|Pachyramphus_minor_A1,
+		163	bird|Pandion_halaetus_A1,
+		164	bird|Paradoxornis_webbianius_A1,
+		165	bird|Pardalotus_punctatus_A1,
+		166	bird|Parus_major_A1,
+		167	bird|Patagioenas_fasciata_monilis_A1,
+		168	bird|Pedionomus_torquatus_A1,
+		169	bird|Pelecanus_crispus_A1,
+		170	bird|Phaethon_lepturus_A1,
+		171	bird|Phalacrocorax_carbo_A1,
+		172	bird|Phasianus_colchicus_A1,
+		173	bird|Phasianus_colchicus_A2,
+		174	bird|Pheucticus_melanocephalus_A1,
+		175	bird|Picoides_pubescens_A1,
+		176	bird|Pipra_filicauda_A1,
+		177	bird|Piprites_chloris_A1,
+		178	bird|Ploceus_nigricollis_A1,
+		179	bird|Pluvianellus_socialis_A1,
+		180	bird|Poliptila_caerulea_A1,
+		181	bird|Pomatorhinus_ruficollis_A1,
+		182	bird|Pomatostomus_ruficeps_A1,
+		183	bird|Probosciger_aterrimus_A1,
+		184	bird|Promerops_cafer_A1,
+		185	bird|Prunella_fulvescens_A1,
+		186	bird|Pseudopodoces_humilis_A1,
+		187	bird|Pseudopodoces_humilis_A2,
+		188	bird|Psophia_crepitans_A1,
+		189	bird|Pterocles_gutturalis_A1,
+		190	bird|Ptilonorhynchus_violaceus_A1,
+		191	bird|Pycnonotus_jocosus_A1,
+		192	bird|Pygoscelis_adeliae_A1,
+		193	bird|Quiscalus_mexicanus_A1,
+		194	bird|Rhabdornis_inornatus_A1,
+		195	bird|Rhadina_sibilatrix_A1,
+		196	bird|Rhagologus_leucostigma_A1,
+		197	bird|Rhegmatorhina_hoffmannsi_A1,
+		198	bird|Rhinopomastus_cyanomelas_A1,
+		199	bird|Rhipidura_dahli_A1,
+		200	bird|Rhodinocichla_rosea_A1,
+		201	bird|Rhynochetos_jubatus_A1,
+		202	bird|Rynchops_niger_A1,
+		203	bird|Sagittarius_serpentarius_A1,
+		204	bird|Sclerurus_mexicanus_A1,
+		205	bird|Scytalopus_superciliaris_A1,
+		206	bird|Serilophus_lunatus_A1,
+		207	bird|Serinus_canaria_A1,
+		208	bird|Setophaga_kirklandii_A1,
+		209	bird|Simutsornis_africanus_A1,
+		210	bird|Sitta_europaea_A1,
+		211	bird|Smithornis_capensis_A2,
+		212	bird|Spizaetus_tyrannus_A2,
+		213	bird|Sterrhoptilus_dennistourni_A1,
+		214	bird|Strigops_habroptila_A1,
+		215	bird|Strigops_habroptila_A1_2,
+		216	bird|Struthidea_cinerea_A1,
+		217	bird|Struthio_camelus_A1,
+		218	bird|Sylvia_atricapilla_A1,
+		219	bird|Sylvia_borin_A1,
+		220	bird|Sylvietta_virens_A1,
+		221	bird|Taeniopygia_guttata_A1,
+		222	bird|Taeniopygia_guttata_A2,
+		223	bird|Taenipygia_guttata_A3,
+		224	bird|Tauraco_erythrolophus_A1,
+		225	bird|Thalassarche_chlororhynchos_A1,
+		226	bird|Thinocorus_orbignyianus_A1,
+		227	bird|Thryothorus_ludovicianus_A1,
+		228	bird|Tinamus_guttatus_A1,
+		229	bird|Tinamus_guttatus_A2,
+		230	bird|Toxostoma_redivivum_A1,
+		231	bird|Turnix_velox_A1,
+		232	bird|Tyto_alba_A1,
+		233	bird|Upupa_epops_A1,
+		234	bird|Upupa_epops_A2,
+		235	bird|Urocynchramus_pylzowi_A1,
+		236	bird|Vireo_altiloquus_A1,
+		237	bird|Zapornia_atra_A1,
+		238	caecilian|Geotrypetes_seraphini_A1,
+		239	caecilian|Geotrypetes_seraphini_A3,
+		240	caecilian|Microcaecilia_unicolor_A1,
+		241	caecilian|Microcaecilia_unicolor_A3,
+		242	caecilian|Rhinatrema_bivittatum_A1,
+		243	crocodilian|Alligator_mississippiensis_A1,
+		244	crocodilian|Alligator_mississippiensis_A2,
+		245	crocodilian|Alligator_sinensis_A1,
+		246	crocodilian|Alligator_sinensis_A2,
+		247	crocodilian|Crocodylus_porosus_A1,
+		248	crocodilian|Crocodylus_porosus_A3,
+		249	crocodilian|Gavialis_gangeticus_A1,
+		250	fish|Latimeria_chalumnae_A1,
+		251	fish|Latimeria_chalumnae_A2,
+		252	frog|Atelopus_glyphus_A1,
+		253	frog|Atelopus_sp_A1,
+		254	frog|Atelopus_zeteki_A1,
+		255	frog|Bombina_maxima_A1,
+		256	frog|Bufotes_viridis_A1,
+		257	frog|Bufotes_viridis_A2,
+		258	frog|Bufotes_viridis_A3,
+		259	frog|Ceratophrys_calcarata_A1,
+		260	frog|Ceratophrys_calcarata_A3,
+		261	frog|Ceratophrys_cranwelli_A1,
+		262	frog|Ceratophrys_cranwelli_A2,
+		263	frog|Ceratophrys_cranwelli_A3,
+		264	frog|Ceratophrys_ornata_A2,
+		265	frog|Ceratophrys_ornatus_A1,
+		266	frog|Ceratophrys_ornatus_A3,
+		267	frog|Craugastor_fitzingeri_A1,
+		268	frog|Craugastor_fitzingeri_A2,
+		269	frog|Cyclorana_alboguttata_A1,
+		270	frog|Cyclorana_alboguttata_A2,
+		271	frog|Dendrobates_auratus_A1,
+		272	frog|Dendrobates_auratus_A2,
+		273	frog|Dendrobates_auratus_A3,
+		274	frog|Duttaphrynus_melanostictus_A1,
+		275	frog|Duttaphrynus_melanostictus_A2,
+		276	frog|Duttaphrynus_melanostictus_A3,
+		277	frog|Engystomops_pustulosus_A1,
+		278	frog|Engystomops_pustulosus_A2,
+		279	frog|Engystomops_pustulosus_A3,
+		280	frog|Fejervarya_cancrivora_A1,
+		281	frog|Fejervarya_cancrivora_A2,
+		282	frog|Fejervarya_limnocharis_A1,
+		283	frog|Fejervarya_limnocharis_A2,
+		284	frog|Fejervarya_limnocharis_A3,
+		285	frog|Hoplobatrachus_rugulosus_A1,
+		286	frog|Hoplobatrachus_rugulosus_A2,
+		287	frog|Hoplobatrachus_rugulosus_A3,
+		288	frog|Hyla_arborea_A1,
+		289	frog|Hyla_arborea_A2,
+		290	frog|Hyla_arborea_A3,
+		291	frog|Kaloula_pulchra_A1,
+		292	frog|Kaloula_pulchra_A2,
+		293	frog|Lepidobatrachus_laevis_A2,
+		294	frog|Lepidobatrachus_laevis_A3,
+		295	frog|Leptobrachium_boringii_A3,
+		296	frog|Leptodactylus_macrosternum_A2,
+		297	frog|Leptodactylus_macrosternum_A3,
+		298	frog|Leptodactylus_macrosternumR_A1,
+		299	frog|Leptodactylus_macrosternumS_A1,
+		300	frog|Limnodynastes_peronii_A1,
+		301	frog|Limnodynastes_peronii_A2,
+		302	frog|Limnodynastes_peronii_A3,
+		303	frog|Lithobates_catesbeianus_A1,
+		304	frog|Lithobates_sphenocephalus_A1,
+		305	frog|Lithodytes_lineatus_A1,
+		306	frog|Lithodytes_lineatus_A2,
+		307	frog|Mantella_betsileo_A1,
+		308	frog|Megophrys_nasuta_A1,
+		309	frog|Megophrys_nasuta_A2,
+		310	frog|Megophrys_nasuta_A3,
+		311	frog|Melanophryniscus_stelzneri_A1,
+		312	frog|Melanophryniscus_stelzneri_A2,
+		313	frog|Melanophryniscus_stelzneri_A3,
+		314	frog|Nanorana_parkeri_A3,
+		315	frog|Odorrana_margaretae_A1,
+		316	frog|Odorrana_margaretae_A2,
+		317	frog|Odorrana_margaretae_A3,
+		318	frog|Odorrana_tormota_A1,
+		319	frog|Odorrana_tormota_A2,
+		320	frog|Odorrana_tormota_A3,
+		321	frog|Oophaga_pumilioR_A1,
+		322	frog|Oophaga_pumilioS_A1,
+		323	frog|Oreobates_cruralis_A1,
+		324	frog|Oreolalax_rhodostigmatus_A1,
+		325	frog|Oreolalax_rhodostigmatus_A2,
+		326	frog|Oreolalax_rhodostigmatus_A3,
+		327	frog|Pelobates_fuscus_A1,
+		328	frog|Pelobates_fuscus_A2,
+		329	frog|Pelobates_fuscus_A3,
+		330	frog|Pelophylax_lessonae_A1,
+		331	frog|Pelophylax_lessonae_A2,
+		332	frog|Pelophylax_lessonae_A3,
+		333	frog|Pyxicephalus_adspersus_A2,
+		334	frog|Quasipaa_boulengeri_A1,
+		335	frog|Rana_catesbeiana_A3,
+		336	frog|Rana_catessbeiana_A2,
+		337	frog|Rana_sphenocephala_A2,
+		338	frog|Rana_sphenocephala_A3,
+		339	frog|Rana_temporaria_A1,
+		340	frog|Rana_temporaria_A3,
+		341	frog|Ranitomeya_imitator_A3,
+		342	frog|Rhinatrema_bivittatum_A3,
+		343	frog|Rhinella_granulosa_A1,
+		344	frog|Rhinella_marina_A1,
+		345	frog|Rhinella_marina_A3,
+		346	frog|Xenopus_laevis_A1,
+		347	frog|Xenopus_laevis_A2,
+		348	frog|Xenopus_laevis_A3,
+		349	frog|Xenopus_tropicalis_A1,
+		350	frog|Xenopus_tropicalis_A2,
+		351	frog|Xenopus_tropicalis_A3,
+		352	lizard|Ameiva_ameiva_A1,
+		353	lizard|Ameiva_ameiva_A2,
+		354	lizard|Anolis_carolinensis_A1,
+		355	lizard|Anolis_carolinensis_A2,
+		356	lizard|Lacerta_agilis_A1,
+		357	lizard|Lacerta_agilis_A2,
+		358	lizard|Lacerta_agilis_A3,
+		359	lizard|Podacris_muralis_A1,
+		360	lizard|Podacris_muralis_A2,
+		361	lizard|Podacris_muralis_A3,
+		362	lizard|Pogona_vitticeps_A1,
+		363	lizard|Pogona_vitticeps_A2,
+		364	lizard|Pogona_vitticeps_A3,
+		365	lizard|Tupinambis_teguixin_A3,
+		366	lizard|Tupinambis_teguxin_A1,
+		367	lizard|Varanus_acanthus_A1,
+		368	lizard|Varanus_acanthus_A2,
+		369	lizard|Varanus_acanthus_A3,
+		370	lizard|Varanus_dumerilii_A2,
+		371	lizard|Varanus_dumerilii_A3,
+		372	lizard|Varanus_dumerlii_A1,
+		373	lizard|Varanus_exanthemathicus_A1,
+		374	lizard|Varanus_exanthematicus_A2,
+		375	lizard|Varanus_exanthematicus_A3,
+		376	lizard|Varanus_komodoensis_A1,
+		377	lizard|Varanus_niloticus_A1,
+		378	lizard|Varanus_niloticus_A2,
+		379	lizard|Varanus_niloticus_A3,
+		380	lizard|Varanus_similis_A1,
+		381	lizard|Varanus_similis_A2,
+		382	lizard|Varanus_similis_A3,
+		383	lizard|Varanus_timorensis_A1,
+		384	lizard|Varanus_timorensis_A2,
+		385	lizard|Varanus_timorensis_A3,
+		386	lizard|Zootoca_vivipara_A1,
+		387	lizard|Zootoca_vivipara_A3,
+		388	lungfish|Protopterus_annectens_A1,
+		389	lungfish|Protopterus_annectens_A2,
+		390	lungfish|Protopterus_annectens_A3,
+		391	mammal|Acionyx_jubatus_A1,
+		392	mammal|Acionyx_jubatus_A2,
+		393	mammal|Acionyx_jubatus_A3,
+		394	mammal|Ailuropoda_melanoleuca_A1,
+		395	mammal|Ailuropoda_melanoleuca_A2,
+		396	mammal|Ailuropoda_melanoleuca_A3,
+		397	mammal|Aotus_nancymaae_A1,
+		398	mammal|Aotus_nancymaae_A2,
+		399	mammal|Artibeus_jamaicensis_A1,
+		400	mammal|Artibeus_jamaicensis_A3,
+		401	mammal|Arvicanthis_niloticus_A1,
+		402	mammal|Arvicanthis_niloticus_A3,
+		403	mammal|Arvicola_amphibius_A2,
+		404	mammal|Balaenoptera_acutorostrata_scammoni_A2,
+		405	mammal|Balanoptera_acutorostrata_A1,
+		406	mammal|Bison_bison_A3,
+		407	mammal|Bison_bison_bison_A2,
+		408	mammal|Bos_indicus_A1,
+		409	mammal|Bos_indicus_A3,
+		410	mammal|Bos_mutus_A2,
+		411	mammal|Bos_mutus_A3,
+		412	mammal|Bos_taurus_A1,
+		413	mammal|Bos_taurus_A2,
+		414	mammal|Bos_taurus_A3,
+		415	mammal|Bubalus_bubalis_A2,
+		416	mammal|Bubalus_bubalis_A3,
+		417	mammal|Bubalus_bubalus_A1,
+		418	mammal|Callithrix_jacchus_A1,
+		419	mammal|Callithrix_jacchus_A2,
+		420	mammal|Callithrix_jacchus_A3,
+		421	mammal|Callorhinus_ursinus_A1,
+		422	mammal|Callorhinus_ursinus_A2,
+		423	mammal|Camelus_bactrianus_A1,
+		424	mammal|Camelus_bactrianus_A2,
+		425	mammal|Camelus_bactrianus_A3,
+		426	mammal|Camelus_dromedarius_A1,
+		427	mammal|Camelus_dromedarius_A2,
+		428	mammal|Camelus_dromedarius_A3,
+		429	mammal|Camelus_ferus_A1,
+		430	mammal|Camelus_ferus_A2,
+		431	mammal|Camelus_ferus_A3,
+		432	mammal|Canis_lupus_dingo_A1,
+		433	mammal|Canis_lupus_dingo_A2,
+		434	mammal|Canis_lupus_dingo_A3,
+		435	mammal|Canis_lupus_familiaris_A1,
+		436	mammal|Canis_lupus_familiaris_A2,
+		437	mammal|Canis_lupus_familiaris_A3,
+		438	mammal|Capra_hircus_A1,
+		439	mammal|Capra_hircus_A2,
+		440	mammal|Capra_hircus_A3,
+		441	mammal|Carlito_syrichta_A1,
+		442	mammal|Carlito_syrichta_A3,
+		443	mammal|Castor_canadensis_A2,
+		444	mammal|Castor_canadensis_A3,
+		445	mammal|Cavia_porcellus_A2,
+		446	mammal|Cavia_porcellus_A3,
+		447	mammal|Cebus_capucinus_imitator_A3,
+		448	mammal|Ceratotherium_simum_simum_A2,
+		449	mammal|Ceratotherium_simum_simum_A3,
+		450	mammal|Cercocebus_atys_A1,
+		451	mammal|Cercocebus_atys_A2,
+		452	mammal|Cercocebus_atys_A3,
+		453	mammal|Chinchilla_lanigera_A1,
+		454	mammal|Chinchilla_lanigera_A2,
+		455	mammal|Chinchilla_lanigera_A3,
+		456	mammal|Chlorocebus_sabaeus_A1,
+		457	mammal|Chlorocebus_sabaeus_A2,
+		458	mammal|Chlorocebus_sabaeus_A3,
+		459	mammal|Cholepus_didactylus_A2,
+		460	mammal|Choloepus_didactylus_A3,
+		461	mammal|Chrysochloris_asiatica_A2,
+		462	mammal|Chrysochloris_asiatica_A3,
+		463	mammal|Colobus_angolensis_palliatus_A1,
+		464	mammal|Colobus_angolensis_palliatus_A3,
+		465	mammal|Condylura_cristata_A1,
+		466	mammal|Condylura_cristata_A2,
+		467	mammal|Condylura_cristata_A3,
+		468	mammal|Cricetulus_griseus_A1,
+		469	mammal|Cricetulus_griseus_A2,
+		470	mammal|Crocuta_crocuta_A1,
+		471	mammal|Crocuta_crocuta_A2,
+		472	mammal|Crocuta_crocuta_A3,
+		473	mammal|Dasypus_novemcinctus_A2,
+		474	mammal|Delphinapterus_leucas_A1,
+		475	mammal|Delphinapterus_leucas_A2,
+		476	mammal|Delphinapterus_leucas_A3,
+		477	mammal|Desmodus_rotundus_A2,
+		478	mammal|Desmodus_rotundus_A3,
+		479	mammal|Dipodomys_ordii_A1,
+		480	mammal|Dipodomys_ordii_A2,
+		481	mammal|Dipodomys_ordii_A3,
+		482	mammal|Echinops_telfairi_A1,
+		483	mammal|Echinops_telfairi_A2,
+		484	mammal|Elephantulus_edwardii_A2,
+		485	mammal|Elephantulus_edwardii_A3,
+		486	mammal|Enhydra_lutris_kenyoni_A2,
+		487	mammal|Enhydra_lutris_kenyoni_A3,
+		488	mammal|Eptesicus_fuscus_A1,
+		489	mammal|Eptesicus_fuscus_A3,
+		490	mammal|Equus_asinus_A1,
+		491	mammal|Equus_asinus_A2,
+		492	mammal|Equus_asinus_A3,
+		493	mammal|Equus_caballus_A1,
+		494	mammal|Equus_caballus_A2,
+		495	mammal|Equus_caballus_A3,
+		496	mammal|Equus_przewalskii_A1,
+		497	mammal|Erinaceus_europaeus_A1,
+		498	mammal|Erinaceus_europaeus_A2,
+		499	mammal|Erinaceus_europaeus_A3,
+		500	mammal|Eumetopias_jubatus_A1,
+		501	mammal|Felis_catus_A1,
+		502	mammal|Felis_catus_A2,
+		503	mammal|Felis_catus_A3,
+		504	mammal|Fukomys_damarensis_A1,
+		505	mammal|Fukomys_damarensis_A2,
+		506	mammal|Fukomys_damarensis_A3,
+		507	mammal|Galeopterus_variegatus_A1,
+		508	mammal|Galeopterus_variegatus_A2,
+		509	mammal|Globicephala_melas_A3,
+		510	mammal|Gorilla_gorilla_gorilla_A1,
+		511	mammal|Gorilla_gorilla_gorilla_A2,
+		512	mammal|Gorilla_gorilla_gorilla_A3,
+		513	mammal|Grammomys_surdaster_A1,
+		514	mammal|Grammomys_surdaster_A3,
+		515	mammal|Halichoerus_grypus_A2,
+		516	mammal|Heterocephalus_glaber_A1,
+		517	mammal|Heterocephalus_glaber_A2,
+		518	mammal|Heterocephalus_glaber_A3,
+		519	mammal|Hipposideros_armiger_A1,
+		520	mammal|Hipposideros_armiger_A3,
+		521	mammal|Homo_sapiens_A1,
+		522	mammal|Homo_sapiens_A2,
+		523	mammal|Homo_sapiens_A3,
+		524	mammal|Hyaena_hyaena_A1,
+		525	mammal|Hyaena_hyaena_A3,
+		526	mammal|Hylobates_moloch_A2,
+		527	mammal|Ictidomys_tridecemlineatus_A2,
+		528	mammal|Ictidomys_tridecemlineatus_A3,
+		529	mammal|Ictidomys_tridecremlineatus_A1,
+		530	mammal|Jaculus_jaculus_A1,
+		531	mammal|Jaculus_jaculus_A2,
+		532	mammal|Leptonychotes_weddellii_A3,
+		533	mammal|Lepus_yarkandensis_A1,
+		534	mammal|Lipotes_vexillifer_A2,
+		535	mammal|Lipotes_vexillifer_A3,
+		536	mammal|Lontra_canadensis_A1,
+		537	mammal|Lontra_canadensis_A2,
+		538	mammal|Lontra_canadensis_A3,
+		539	mammal|Loxodonta_africana_A1,
+		540	mammal|Loxodonta_africana_A2,
+		541	mammal|Lynx_canadensis_A1,
+		542	mammal|Lynx_canadensis_A2,
+		543	mammal|Lynx_canadensis_A3,
+		544	mammal|Macaca_fascicularis_A3,
+		545	mammal|Macaca_fasicularis_A1,
+		546	mammal|Macaca_mulatta_A1,
+		547	mammal|Macaca_mulatta_A2,
+		548	mammal|Macaca_mulatta_A3,
+		549	mammal|Macaca_nemestrina_A1,
+		550	mammal|Macaca_nemestrina_A2,
+		551	mammal|Mandrillus_leucophaeus_A1,
+		552	mammal|Mandrillus_leucophaeus_A2,
+		553	mammal|Manis_javanica_A1,
+		554	mammal|Manis_javanica_A3,
+		555	mammal|Manis_pentadactyla_A3,
+		556	mammal|Marmota_marmota_marmota_A1,
+		557	mammal|Marmota_marmota_marmota_A2,
+		558	mammal|Marmota_marmota_marmota_A3,
+		559	mammal|Mastomys_coucha_A1,
+		560	mammal|Mastomys_coucha_A3,
+		561	mammal|Meriones_unguiculatus_A2,
+		562	mammal|Mesocricetus_auratus_A1,
+		563	mammal|Microcebus_murinus_A2,
+		564	mammal|Microcebus_murinus_A3,
+		565	mammal|Microtus_ochrogaster_A1,
+		566	mammal|Microtus_ochrogaster_A2,
+		567	mammal|Microtus_ochrogaster_A3,
+		568	mammal|Miniopterus_natalensis_A1,
+		569	mammal|Miniopterus_natalensis_A3,
+		570	mammal|Mirounga_leonina_A1,
+		571	mammal|Mirounga_leonina_A2,
+		572	mammal|Mirounga_leonina_A3,
+		573	mammal|Molossus_molossus_A1,
+		574	mammal|Molossus_molossus_A2,
+		575	mammal|Molossus_molossus_A3,
+		576	mammal|Monodelphis_domestica_A1,
+		577	mammal|Monodelphis_domestica_A2,
+		578	mammal|Mus_caroli_A1,
+		579	mammal|Mus_caroli_A3,
+		580	mammal|Mus_musculus_A1,
+		581	mammal|Mus_musculus_A2,
+		582	mammal|Mus_musculus_A3,
+		583	mammal|Mus_pahari_A1,
+		584	mammal|Mus_pahari_A3,
+		585	mammal|Mustela_erminea_A1,
+		586	mammal|Mustela_erminea_A3,
+		587	mammal|Mustela_putorius_furo_A1,
+		588	mammal|Mustela_putorius_furo_A2,
+		589	mammal|Mustela_putorius_furo_A3,
+		590	mammal|Myotis_brandtii_A1,
+		591	mammal|Myotis_brandtii_A2,
+		592	mammal|Myotis_brandtii_A3,
+		593	mammal|Myotis_davidii_A3,
+		594	mammal|Myotis_lucifugus_A3,
+		595	mammal|Myotis_myotis_A1,
+		596	mammal|Myotis_myotis_A2,
+		597	mammal|Myotis_myotis_A3,
+		598	mammal|Nannospalax_galili_A1,
+		599	mammal|Nannospalax_galili_A2,
+		600	mammal|Nannospalax_galili_A3,
+		601	mammal|Neomonachus_schauinslandi_A3,
+		602	mammal|Neophocaena_asiaeorientalis_A2,
+		603	mammal|Neophocaena_asiaeorientalis_A3,
+		604	mammal|Nomascus_leucogenys_A2,
+		605	mammal|Nomascus_leucogenys_A3,
+		606	mammal|Ochotona_princeps_A2,
+		607	mammal|Ochotona_princeps_A3,
+		608	mammal|Ochtona_princeps_A1,
+		609	mammal|Octodon_degus_A1,
+		610	mammal|Octodon_degus_A2,
+		611	mammal|Octodon_degus_A3,
+		612	mammal|Odobenus_rosmarus_A1,
+		613	mammal|Odobenus_rosmarus_divergens_A2,
+		614	mammal|Odobenus_rosmarus_divergens_A3,
+		615	mammal|Odocoileus_virginianus_texanus_A1,
+		616	mammal|Odocoileus_virginianus_texanus_A2,
+		617	mammal|Odocoileus_virginianus_texanus_A3,
+		618	mammal|Orcinus_orca_A1,
+		619	mammal|Orcinus_orca_A2,
+		620	mammal|Orcinus_orca_A3,
+		621	mammal|Ornithorhynchus_anatinus_A1,
+		622	mammal|Ornithorhynchus_anatinus_A2,
+		623	mammal|Ornithorhynchus_anatinus_A3,
+		624	mammal|Orycteropus_afer_afer_A1,
+		625	mammal|Orycteropus_afer_afer_A2,
+		626	mammal|Orycteropus_afer_afer_A3,
+		627	mammal|Oryctolagus_cuniculus_A1,
+		628	mammal|Oryctolagus_cuniculus_A2,
+		629	mammal|Oryx_dammah_A1,
+		630	mammal|Oryx_dammah_A2,
+		631	mammal|Oryx_dammah_A3,
+		632	mammal|Otolemur_garnettii_A1,
+		633	mammal|Otolemur_garnettii_A2,
+		634	mammal|Otolemur_garnettii_A3,
+		635	mammal|Ovis_aries_A1,
+		636	mammal|Ovis_aries_A2,
+		637	mammal|Ovis_aries_A3,
+		638	mammal|Pan_paniscus_A1,
+		639	mammal|Pan_paniscus_A2,
+		640	mammal|Pan_paniscus_A3,
+		641	mammal|Pan_troglodytes_A1,
+		642	mammal|Pan_troglodytes_A2,
+		643	mammal|Pan_troglodytes_A3,
+		644	mammal|Panthera_pardus_A1,
+		645	mammal|Panthera_pardus_A2,
+		646	mammal|Panthera_pardus_A3,
+		647	mammal|Panthera_tigris_altaica_A1,
+		648	mammal|Pantholops_hodgsonii_A2,
+		649	mammal|Papio_anubis_A1,
+		650	mammal|Papio_anubis_A3,
+		651	mammal|Peromyscus_leucopus_A1,
+		652	mammal|Peromyscus_leucopus_A2,
+		653	mammal|Peromyscus_leucopus_A3,
+		654	mammal|Peromyscus_maniculatus_bairdii_A1,
+		655	mammal|Peromyscus_maniculatus_bairdii_A2,
+		656	mammal|Peromyscus_maniculatus_bairdii_A3,
+		657	mammal|Phascolarctos_cinereus_A1,
+		658	mammal|Phascolarctos_cinereus_A2,
+		659	mammal|Phascolarctos_cinereus_A3,
+		660	mammal|Phoca_vitulina_A1,
+		661	mammal|Phoca_vitulina_A3,
+		662	mammal|Phocoena_sinus_A1,
+		663	mammal|Phocoena_sinus_A2,
+		664	mammal|Phocoena_sinus_A3,
+		665	mammal|Phyllostomus_discolor_A3,
+		666	mammal|Phyllostromus_discolor_A2,
+		667	mammal|Physeter_catodon_A1,
+		668	mammal|Physeter_catodon_A2,
+		669	mammal|Physeter_catodon_A3,
+		670	mammal|Physeter_macrocephalus_A3,
+		671	mammal|Piliocolobus_tephrosceles_A1,
+		672	mammal|Piliocolobus_tephrosceles_A2,
+		673	mammal|Pipistrellus_kuhlii_A1,
+		674	mammal|Pipistrellus_kuhlii_A2,
+		675	mammal|Pipistrellus_kuhlii_A3,
+		676	mammal|Pongo_abelii_A1,
+		677	mammal|Pongo_abelii_A2,
+		678	mammal|Pongo_abelii_A3,
+		679	mammal|Propithecus_coquereli_A2,
+		680	mammal|Propithecus_coquereli_A3,
+		681	mammal|Pteropus_alecto_A1,
+		682	mammal|Pteropus_alecto_A2,
+		683	mammal|Pteropus_alecto_A3,
+		684	mammal|Pteropus_giganteus_A1,
+		685	mammal|Pteropus_giganteus_A3,
+		686	mammal|Pteropus_vampyrus_A2,
+		687	mammal|Pteropus_vampyrus_A3,
+		688	mammal|Puma_concolor_A1,
+		689	mammal|Puma_yagouaroundi_A1,
+		690	mammal|Rattus_norvegicus_A1,
+		691	mammal|Rattus_norvegicus_A2,
+		692	mammal|Rattus_norvegicus_A3,
+		693	mammal|Rattus_rattus_A3,
+		694	mammal|Rhinolophus_ferrumequinum_A1,
+		695	mammal|Rhinolophus_ferrumequinum_A3,
+		696	mammal|Rhinopithecus_bieti_A1,
+		697	mammal|Rhinopithecus_bieti_A2,
+		698	mammal|Rhinopithecus_bieti_A3,
+		699	mammal|Rhinopithecus_roxellana_A1,
+		700	mammal|Rhinopithecus_roxellana_A2,
+		701	mammal|Rhinopithecus_roxellana_A3,
+		702	mammal|Rousettus_aegyptiacus_A1,
+		703	mammal|Rousettus_aegyptiacus_A2,
+		704	mammal|Rousettus_aegyptiacus_A3,
+		705	mammal|Saimiri_boliviensis_A1,
+		706	mammal|Saimiri_boliviensis_A3,
+		707	mammal|Saimiri_boliviensis_boliviensis_A2,
+		708	mammal|Sapajus_apella_A1,
+		709	mammal|Sapajus_apella_A2,
+		710	mammal|Sapajus_apella_A3,
+		711	mammal|Sarcophilus_harrisii_A1,
+		712	mammal|Sarcophilus_harrisii_A2,
+		713	mammal|Sorex_araneus_A1,
+		714	mammal|Sorex_araneus_A2,
+		715	mammal|Sorex_araneus_A3,
+		716	mammal|Sturnira_hondurensis_A3,
+		717	mammal|Suricata_suricatta_A1,
+		718	mammal|Suricata_suricatta_A2,
+		719	mammal|Suricata_suricatta_A3,
+		720	mammal|Sus_scrofa_A1,
+		721	mammal|Sus_scrofa_A2,
+		722	mammal|Sus_scrofa_A3,
+		723	mammal|Talpa_occidentalis_A3,
+		724	mammal|Theropithecus_gelada_A1,
+		725	mammal|Theropithecus_gelada_A3,
+		726	mammal|Trachypithecus_francoisi_A1,
+		727	mammal|Trachypithecus_francoisi_A3,
+		728	mammal|Trichechus_manatus_A1,
+		729	mammal|Trichechus_manatus_latirostris_A2,
+		730	mammal|Trichechus_manatus_latirostris_A3,
+		731	mammal|Trichosurus_vulpecula_A3,
+		732	mammal|Tupaia_chinensis_A1,
+		733	mammal|Tupaia_chinensis_A3,
+		734	mammal|Tursiops_truncatus_A1,
+		735	mammal|Tursiops_truncatus_A3,
+		736	mammal|Urocitellus_parryii_A1,
+		737	mammal|Urocitellus_parryii_A2,
+		738	mammal|Urocitellus_parryii_A3,
+		739	mammal|Ursus_americanus_A2,
+		740	mammal|Ursus_arctos_A1,
+		741	mammal|Ursus_arctos_horribilis_A3,
+		742	mammal|Ursus_maritimus_A1,
+		743	mammal|Ursus_maritimus_A2,
+		744	mammal|Ursus_maritimus_A3,
+		745	mammal|Vicugna_pacos_A1,
+		746	mammal|Vicugna_pacos_A2,
+		747	mammal|Vicugna_pacos_A3,
+		748	mammal|Vombatus_ursinus_A1,
+		749	mammal|Vombatus_ursinus_A2,
+		750	mammal|Vompatus_ursinus_A3,
+		751	mammal|Vulpes_vulpes_A1,
+		752	mammal|Vulpes_vulpes_A3,
+		753	mammal|Zalophus_californianus_A1,
+		754	mammal|Zalophus_californianus_A2,
+		755	mammal|Zalophus_californianus_A3,
+		756	snake|Atractus_crassicaudatus_A1,
+		757	snake|Boa_constrictor_A1,
+		758	snake|Boa_constrictor_A2,
+		759	snake|Boa_constrictor_A3,
+		760	snake|Bothrops_atrox_A1,
+		761	snake|Bothrops_atrox_A2,
+		762	snake|Bothrops_atrox_A3,
+		763	snake|Burmese_python_A3,
+		764	snake|Crotalus_tigris_A1,
+		765	snake|Crotalus_tigris_A3,
+		766	snake|Dendrophidion_bivittatus_A1,
+		767	snake|Dendrophidion_bivittatus_A2,
+		768	snake|Dendrophidion_bivittatus_A3,
+		769	snake|Diadophis_punctatus_A1,
+		770	snake|Dipsas_catesbyi_A1,
+		771	snake|Dipsas_catesbyi_A2,
+		772	snake|Dipsas_catesbyi_A3,
+		773	snake|Helicops_angulatus_A1,
+		774	snake|Helicops_angulatus_A3,
+		775	snake|Helicops_pastazae_A1,
+		776	snake|Helicops_pastazae_A2,
+		777	snake|Helicops_pastazae_A3,
+		778	snake|Heterodon_nasicus_A1,
+		779	snake|Heterodon_nasicus_A2,
+		780	snake|Heterodon_nasicus_A3,
+		781	snake|Leptodeira_annulata_A1,
+		782	snake|Leptodeira_annulata_A2,
+		783	snake|Leptodeira_annulata_A3,
+		784	snake|Leptodeira_septentrionalis_A1,
+		785	snake|Leptodeira_septentrionalis_A3,
+		786	snake|Notechis_scutatus_A1,
+		787	snake|Notechis_scutatus_A2,
+		788	snake|Notechis_scutatus_A3,
+		789	snake|Ophiophagus_hannah_A2,
+		790	snake|Ophiophagus_hannah_A3,
+		791	snake|Oxyrhopus_petolarius_A1,
+		792	snake|Oxyrhopus_petolarius_A2,
+		793	snake|Oxyrhopus_petolarius_A3,
+		794	snake|Pantherophis_guttatus_A1,
+		795	snake|Pantherophis_guttatus_A2,
+		796	snake|Pantherophis_guttatus_A3,
+		797	snake|Protobothrops_mucrosquamatus_A1,
+		798	snake|Protobothrops_muscosquamatus_A2,
+		799	snake|Pseudonaja_textilis_A2,
+		800	snake|Pseudonaja_textilis_A3,
+		801	snake|Pseudonaja_textillis_A1,
+		802	snake|Python_bivittatus_A1,
+		803	snake|Python_bivittatus_A3,
+		804	snake|Rhabdophis_subminiatus_A1,
+		805	snake|Thamnohpis_sauritus_A1,
+		806	snake|Thamnophis_elegans_A1,
+		807	snake|Thamnophis_elegans_A2,
+		808	snake|Thamnophis_elegans_A3,
+		809	snake|Thamnophis_sauritus_A2,
+		810	snake|Thamnophis_sauritus_A3,
+		811	snake|Thamnophis_sirtalis_A1,
+		812	snake|Thamnophis_sirtalis_A2,
+		813	snake|Thamnophis_sirtalis_A3,
+		814	snake|Xenodon_rhabdocephalus_A1,
+		815	snake|Xenodon_rhabdocephalus_A2,
+		816	snake|Xenodon_rhabdocephalus_A3,
+		817	turtle|Chelonia_mydas_A1,
+		818	turtle|Chrysemys_picta_A2,
+		819	turtle|Chrysemys_picta_bellii_A1,
+		820	turtle|Dermochelys_coriacea_A1,
+		821	turtle|Dermochelys_coriacea_A3,
+		822	turtle|Gopherus_evgoodei_A2,
+		823	turtle|Gopherus_evgoodei_A3,
+		824	turtle|Gopherus_evgoodi_A1,
+		825	turtle|Mauremys_reevesii_A1,
+		826	turtle|Mauremys_reevesii_A3,
+		827	turtle|Pelodiscus_sinensis_A1,
+		828	turtle|Pelodiscus_sinensis_A2,
+		829	turtle|Terrapene_carolina_triunguis_A1,
+		830	turtle|Terrapene_mexicana_A1,
+		831	turtle|Trachemys_scripta_elegans_A1
+	;
+	TREE * UNTITLED = [&R] ((((389:0.189356,(251:0.240165,(((((((325:0.028828,328:0.02636):0.056033,301:0.030496):0.022044,((293:0.008563,(262:0.002351,264:0.016161):0.037527):0.014315,(268:0.032106,((289:0.06804,270:0.025879):0.016544,(((278:0.029381,((275:0.002546,257:0.03082):0.039563,312:0.039063):0.009288):0.008179,272:0.018438):0.006695,(296:0.009275,306:0.013715):0.009097):0):0.005102):0.002378):0.017658):0.001318,((333:0.031362,((331:0.02408,((336:0.002253,337:0.004515):0.019861,(316:0.007651,319:0.015239):0.013909):0.016892):0.022012,((281:0,286:0.015872):0.012497,283:0.014811):0.018195):0.012104):0.022286,292:0.044899):0.023967):0.010356,(350:0.025613,347:0.053214):0.038603):0.139812,309:0.052129):0,((((((357:0.008821,360:0.006708):0.02959,((355:0.067056,363:0.008819):0.017125,((370:0.0216,(374:0.04795,378:0.011455):0.023618):0.002156,(368:0.002301,381:0):0.004611):0.015806):0.004573):0.005455,353:0.245817):0.005332,384:0.042094):0,(758:0.031643,(((789:0.043178,(787:0.010977,799:0.009387):0.00295):0.007772,(((792:0.002146,(815:0.022904,776:0):0.006944):0.014792,((771:0.00898,782:0.002258):0.012015,779:0.016985):0.002889):0.018116,(((809:0.005899,(807:0.002223,812:0.004468):0.005337):0.051841,767:0.00529):0.00284,795:0.005889):0.008554):0.00956):0.010476,(761:0.013393,798:0.04634):0.025514):0.006038):0.024684):0.034516,((622:0.03426,((((484:0,461:0.004479):0,625:0.004468):0,(((729:0.01378,540:0.014009):0.005817,473:0.003491):0.004093,(((712:0.002241,577:0.002237):0.002964,(658:0.005216,749:0.003753):0.004489):0.010573,((((666:0.059097,459:0.015824):0,((703:0,686:0):0,(682:0,477:0):0):0):0.002228,(((((616:0,(((746:0.00224,430:0):0,(424:0,427:0):0.002237):0.002234,((439:0,(630:0.002235,648:0.002231):0):0,636:0.004468):0.002231):0):0,((413:0,(407:0,410:0):0):0,415:0):0.002231):0.002232,721:0.002235):0,(404:0.002237,((668:0.008955,475:0):0.002236,((534:0,(663:0,619:0):0):0,602:0):0):0.002245):0.002228):0.004478,(((((645:0.002226,((502:0,392:0):0,542:0):0):0.002227,718:0):0.00447,(((((709:0,((451:0.025617,((552:0,550:0):0,547:0):0):0.00223,419:0.002226):0):0,697:0):0,((672:0,398:0):0,700:0):0):0,(457:0.00223,(((((((526:0,604:0.002221):0.004461,677:0.011397):0,639:0):0,642:0):0,522:0):0,511:0.00223):0.002227,707:0):0):0.002226):0.002229,((606:0.002231,(((557:0.002234,(737:0,527:0):0):0.004485,(628:0.004465,((445:0.006708,454:0.004481):0.002238,((505:0.004486,517:0.002236):0.002702,610:0.004339):0.001917):0):0.002235):0.002238,(((599:0,(480:0.002241,531:0.008958):0.002226):0,(((652:0,655:0):0.002242,((((581:0,403:0):0,691:0):0,561:0):0,566:0):0):0,469:0.002241):0.006735):0.002233,443:0.00898):0.004474):0):0.004468,(633:0.009036,((508:0.016164,679:0):0.002235,563:0):0):0.002239):0):0.004469):0,((395:0.004464,(((471:0.136229,739:0):0.0024,743:0):0,(436:0,433:0):0):0):0.002229,(((515:0.002241,571:0):0,(613:0.002242,(422:0,754:0):0):0.002249):0.00449,((491:0,494:0):0,448:0.004478):0.004474):0):0):0,((537:0,588:0):0,486:0):0.002229):0.002227):0.002239):0,((574:0.006182,(674:0.006665,(596:0,591:0):0):0.018835):0.004224,((498:0.020044,714:0.021477):0.004187,466:0.003314):0.00817):0.002216):0.006738):0):0):0.002381,483:0.011109):0.020923):0.092028,(((244:0.004492,246:0.011363):0.048209,(828:0.02646,(818:0.012299,822:0.013458):0.008059):0.016254):0.008518,(((173:0.160894,(96:0.007118,131:0):0):0.031015,(((90:0.002491,((77:0.002317,78:0):0.006947,((105:0,107:0):0.002303,((85:0.060081,82:0.004832):0.007274,212:0):0):0):0):0.002381,((116:0.020297,94:0.004939):0.002244,234:0.009291):0.002486):0.004356,((93:0.019008,(142:0.024917,(222:0.011369,187:0.002493):0.002289):0.004662):0.002109,211:0.002374):0.011655):0.006443):0.005329,229:0.035079):0.038231):0.017711):0.037792):0.000101):0.105809):0.026523):0.06515,(390:0.083604,(((520:0.002729,(558:0,((738:0,((((607:0.002166,((((535:0,((620:0,664:0):0,(476:0.002146,735:0.002154):0):0):0.002147,((617:0.002574,440:0.001607):0.000541,((416:0,411:0):0,414:0):0):0.004295):0,((((495:0,492:0):0,((611:0,(669:0,(442:0.002161,(((626:0,485:0):0,(((731:0.009064,750:0):0.002207,659:0):0.010815,623:0.012696):0.015934):0.004328,(634:0,680:0):0.00216):0):0.002149):0):0,710:0):0):0,((678:0.004331,((643:0,((640:0,512:0):0,523:0):0):0,(452:0,((((698:0,548:0):0,544:0):0,(((701:0,464:0):0,458:0):0,725:0):0):0,727:0):0):0.002162):0):0.002167,(447:0,(605:0,420:0):0):0):0.002165):0.002149,(431:0,(747:0,(428:0,((543:0,((514:0.002684,(730:0.010994,719:0):0):0.002136,(((((487:0,(((532:0,722:0.004283):0.002139,455:0):0,446:0):0):0,661:0):0,(((755:0,434:0):0,396:0):0,(((538:0,614:0):0,449:0):0,(752:0,437:0):0):0):0):0,(586:0,589:0):0.00214):0.002137,(((((((631:0.00447,637:0):0.002237,406:0):0,409:0.007159):0.004473,((564:0.005041,(706:0,((478:0.006762,(((572:0,(741:0,(744:0,601:0):0):0):0,704:0.004463):0.01192,670:0):0):0.012088,(460:0.01321,650:0):0.002613):0):0):0.003557,425:0):0.003548):0,(603:0,(695:0.005588,(693:0,(467:0,723:0):0.013583):0.002253):0.00562):0.002237):0.003536,525:0):0.007036,(554:0.002149,555:0):0.00909):0.008594):0):0):0,(472:0.002188,(393:0.002133,(646:0,503:0):0):0):0.002138):0.002189):0.002197):0):0):0.002199):0.004403,733:0.002185):0):0,(518:0.013083,444:0):0.002162):0,(683:0.002148,(687:0,685:0):0):0.002149):0,(600:0.002156,((656:0,(567:0,653:0):0):0,((509:0,(((665:0.004291,716:0):0.002139,((400:0.004282,506:0):0.004283,((569:0.002153,575:0.004267):0.004265,(462:0.004963,499:0.004308):0):0.002132):0):0.002127,(((593:0.002135,(489:0.006426,((592:0,597:0):0,594:0):0):0.002135):0.004263,675:0):0.002126,(481:0.002473,715:0.011135):0):0):0.002131):0,((((560:0,(692:0,582:0):0):0,579:0):0,584:0):0,402:0):0):0.00214):0.002146):0.002149):0.002201):0,528:0):0.002206):0.00376):0.026879,(((133:0.018263,(31:0.002175,(223:0,(37:0,56:0):0):0):0.004686):0.012611,97:0.004905):0.032163,(((((387:0.003904,(358:0.00639,361:0.006449):0.002546):0.013221,364:0.019629):0.01012,((365:0.022468,(371:0.011285,(375:0.013627,379:0.002067):0.004398):0.002374):0.004329,(369:0.002191,(382:0,385:0):0.002225):0.004577):0.00532):0,((((813:0.341105,(810:0,808:0.004274):0.010728):0.015756,(780:0.015611,((772:0,(783:0,785:0):0.004335):0.006405,(793:0.008574,(816:0.00434,(774:0.00638,777:0.002101):0.006366):0):0.008539):0.006519):0.010898):0.004974,((762:0.054925,765:0.020113):0.006021,((768:0.016843,796:0.009588):0.014562,(790:0.01261,(788:0.010698,800:0.006362):0.010362):0.007228):0.004683):0.001911):0.004685,(759:0.00419,(763:0,803:0):0.015022):0.005501):0.008022):0.032255,(248:0.044432,((821:0.004299,826:0.006488):0.006057,823:0):0.05393):0.013076):0.018058):0.024834):0.036952,((((310:0.034916,341:0.024594):0.084418,((295:0.017954,(326:0.025562,329:0.033172):0.013656):0.02075,(297:0.009271,((302:0.007637,(314:0.062457,290:0.045098):0.004977):0.010784,((273:0.027193,((294:0.016937,((258:0.082382,276:0.009173):0.069215,(313:0.061592,345:0.044174):0.021171):0.01419):0.003664,(260:0.009235,(263:0,266:0.015928):0.006628):0.004575):0.013717):0,((348:0.059054,(279:0.018537,351:0.053276):0.006311):0.007875,(((332:0.017808,((317:0.059764,320:0.008978):0.002441,((335:0.002245,338:0):0.011633,340:0.031532):0.026945):0.002253):0.007707,284:0.005787):0.004381,287:0.017135):0.007724):0.002179):0.004045):0):0.008635):0.027584):0.007924,342:0.020504):0,(239:0.010557,241:0.004708):0.027607):0.056893):0.025191):0.191987):0.123676,(((((((307:0.037231,(334:0.041826,((304:0.118364,303:0.004372):0.026026,((339:0.016841,330:0.042783):0.015953,(315:0.012843,318:0.023688):0.006781):0.003552):0.016039):0.019696):0.013979,(282:0.008699,(285:0.039684,280:0.011879):0.009302):0.011869):0.010068,(((((((311:0.068894,(((274:0.011841,256:0.030202):0.018738,(343:0.007119,344:0.011383):0.00756):0.013173,(253:0,(252:0,254:0):0.00459):0.035092):0.04661):0.015354,(259:0.005025,(261:0,265:0.00684):0.018112):0.051091):0.022666,269:0.013533):0.005171,288:0.050252):0.001438,(((267:0.031088,323:0.025335):0.012294,(((321:0.019535,322:0.007731):0.009398,271:0.005609):0.013803,305:0.052051):0.011445):0.006695,(298:0.048696,299:0.006566):0.012549):0.010055):0.01027,277:0.036951):0.01848,((((324:0.035524,327:0.035187):0.017451,300:0.037928):0.004422,(346:0.033264,349:0.035823):0.028643):0.00986,255:0.063834):0.010739):0.007904):0.008855,291:0.030629):0.042547,308:0.079267):0,(242:0.012625,(238:0.034416,240:0.071442):0.022842):0.041657):0.0097,(((717:0.026453,(470:0,524:0.002215):0.003227):0.00338,(((647:0.002511,688:0):0.002509,(644:0,(689:0,501:0):0):0):0,((((394:0.008911,742:0):0.004441,((((541:0.006793,391:0):0.002231,(720:0.013614,(493:0.002245,(496:0,490:0):0):0.034695):0.00679):0,(751:0,432:0):0.002232):0.00445,(585:0,536:0):0.002219):0):0.006809,((740:0.002225,((612:0,(570:0.004518,660:0.004486):0.00445):0.00446,((500:0,753:0):0,421:0):0):0.006708):0.002234,((((608:0.027259,(627:0,533:0):0):0.029465,(539:0.023303,728:0.027625):0.005641):0.010899,587:0.006727):0.004447,(((((((635:0,438:0):0,615:0.002213):0.002221,629:0):0.002224,417:0.004478):0.002225,(408:0,412:0):0):0.025286,(405:0.008891,(667:0.006714,((734:0,618:0):0.004428,(474:0.002215,662:0):0.004441):0):0):0.002541):0.008734,((((((694:0.008797,519:0.006111):0.007636,(((684:0.002226,681:0):0.004439,702:0):0.006737,(399:0.048956,(573:0.017767,(568:0.0092,((673:0.003337,488:0.005908):0.004355,(595:0,590:0.002518):0.00683):0.015713):0.008821):0.003173):0.00225):0):0.002154,((576:0.006184,(711:0.006913,(657:0.008833,748:0.004893):0.020785):0.006722):0.018441,621:0.049519):0.019029):0.004651,((497:0.04585,(713:0,465:0.033259):0.007822):0.018307,((745:0,((423:0,426:0):0,429:0):0):0.028025,(732:0.01342,((479:0.010183,(530:0.014244,(559:0.002226,((401:0,513:0):0,(690:0.004457,((583:0,(580:0.002225,578:0):0.002226):0.00446,(598:0.013574,((565:0,468:0):0,((651:0,654:0):0.004504,562:0.006731):0.002176):0.002855):0.004117):0):0):0):0.039635):0.005482):0.004485,((736:0.00222,529:0):0.005309,556:0.002449):0.010585):0.004518):0):0.00234):0.004213):0.003014,(((((609:0.007153,453:0.010926):0.004437,(516:0.026846,504:0.023655):0.017427):0.04047,507:0.038406):0.011431,((441:0.023151,632:0.011286):0.002043,(638:0.004455,(((((((705:0,708:0.002212):0.002214,397:0):0,418:0.002211):0.006684,510:0.002221):0,676:0):0,((((696:0,(649:0,((463:0,(545:0,456:0):0):0,549:0):0):0):0,(450:0,699:0):0):0,(726:0.004439,671:0):0.002218):0,((546:0,551:0):0,724:0):0.00679):0.002219):0.002221,(521:0.002215,641:0):0):0):0.004438):0.00476):0.007275,553:0.017185):0):0.005845,(624:0.0071,482:0.023435):0.018208):0):0.00445):0):0):0.00461,435:0.029557):0.002266):0.01406):0.089951,(((((((359:0.007337,(356:0.01133,386:0.006453):0.001996):0.046518,(((367:0.002277,380:0):0.006853,(376:0.009952,372:0.014005):0):0.019838,(373:0.009999,377:0.00828):0.013204):0.018529):0.006729,(354:0.033606,362:0.042717):0.013683):0,(352:0.013143,366:0.024204):0.014725):0.04006,383:0.018479):0,(((757:0.017964,802:0.012565):0.006705,((797:0,(764:0.004393,760:0.0022):0.002193):0.02054,(((((781:0.02465,784:0):0.006656,(756:0.00448,770:0.008887):0.013379):0.013505,((((773:0.003777,775:0.005074):0.013068,814:0.022892):0.00449,791:0.015833):0.031836,(769:0.006738,778:0.031442):0.002192):0.002254):0.01066,(804:0.04117,(805:0,(806:0,811:0):0.002231):0.060555):0.012644):0.005325,(786:0.011328,801:0.001839):0.013222):0.004499):0.001702):0.005338,(766:0.020264,794:0.004436):0.012539):0.002594):0.047909,((((817:0.017034,820:0.026617):0.00599,(824:0.013221,(825:0.020273,((829:0,830:0.006489):0.004331,(819:0.002151,831:0.002156):0.00215):0.006339):0):0.008699):0.004895,827:0.024902):0.022574,(((243:0,245:0.002229):0.010247,(247:0.013239,249:0.004522):0.007872):0.050213,(((((19:0.002291,18:0):0.01546,66:0.016881):0.003798,(145:0.007656,(((76:0.042289,58:0):0.005303,59:0.003921):0.014377,228:0.002276):0.011378):0.031597):0.008389,217:0.106403):0.004837,(((41:0.039733,(155:0.002215,30:0.00919):0.01496):0.015412,((95:0.032183,(146:0.011173,((57:0.006679,(130:0.00222,172:0):0.002226):0.002185,(50:0.005608,151:0.021118):0.005861):0.002244):0):0.036543,((83:0,86:0):0,(84:0,81:0):0):0.00786):0.003751):0.004454,((((((45:0,100:0.002294):0.013623,(((13:0.005467,(12:0.004495,((23:0.002198,160:0.00441):0,11:0):0):0.010279):0.017795,91:0.011532):0.002346,(((24:0.004492,(188:0.018046,21:0):0.004489):0.006698,(108:0.008929,237:0.015679):0):0.009525,(98:0.006822,(((9:0.065809,153:0.007043):0.007517,((((((122:0.018262,60:0.046604):0.007014,((27:0.030576,80:0.006737):0.002468,(((((115:0.005935,175:0.003324):0,75:0.021763):0.01297,(((190:0.013797,(((101:0,((92:0.004582,204:0):0.00228,((162:0.01185,(128:0.004527,(121:0.002227,176:0):0):0.013428):0.002254,(159:0.002286,(38:0,89:0):0):0):0.002237):0.002224):0.002225,177:0.011554):0,205:0.002278):0.002239):0.004279,((((((((88:0,(230:0,(((48:0.009296,74:0):0.002289,((216:0,69:0):0.002289,(((141:0.004683,140:0):0,((218:0,219:0):0,195:0.002289):0.002288):0.002288,(196:0.006896,(154:0.011752,(138:0,(139:0,((235:0.006929,(126:0,207:0.002243):0.004921):0.002468,((((174:0.037235,(99:0.00307,200:0):0):0,33:0):0,193:0):0,208:0):0.006072):0):0):0.002419):0):0.002418):0):0):0,62:0):0):0):0,123:0.002288):0,127:0.002289):0,((157:0.023494,178:0.002306):0.00226,194:0.002293):0.002271):0,(35:0.004576,36:0):0.004494):0.002414,(120:0,(65:0,((87:0,(8:0,(103:0.004584,((119:0.002292,137:0):0,(((54:0,55:0):0.010754,16:0):0.002633,181:0):0.002631):0.00262):0):0):0,164:0):0):0):0):0.002417,(124:0,(114:0,((((((((2:0,(73:0,(158:0,((210:0,39:0):0,(((((117:0.011556,(125:0,221:0):0):0.002256,(191:0.011479,25:0.004603):0.002308):0.002247,49:0.018633):0.002234,129:0):0.004501,((180:0.002274,(14:0,227:0):0):0,(61:0.002469,(166:0,186:0):0):0.00223):0):0.002229):0):0):0):0,165:0):0,156:0):0,182:0.002287):0,(199:0.002296,(236:0,(40:0.002341,220:0.004692):0):0):0.002296):0,(63:0,79:0):0.002291):0,(111:0,68:0):0.002287):0.00449,(((102:0.009253,(152:0.004559,197:0.009196):0.011738):0.006831,(((213:0,161:0.00234):0,(((184:0.00468,113:0.003501):0.003511,134:0.009263):0.002294,((185:0.014211,64:0.009509):0.002185,(4:0,71:0.006974):0):0):0.004593):0.002385,((72:0,109:0.006906):0,47:0):0.002277):0.004776):0,5:0.004616):0.012152):0):0):0):0.00492,1:0.040517):0.002499):0.00261,206:0.018607):0.012419):0.009505,(135:0.007238,(15:0.038904,(198:0.002241,233:0):0.014449):0.003691):0.004154):0.002418,(7:0.015473,(26:0.033961,44:0.005858):0.002159):0.008912):0):0.00463):0.006529,(((104:0,106:0):0.002188,20:0):0.002194,(((170:0.007744,203:0.004505):0.002265,(163:0.020524,3:0.018771):0.005499):0.002255,(((149:0.009143,32:0.009161):0.009916,(136:0.026767,(147:0.004663,148:0.006797):0.007882):0.002645):0.002371,171:0.003147):0.003612):0):0):0.002171,(225:0.004485,((169:0.013699,43:0.006841):0,(70:0.013734,46:0):0.004526):0):0):0.00218,144:0.006859):0.004359,((189:0.038418,224:0.030759):0.006997,((231:0.018879,(167:0,(29:0.015929,(53:0,52:0):0.000326):0.013255):0.017013):0.0046,(((((67:0.002274,202:0):0,209:0.004477):0.002236,(112:0.011428,179:0):0.002275):0,6:0.009007):0.002226,(118:0.002233,226:0.004505):0.004517):0.002263):0):0.002379):0):0.002337,42:0.025186):0):0.002331):0):0.003433):0,(51:0.02247,((132:0.017432,(183:0.039387,10:0.005119):0):0.009629,(143:0.0085,(215:0,214:0):0.022524):0.011401):0.011057):0.010157):0,(110:0.023079,(22:0,28:0.01567):0.013362):0.004485):0.002187,(201:0.025752,(150:0.007543,168:0.011035):0.001541):0.012942):0.002154,(34:0.01884,((192:0.00458,17:0.004607):0.00924,232:0.006866):0.002292):0.002261):0):0.015012):0.042333):0.022238):0.019513):0.015356):0.036984):0.02989):0.032038,250:0.091448,388:0.125126);
+END;

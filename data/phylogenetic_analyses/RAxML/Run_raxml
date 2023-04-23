@@ -1,0 +1,12 @@
+## Run raxml-ng (https://github.com/amkozlov/raxml-ng/wiki/Tutorial)
+
+# Check that alignment can be read by RAxML
+raxml-ng --check --msa ../A1-A3_AA_alignment_convergence_modified.phy --model JTT+G --prefix T1
+
+# Tree inference (JJT+Gamma+EmpiricalFreqs constrained topology)
+raxml-ng --msa ../A1-A3_AA_alignment_convergence_modified.phy --model JTT+G+FC --threads 2 --seed 2 --tree-constraint ./backbone_tree.tre --prefix Tconstrained.raxml.bestTree
+
+
+## Run raxml-hpc (JJT+Gamma+EmpiricalFreqs constrained topology)
+raxml-hpc -s ../A1-A3_AA_alignment_convergence_modified.phy -m PROTGAMMAIJTTF -T 2 -g ./backbone_tree.tre -n Tconstrained.raxml.bestTree -p 2
+­
