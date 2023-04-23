@@ -31,13 +31,13 @@ invisible(lapply(packages, library, character.only=TRUE))
 
 ```{r readdata}
 # import ASR of H1-H2 extracellular loop
-aa_data <- read.csv("../data/Vertebrate_ATP1A1-3_AA_alignment_extraction_108-M1-M2_region_codeml_aln.csv",row.names=1,h=FALSE) %>%
+aa_data <- read.csv("../data/phylo/Vertebrate_ATP1A1-3_AA_alignment_extraction_108-M1-M2_region_codeml_aln.csv",row.names=1,h=FALSE) %>%
   .[,-c(2,3,8)]
 aa_data <- as.matrix(aa_data)[,1:13]
 colnames(aa_data)<-c("108","111","112","113","114","115","116","117","118","119","120","121","122")
 
 # import ATPa gene family phylogeny
-tree <- ape::read.nexus("../data/A1-A3_AA_alignment_convergence_modified.phy_phyml_tree.tre")
+tree <- ape::read.nexus("../data/phylo/A1-A3_AA_alignment_convergence_modified.phy_phyml_tree.tre")
 tree$tip.label <- gsub("'","",tree$tip.label) %>%
   gsub("(lungfish|fish|caecilian|frog|lizard|snake|bird|crocodilian|mammal|turtle)(.*)(_A1|_A2|_A3)(.*)","\\1\\2\\3",.)
 

@@ -9,7 +9,7 @@ Panel B
 -------
 
 ``` r
-data <- read.csv("../data/IC50_and_ATPase_Data.csv",h=TRUE)
+data <- read.csv("../data/mut_effects/IC50_and_ATPase_Data.csv",h=TRUE)
 data <- data[data$native=="YES",]
 
 construct <- unique(data$construct)
@@ -75,7 +75,7 @@ Panel C
 -------
 
 ``` r
-data <- read.csv("../data/IC50_and_ATPase_Data.csv",h=TRUE)
+data <- read.csv("../data/mut_effects/IC50_and_ATPase_Data.csv",h=TRUE)
 
 prots <- c("Sandgrouse","Sandgruse+R111Q","Leptodactylus_S",
            "Leptodactylus_S +N122D","Leptodactylus_S +Q111R",
@@ -145,7 +145,7 @@ Panel D
 -------
 
 ``` r
-data <- read.csv("../data/Five_cases_mutations.csv",h=TRUE)
+data <- read.csv("../data/mut_effects/Five_cases_mutations.csv",h=TRUE)
 
 construct <- unique(data$construct)
 construct <- construct[!construct %in% c("f1_Xenodon","f2_Xenodon","Lepto_S2")] # remove "duplicated" wild types
@@ -208,7 +208,7 @@ Panel E
 -------
 
 ``` r
-data <- read.csv("../data/Five_cases_mutations.csv",h=TRUE)
+data <- read.csv("../data/mut_effects/Five_cases_mutations.csv",h=TRUE)
 
 construct <- unique(data$construct)
 construct <- construct[!construct %in% c("f1_Xenodon","f2_Xenodon","Lepto_S2")] # remove "duplicated" wild types
@@ -270,7 +270,7 @@ Panel F
 -------
 
 ``` r
-data <- read.csv("../data/percent_activity_changes.csv",h=T)
+data <- read.csv("../data/mut_effects/percent_activity_changes.csv",h=T)
 
 #Standard error of the percent change of means
 #https://stats.stackexchange.com/questions/376639/what-is-the-standard-error-of-the-difference-in-means-scaled-as-percent-differen
@@ -342,8 +342,8 @@ Visually check the ANOVAs
 Check visually the results of the two-way ANOVAs for panels D and E
 
 ``` r
-rev <- read.csv("../data/Reversibility.csv",h=T)
-eq <- read.csv("../data/Equivalence.csv",h=T)
+rev <- read.csv("../data/mut_effects/Reversibility.csv",h=T)
+eq <- read.csv("../data/mut_effects/Equivalence.csv",h=T)
 
 #H111E
 h111e <- rev[rev$State=="H111E",]

@@ -30,7 +30,7 @@ This notebook contains the code for all panels in fig 4.
 ## Panel B 
 
 ```{r panelB}
-data <- read.csv("../data/IC50_and_ATPase_Data.csv",h=TRUE)
+data <- read.csv("../data/mut_effects/IC50_and_ATPase_Data.csv",h=TRUE)
 data <- data[data$native=="YES",]
 
 construct <- unique(data$construct)
@@ -84,7 +84,7 @@ ggplot(data_sum,aes(x=factor(mutation),y=meanIC50),color=state) +
 ## Panel C
 
 ```{r panelC}
-data <- read.csv("../data/IC50_and_ATPase_Data.csv",h=TRUE)
+data <- read.csv("../data/mut_effects/IC50_and_ATPase_Data.csv",h=TRUE)
 
 prots <- c("Sandgrouse","Sandgruse+R111Q","Leptodactylus_S",
            "Leptodactylus_S +N122D","Leptodactylus_S +Q111R",
@@ -149,7 +149,7 @@ ggplot(data_sum,aes(x=new_x,y=meanIC50),color=state) +
 ## Panel D
 
 ```{r panelD}
-data <- read.csv("../data/Five_cases_mutations.csv",h=TRUE)
+data <- read.csv("../data/mut_effects/Five_cases_mutations.csv",h=TRUE)
 
 construct <- unique(data$construct)
 construct <- construct[!construct %in% c("f1_Xenodon","f2_Xenodon","Lepto_S2")] # remove "duplicated" wild types
@@ -210,7 +210,7 @@ ggplot(data_sum,aes(x=new_x,y=meanIC50)) +
 ## Panel E
 
 ```{r panelE}
-data <- read.csv("../data/Five_cases_mutations.csv",h=TRUE)
+data <- read.csv("../data/mut_effects/Five_cases_mutations.csv",h=TRUE)
 
 construct <- unique(data$construct)
 construct <- construct[!construct %in% c("f1_Xenodon","f2_Xenodon","Lepto_S2")] # remove "duplicated" wild types
@@ -270,7 +270,7 @@ ggplot(data_sum,aes(x=new_x,y=meanActivity)) +
 ## Panel F
 
 ```{r panelF, fig.width=8, fig.height=5}
-data <- read.csv("../data/percent_activity_changes.csv",h=T)
+data <- read.csv("../data/mut_effects/percent_activity_changes.csv",h=T)
 
 #Standard error of the percent change of means
 #https://stats.stackexchange.com/questions/376639/what-is-the-standard-error-of-the-difference-in-means-scaled-as-percent-differen
@@ -340,8 +340,8 @@ p1 + inset_element(p2, left=0.4, bottom=0, right=1, top=0.5)
 Check visually the results of the two-way ANOVAs for panels D and E
 
 ```{r anovas, fig.width=10, fig.height=5}
-rev <- read.csv("../data/Reversibility.csv",h=T)
-eq <- read.csv("../data/Equivalence.csv",h=T)
+rev <- read.csv("../data/mut_effects/Reversibility.csv",h=T)
+eq <- read.csv("../data/mut_effects/Equivalence.csv",h=T)
 
 #H111E
 h111e <- rev[rev$State=="H111E",]
