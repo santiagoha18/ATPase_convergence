@@ -106,6 +106,12 @@ import_ancestral_sequences <- function(rst_dir, node_list) {
 # sequence and extant sequences. Site refers to the column of the alignment in each table for which the states
 # are to be retrieved.
 get_states_at_nodes_per_site <- function(branch_table,which_nodes,site,alignment,tree,pps){
+  # branch_table: a data frame containing ancestral and descendant nodes
+  # which_nodes: a string indicating whether to retrieve the amino acid state ad the ancestral or desdendant node along a branch ("anc" or "des")
+  # alignment: a sequence alignment matrix (including extant and reconstructed sequences)
+  # tree: a phylogenetic tree
+  # pps: a matrix with the posterior probabilities per site for each reconstructed sequence
+  
   if(which_nodes=="anc") n <- 1
   if(which_nodes=="des") n <- 2
   nodes <- branch_table[,n]
@@ -113,14 +119,16 @@ get_states_at_nodes_per_site <- function(branch_table,which_nodes,site,alignment
   
   for(i in 1:length(nodes)){
     s <- c()
+    # Check if node is an internal node:
     if(nodes[i]>length(tree$tip.label)){
-      # filter amino acid states with posterior probability < 0.8
+      # filter out amino acid states with posterior probability < 0.8
       if(as.numeric(pps[which(rownames(pps)==nodes[i]),site])<0.8) s <- NA
       else{
         node <- paste("node_",nodes[i],sep="")
         s <- as.character(alignment[rownames(alignment)==node,site])
       }
     }
+    # if node is a terminal node (tip)
     else if(nodes[i]<=length(tree$tip.label)){
       node <- tree$tip.label[nodes[i]]
       s <- as.character(alignment[rownames(alignment)==node,site])
@@ -133,13 +141,13 @@ get_states_at_nodes_per_site <- function(branch_table,which_nodes,site,alignment
 ## This function perform all pairwise comparisons between branches and identifies the amino acid changes that occur along each branch at each site
 branch_pairwise_comparisons_entire_prot <- function(branch_table,pdist_matrix,tree){
   
-  end_branch_i <- c()
-  end_branch_j <- c()
+  end_branch_i <- c() # descendant node of branch i
+  end_branch_j <- c() # descendant node of branh j
   #aa_distance <- c()
-  convergence <- c()
-  divergence <- c()
-  total <- c()
-  pdist <- c()
+  convergence <- c() # number of convergent events
+  divergence <- c() # number of divergent events
+  total <- c() # total number of subtitutions
+  pdist <- c() # patristic distance between descendant nodes
   for(i in 1:dim(branch_table)[1]){
     if(i==dim(branch_table)[1]) break
     
@@ -150,6 +158,9 @@ branch_pairwise_comparisons_entire_prot <- function(branch_table,pdist_matrix,tr
       if(k %in% splice_region) next #ignore site if falls within the spliced region
       b <- k+2
       e <- b + dim(anc_extant_align)[2]
+      
+      # Analyzing first branch:
+      # Check whether a substitution at site 'k' occurred in the branch
       if(branch_table[i,b] == branch_table[i,e] || is.na(branch_table[i,b]) || is.na(branch_table[i,e])) next
       
       if(branch_table[i,b] != branch_table[i,e] && branch_table[i,b] != "-" && branch_table[i,e] != "-"){
@@ -160,10 +171,14 @@ branch_pairwise_comparisons_entire_prot <- function(branch_table,pdist_matrix,tr
       }
     }
     
+    # Check point: Did at least one substitution occurred in branch i?
     if(length(subs_along_branch_i)==0) next
     
+    # Remove branches up to branch i, and make pairwise comparisons
     tmp <- branch_table[-c(1:i),]
     for(j in 1:dim(tmp)[1]){
+      
+      # Analyzing second branch:
       if(branch_table[i,2]==tmp[j,1] || branch_table[i,1]==tmp[j,1]){
         #if branch j comes immediately after branch i, or branches share the same ancestor, ignore:
         next
@@ -184,6 +199,7 @@ branch_pairwise_comparisons_entire_prot <- function(branch_table,pdist_matrix,tr
         }
       }
       
+      # Check point: Did at least one substitution occurred in branch j?
       if(length(subs_along_branch_j)==0) next
       
       branch_i_tip <- branch_table[i,2]
@@ -192,10 +208,10 @@ branch_pairwise_comparisons_entire_prot <- function(branch_table,pdist_matrix,tr
       mol_convergences <- NA_character_
       mol_divergences <- NA_character_
       
-      mol_convergences <- sum(subs_along_branch_i %in% subs_along_branch_j)
+      mol_convergences <- sum(subs_along_branch_i %in% subs_along_branch_j) # Convergence: shared substitutions
       total_subs <- length(subs_along_branch_i)+length(subs_along_branch_j)
       same_sites <- sum(sites_i %in% sites_j)
-      mol_divergences <- same_sites-mol_convergences
+      mol_divergences <- same_sites-mol_convergences # Divergence: of the shared sites that experience a subs., how many are different states
       
       pdist <- c(pdist,p)
       end_branch_i <- c(end_branch_i,branch_i_tip)
@@ -264,23 +280,6 @@ branch_pairwise_comparisons_per_site <- function(branch_table,pdist_matrix,tree,
     return(df)
   }
 }
-
-
-# Get density of points in 2 dimensions.
-# @param x A numeric vector.
-# @param y A numeric vector.
-# @param n Create a square n by n grid to compute density.
-# @return The density within each square.
-get_density <- function(x, y, ...) {
-  dens <- MASS::kde2d(x, y, h = c(ifelse(bandwidth.nrd(x) == 0, 0.1, bandwidth.nrd(x)),
-                                  ifelse(bandwidth.nrd(y) == 0, 0.1, bandwidth.nrd(y))))
-  ix <- findInterval(x, dens$x)
-  iy <- findInterval(y, dens$y)
-  ii <- cbind(ix, iy)
-  return(dens$z[ii])
-}
-
-
 ```
 
 ## Import data
@@ -381,6 +380,7 @@ Here we will extract the substitutions per site per branch and perform the pairw
 ```{r edges}
 # Get states at anc and des nodes for all sites
 if(!file.exists(file.path("..", "data", "convergence", "convergence_total.RData"))) {
+  
   cores=detectCores()
   cl <- parallel::makeCluster(cores[1]-1,"SOCK")
   doParallel::registerDoParallel(cl)
@@ -420,12 +420,11 @@ if(!file.exists(file.path("..", "data", "convergence", "convergence_total.RData"
 Plot the relationship between the rate of protein-wide convergence per site across the phylogeny as a function of genetic distance (expected number of substitutions per site). Show the rate of convergence for sites 111 and 122 individually.
 
 ```{r globalconv}
-m <- molecular_convergence_a1_3
+m <- molecular_convergence_a1_3 # output from `branch_pairwise_comparisons_entire_prot` function
 m$c_d <- (m$mol_convergences+1)/(m$mol_divergences+1)
 m <- m[m$mol_divergences>quantile(m$mol_divergences,0.25),]
 
-m$density <- get_density(m$patristic_dist, m$c_d , n = 100)
-
+# Estimate confidence intervals for the global trend in convergence rate
 intervals <- seq(0,max(m$patristic_dist),0.05)
 medians <- c()
 higher <- c()
