@@ -1,5 +1,5 @@
 ---
-title: "Epistasis analysis"
+title: "Epistasis analysis with Tegu+Q111T correction"
 author: "Santiago Herrera"
 date: "2023-04-25"
 output: github_document
@@ -26,6 +26,8 @@ invisible(lapply(packages, library, character.only=TRUE))
 ```
 
 This script has the analyses performed in fig 5. pertaining the finding that a small number of sites account for a large proportion of the differences in pleiotropic effects of the same substitution on divergent ATP1A1 backgrounds. 
+
+**Note**: This analysis includes the corrected version of the 'Tupinambis+Q111T' construct. **Results DON'T change**. 
 
 ## Functions
 
@@ -188,8 +190,8 @@ alignment <- "../data/alignments/A1-A3_AA_alignment_convergence_modified_codeml.
 aln <- import_alignment(alignment)
 colnames(aln) <- sapply(seq(1,1040,1), function(x) paste0("V",x))
 
-# Import dataset with the pairwise construct comparisons (Distance and Perc_dist refer to the full protein)
-df_effect <- read.csv("../data/mut_effects/Percent_change_shared_derived_state.csv",header = T)
+# Import *corrected* dataset with the pairwise construct comparisons (Distance and Perc_dist refer to the full protein)
+df_effect <- read.csv("../data/mut_effects/Percent_change_shared_derived_state_corrected.csv",header = T)
 
 # Names of taxa with functional information (use to make sub-alignmentes)
 taxa <- c("bird|Struthio_camelus_A1","frog|Leptodactylus_macrosternumS_A1","mammal|Rattus_norvegicus_A1",
@@ -200,7 +202,9 @@ taxa <- c("bird|Struthio_camelus_A1","frog|Leptodactylus_macrosternumS_A1","mamm
 
 ## The effect of divergence at all sites
 
-Relationship between percent change (when change to the same derived amino acid state) and number of amino acid differences for the entire protein.
+Relationship between percent change (when change to the same derived amino acid state) and number of amino acid differences for the entire protein. 
+
+*Note that the point corresponding to the 111T comparison is lower. Original value: 191.87; corrected value: 126.25*
 
 ```{r allsiteseffect}
 # Statistical analyses:
@@ -225,7 +229,7 @@ ggplot(df_effect,aes(x=Distance,y=PercentDiff),color=AAState) +
     legend.key = element_rect(fill = "white"),
     legend.text = element_text(size=16),
     legend.title = element_text(size=16)) +
-  annotate("text",x=65,y=180,label=expression(paste(rho, " = -0.39, P > 0.05")))
+  annotate("text",x=65,y=180,label=expression(paste(rho, " = -0.29, P > 0.05")))
 ```
 
 ## ANOVA per site
@@ -256,6 +260,8 @@ df_anova <- df_anova[!(is.na(df_anova$site)),] # remove sites that have unclear 
 ## Correlation amongst sites
 
 Because we have relatively few construct comparisons relative to the number of variable sites, some sites have strong correlations between constructs (i.e., they show the same pattern of variation, therefore have the same signal).
+
+*Note: Groupping assignments of sites change relative to the original analysis, but the trend remains the same*
 
 ```{r corrsites}
 # Build correlation matrix amogst sites based on their variation pattern amongst constructs
@@ -320,7 +326,9 @@ ggplot(df_anova,aes(x=factor(site),y=LogP,fill=group80)) +
 
 ## Model selection, Part I
 
-Build increasingly nested ANOVA models (by marginal R^2) and select best model based on LRT and AIC.
+Build increasingly nested ANOVA models (by marginal R^2) and select best model based on LRT and AIC. 
+
+*Note: The values of AIC and pLRT change relative to the original verison of the anlysis, but models A and D still seem to fit better the data (also see below in the `Model Selection, Part II`).*
 
 ```{r modsel, fig.width=10}
 
@@ -395,7 +403,7 @@ knitr::kable(head(df_models_g99,10))
 
 # Plot results
 label1a <- "Best model: Model B\n (groups 1-2: 16 sites)"
-label1b <- expression(paste("R"^2,"= 0.775"))
+label1b <- expression(paste("R"^2,"= 0.745"))
 p1 <- ggplot(df_models_g80,aes(x=group,y=r2_per_group)) + geom_line(size=1.3) + theme_classic() +
   theme(axis.text.x = element_text(size=10),
         axis.text.y = element_text(size=10), 
@@ -406,7 +414,7 @@ p1 <- ggplot(df_models_g80,aes(x=group,y=r2_per_group)) + geom_line(size=1.3) + 
   annotate("text",x=11,y=0.75,label=label1a) + annotate("text",x=11,y=0.71,label=label1b)
 
 label2a <- "Best model: Model D\n (groups 1-4: 16 sites)"
-label2b <- expression(paste("R"^2,"= 0.827"))
+label2b <- expression(paste("R"^2,"= 0.79"))
 p2 <- ggplot(df_models_g99,aes(x=group,y=r2_per_group)) + geom_line(size=1.3) + theme_classic() +
   theme(axis.text.x = element_text(size=10),
         axis.text.y = element_text(size=10), 
@@ -423,6 +431,8 @@ p1 + p2
 ## The effect of divergence at the 16 sites
 
 Replot the first figure but with the divergence at the 16 sites that we identified using ANOVA.
+
+*Note that the correlation remains statistically significant, and the effect is basically the same*
 
 ```{r 16siteseffect}
 # Compute divergence at the 16 sites 
@@ -451,7 +461,7 @@ ggplot(df_effect,aes(x=DistanceFew,y=PercentDiff),color=AAState) +
     legend.key = element_rect(fill = "white"),
     legend.text = element_text(size=16),
     legend.title = element_text(size=16)) +
-  annotate("text",x=5,y=180,label=expression(paste(rho, " = 0.78, P < 0.01")))
+  annotate("text",x=5,y=150,label=expression(paste(rho, " = 0.79, P < 0.01")))
 
 
 ```

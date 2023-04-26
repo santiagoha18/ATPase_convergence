@@ -3,6 +3,8 @@ Epistasis analysis
 Santiago Herrera
 2023-04-25
 
+This script has the analyses performed in fig 5. pertaining the finding that a small number of sites account for a large proportion of the differences in pleiotropic effects of the same substitution on divergent ATP1A1 backgrounds.
+
 Functions
 ---------
 
@@ -155,8 +157,6 @@ adj_R2 <- function(model){
   adjr2
 } 
 ```
-
-This script has the analyses performed in fig 5. pertaining the finding that a small number of sites account for a large proportion of the differences in pleiotropic effects of the same substitution on divergent ATP1A1 backgrounds.
 
 Import data
 -----------
@@ -569,10 +569,109 @@ p1 + p2
 
 ![](Epistasis_few_sites_files/figure-markdown_github/modsel-1.png)
 
+The effect of divergence at the 16 sites
+----------------------------------------
+
+Replot the first figure but with the divergence at the 16 sites that we identified using ANOVA.
+
+``` r
+# Compute divergence at the 16 sites 
+group_sites <- as.numeric(gsub("V","",arrange(df_anova,desc(R2))[1:16,]$position))
+group_aln <- filter_alignment_by_taxa_and_sites(taxa,group_sites,aln)
+pairwise_dists_group_sites <- get_pairwise_dist(group_aln,df_effect)
+df_effect$DistanceFew <- pairwise_dists_group_sites[[1]]
+
+# Correlation
+cor.test(df_effect$DistanceFew,df_effect$PercentDiff)
+```
+
+    ## 
+    ##  Pearson's product-moment correlation
+    ## 
+    ## data:  df_effect$DistanceFew and df_effect$PercentDiff
+    ## t = 3.8392, df = 9, p-value = 0.003971
+    ## alternative hypothesis: true correlation is not equal to 0
+    ## 95 percent confidence interval:
+    ##  0.3566871 0.9423900
+    ## sample estimates:
+    ##       cor 
+    ## 0.7879634
+
+``` r
+# Plot
+ggplot(df_effect,aes(x=DistanceFew,y=PercentDiff),color=AAState) + 
+  geom_point(size=4,shape=21,aes(fill = AAState)) +
+  scale_fill_manual(values = my_pallette) +
+  geom_smooth(method = lm,se = FALSE,col="grey80") +
+  labs(x="# Amino acid differences between ATP1A1 orthologs \n (16 sites ANOVA model)",y="Difference in effect on two backgrounds (%)",fill="AA State") +
+  theme(
+    panel.background = element_rect(fill = "white",colour = "white"),
+    panel.border = element_rect(linetype = 1, fill = NA),
+    panel.grid.major = element_line(),
+    axis.text.x = element_text(face="bold", size=10),
+    axis.text.y = element_text(face="bold", size=10), 
+    axis.title = element_text(face="bold", size=13),
+    legend.box.background = element_blank(),
+    legend.key = element_rect(fill = "white"),
+    legend.text = element_text(size=16),
+    legend.title = element_text(size=16)) +
+  annotate("text",x=5,y=180,label=expression(paste(rho, " = 0.78, P < 0.01")))
+```
+
+    ## `geom_smooth()` using formula 'y ~ x'
+
+![](Epistasis_few_sites_files/figure-markdown_github/16siteseffect-1.png)
+
+Permutation test
+----------------
+
+Here we are plotting a null distribution of correlations and comparing it with the observed correlation (making sure that the signal we're getting from the 16 sites is not an artifact).
+
+``` r
+# Repeated analyses on datasets that are permutations of the effect sizes on the constructs. 
+# This would give a null distribution for the procedure and show that the amount of variation we 
+# are explaining (nested ANOVA) with the sites/groups is not an artifact of the statistical procedure.
+
+effects <- matrix_anova_indep_1$effect
+cov_g1_g2 <- c("covariate","V1003","V303") # representative sites of groups 1 and 2
+matrix_g1.2 <-  matrix_anova_indep_1[,colnames( matrix_anova_indep_1) %in% cov_g1_g2]
+
+# ANOVA fitted for best model (model B, see table above)
+mod_group1.2 <- aov(effect ~ covariate + V1003 + V303, data =  matrix_anova_indep_1) # 16 sites
+
+# Perform permutation
+set.seed(1590)
+null_r2 <- c()
+for(i in 1:1000){
+  perm_effects <- sample(effects,size = length(effects),replace = T) # create permutated effects (decorrelate signal)
+  matrix_g1.2$perm_effects <- perm_effects
+  # Do ANOVAS on permutated datasets
+  m <- aov(perm_effects ~ ., data = matrix_g1.2)
+  cov_i <- summary(m)[[1]][["Sum Sq"]][1]
+  res_i <- tail(summary(m)[[1]][["Sum Sq"]],1)
+  ss_factors <- summary(m)[[1]][["Sum Sq"]][-c(which(summary(m)[[1]][["Sum Sq"]]==cov_i),which(summary(m)[[1]][["Sum Sq"]]==res_i))]
+  r2 <- sum(ss_factors)/sum(summary(m)[[1]][["Sum Sq"]])
+  null_r2 <- c(null_r2,r2)
+}
+
+hist(null_r2,breaks = 30,xlab=expression(paste("R^2 on permutated effects \n(joint ANOVA model)")),main="")
+abline(v = get_R2(mod_group1.2) ,col="red")
+```
+
+![](Epistasis_few_sites_files/figure-markdown_github/perm-1.png)
+
+``` r
+p <- sum(null_r2>=get_R2(mod_group1.2))/length(null_r2) # pval = 0.003
+
+print(paste("P-value of observing an R^2 >= as observed: ", p))
+```
+
+    ## [1] "P-value of observing an R^2 >= as observed:  0.005"
+
 Model selection, Part II
 ------------------------
 
-Plot the correlation between the divergence at the number of sites per group and the difference in functional effects, as a function of the cumulative number of sites per group.
+In the permutation section we showed that the signal we recovered from the 16 sites is unlikely to be an artifact. Here we will do a permutation test for increasingly nested models and plot the correlation between the divergence at the number of sites per group and the difference in functional effects, as a function of the cumulative number of sites per group.
 
 ``` r
 ##Effects of divergence at sites in group 1 through X --> Fit correlations for each nested model
@@ -680,102 +779,4 @@ p1 + p2
 
 ![](Epistasis_few_sites_files/figure-markdown_github/modesel2-1.png)
 
-These figures show that the correlation between the divergence at the sites in the group and the difference in effects on activity (line) decreases with increasing number of sites (bars).
-
-The effect of divergence at the 16 sites
-----------------------------------------
-
-Replot the first figure but with the divergence at the 16 sites that we identified using ANOVA.
-
-``` r
-# Compute divergence at the 16 sites 
-group_sites <- as.numeric(gsub("V","",arrange(df_anova,desc(R2))[1:16,]$position))
-group_aln <- filter_alignment_by_taxa_and_sites(taxa,group_sites,aln)
-pairwise_dists_group_sites <- get_pairwise_dist(group_aln,df_effect)
-df_effect$DistanceFew <- pairwise_dists_group_sites[[1]]
-
-# Correlation
-cor.test(df_effect$DistanceFew,df_effect$PercentDiff)
-```
-
-    ## 
-    ##  Pearson's product-moment correlation
-    ## 
-    ## data:  df_effect$DistanceFew and df_effect$PercentDiff
-    ## t = 3.8392, df = 9, p-value = 0.003971
-    ## alternative hypothesis: true correlation is not equal to 0
-    ## 95 percent confidence interval:
-    ##  0.3566871 0.9423900
-    ## sample estimates:
-    ##       cor 
-    ## 0.7879634
-
-``` r
-# Plot
-ggplot(df_effect,aes(x=DistanceFew,y=PercentDiff),color=AAState) + 
-  geom_point(size=4,shape=21,aes(fill = AAState)) +
-  scale_fill_manual(values = my_pallette) +
-  geom_smooth(method = lm,se = FALSE,col="grey80") +
-  labs(x="# Amino acid differences between ATP1A1 orthologs \n (16 sites ANOVA model)",y="Difference in effect on two backgrounds (%)",fill="AA State") +
-  theme(
-    panel.background = element_rect(fill = "white",colour = "white"),
-    panel.border = element_rect(linetype = 1, fill = NA),
-    panel.grid.major = element_line(),
-    axis.text.x = element_text(face="bold", size=10),
-    axis.text.y = element_text(face="bold", size=10), 
-    axis.title = element_text(face="bold", size=13),
-    legend.box.background = element_blank(),
-    legend.key = element_rect(fill = "white"),
-    legend.text = element_text(size=16),
-    legend.title = element_text(size=16)) +
-  annotate("text",x=5,y=180,label=expression(paste(rho, " = 0.78, P < 0.01")))
-```
-
-    ## `geom_smooth()` using formula 'y ~ x'
-
-![](Epistasis_few_sites_files/figure-markdown_github/16siteseffect-1.png)
-
-Permutation test
-----------------
-
-In the Model Selection, Part II section, we showed that the pattern is unlikely to be an artifact based on permutations. Here we are plotting a null distribution of correlations and comparing it with the observed correlation (making sure that the signal we're getting from the 16 sites is not an artifact).
-
-``` r
-# Repeated analyses on datasets that are permutations of the effect sizes on the constructs. 
-# This would give a null distribution for the procedure and show that the amount of variation we 
-# are explaining (nested ANOVA) with the sites/groups is not an artifact of the statistical procedure.
-
-effects <- matrix_anova_indep_1$effect
-cov_g1_g2 <- c("covariate","V1003","V303") # representative sites of groups 1 and 2
-matrix_g1.2 <-  matrix_anova_indep_1[,colnames( matrix_anova_indep_1) %in% cov_g1_g2]
-
-# ANOVA fitted for best model (model B, see table above)
-mod_group1.2 <- aov(effect ~ covariate + V1003 + V303, data =  matrix_anova_indep_1) # 16 sites
-
-# Perform permutation
-null_r2 <- c()
-for(i in 1:1000){
-  perm_effects <- sample(effects,size = length(effects),replace = T) # create permutated effects (decorrelate signal)
-  matrix_g1.2$perm_effects <- perm_effects
-  # Do ANOVAS on permutated datasets
-  m <- aov(perm_effects ~ ., data = matrix_g1.2)
-  cov_i <- summary(m)[[1]][["Sum Sq"]][1]
-  res_i <- tail(summary(m)[[1]][["Sum Sq"]],1)
-  ss_factors <- summary(m)[[1]][["Sum Sq"]][-c(which(summary(m)[[1]][["Sum Sq"]]==cov_i),which(summary(m)[[1]][["Sum Sq"]]==res_i))]
-  r2 <- sum(ss_factors)/sum(summary(m)[[1]][["Sum Sq"]])
-  null_r2 <- c(null_r2,r2)
-}
-
-hist(null_r2,breaks = 30,xlab=expression(paste("R^2 on permutated effects \n(joint ANOVA model)")),main="")
-abline(v = get_R2(mod_group1.2) ,col="red")
-```
-
-![](Epistasis_few_sites_files/figure-markdown_github/perm-1.png)
-
-``` r
-p <- sum(null_r2>=get_R2(mod_group1.2))/length(null_r2) # pval = 0.003
-
-print(paste("P-value of observing an R^2 >= as observed: ", p))
-```
-
-    ## [1] "P-value of observing an R^2 >= as observed:  0.009"
+These figures show that the correlation between the divergence at the sites in the group and the difference in effects on activity (line) decreases with increasing number of sites (bars). This supports our finding that divergence at 16 sites explains a high fraction of the variation in the difference in effects between constructs with the same derived state.

@@ -1,35 +1,16 @@
----
-title: "Epistasis analysis"
-author: "Santiago Herrera"
-date: "2023-04-25"
-output: github_document
-editor_options:
-  chunk_output_type: console
----
+Epistasis analysis with Tegu+Q111T correction
+================
+Santiago Herrera
+2023-04-25
 
-```{r setup, include=FALSE, message=FALSE, purl = TRUE}
-require("knitr")
-knitr::opts_chunk$set(echo = TRUE,warning = FALSE)
-knitr::opts_chunk$set(fig.width=5, fig.height=5)
+This script has the analyses performed in fig 5. pertaining the finding that a small number of sites account for a large proportion of the differences in pleiotropic effects of the same substitution on divergent ATP1A1 backgrounds.
 
-# check for packages and install any that are missing
-packages <- c("dplyr","ggplot2","RColorBrewer","patchwork","pheatmap","tidyr")
-installed_packages <- packages %in% rownames(installed.packages())
+**Note**: This analysis includes the corrected version of the 'Tupinambis+Q111T' construct. **Results DON'T change**.
 
-if(any(installed_packages == F)) {
-  install.packages(packages[!installed_packages])
-}
+Functions
+---------
 
-# load packages
-invisible(lapply(packages, library, character.only=TRUE))
-
-```
-
-This script has the analyses performed in fig 5. pertaining the finding that a small number of sites account for a large proportion of the differences in pleiotropic effects of the same substitution on divergent ATP1A1 backgrounds. 
-
-## Functions
-
-```{r functions}
+``` r
 # imports a fasta-formatted alignment and converts it into a matrix
 import_alignment <- function(dir) {
   
@@ -142,9 +123,9 @@ anova_per_site <- function(mat){
 }
 
 #Function to match alignment position to sheep A1 site number (see "A1_AA_alignment_convergence_modified_PA_codeml.fasta")
-##  Blocks of alignment	PA trimmed	    Complete alignment	 
-##  1                   1 - 15	        14 - 28	              1 : 1
-##  2                   16 - 24         29 - 47	              Not 1 : 1
+##  Blocks of alignment PA trimmed      Complete alignment   
+##  1                   1 - 15          14 - 28               1 : 1
+##  2                   16 - 24         29 - 47               Not 1 : 1
 ##  3                   25 - 114        48 - 137              1 : 1
 ##  4                   115 - end       139 - end             1 : 1
 
@@ -177,19 +158,19 @@ adj_R2 <- function(model){
   adjr2 <- 1-(((1-get_R2(model))*(n-1))/(n-k-1))
   adjr2
 } 
-
 ```
 
-## Import data
+Import data
+-----------
 
-```{r importdata}
+``` r
 # Import alignment of extant sequences
 alignment <- "../data/alignments/A1-A3_AA_alignment_convergence_modified_codeml.fasta"
 aln <- import_alignment(alignment)
 colnames(aln) <- sapply(seq(1,1040,1), function(x) paste0("V",x))
 
-# Import dataset with the pairwise construct comparisons (Distance and Perc_dist refer to the full protein)
-df_effect <- read.csv("../data/mut_effects/Percent_change_shared_derived_state.csv",header = T)
+# Import *corrected* dataset with the pairwise construct comparisons (Distance and Perc_dist refer to the full protein)
+df_effect <- read.csv("../data/mut_effects/Percent_change_shared_derived_state_corrected.csv",header = T)
 
 # Names of taxa with functional information (use to make sub-alignmentes)
 taxa <- c("bird|Struthio_camelus_A1","frog|Leptodactylus_macrosternumS_A1","mammal|Rattus_norvegicus_A1",
@@ -197,16 +178,32 @@ taxa <- c("bird|Struthio_camelus_A1","frog|Leptodactylus_macrosternumS_A1","mamm
           "snake|Rhabdophis_subminiatus_A1","mammal|Chinchilla_lanigera_A1")
 ```
 
-
-## The effect of divergence at all sites
+The effect of divergence at all sites
+-------------------------------------
 
 Relationship between percent change (when change to the same derived amino acid state) and number of amino acid differences for the entire protein.
 
-```{r allsiteseffect}
+*Note that the point corresponding to the 111T comparison is lower. Original value: 191.87; corrected value: 126.25*
+
+``` r
 # Statistical analyses:
 # Correlation between percent change and number of amino acid differences for the entire protein 
 cor.test(df_effect$Distance,df_effect$PercentDiff)
+```
 
+    ## 
+    ##  Pearson's product-moment correlation
+    ## 
+    ## data:  df_effect$Distance and df_effect$PercentDiff
+    ## t = -0.91752, df = 9, p-value = 0.3828
+    ## alternative hypothesis: true correlation is not equal to 0
+    ## 95 percent confidence interval:
+    ##  -0.7591531  0.3728169
+    ## sample estimates:
+    ##        cor 
+    ## -0.2924663
+
+``` r
 # Plot
 my_pallette <- brewer.pal(6,"Spectral")
 
@@ -225,14 +222,17 @@ ggplot(df_effect,aes(x=Distance,y=PercentDiff),color=AAState) +
     legend.key = element_rect(fill = "white"),
     legend.text = element_text(size=16),
     legend.title = element_text(size=16)) +
-  annotate("text",x=65,y=180,label=expression(paste(rho, " = -0.39, P > 0.05")))
+  annotate("text",x=65,y=180,label=expression(paste(rho, " = -0.29, P > 0.05")))
 ```
 
-## ANOVA per site
+![](Epistasis_few_sites_Tegu_correction_files/figure-markdown_github/allsiteseffect-1.png)
+
+ANOVA per site
+--------------
 
 Here we will perform an ANOVA for every variable site in the wild-type sequence amongst the constructs with functional data.
 
-```{r anovas, fig.width=8}
+``` r
 # Add covariate to functional data frame: which site is being mutated
 df_effect$covariate <- gsub("[A-Z]","",df_effect$AAState)
 
@@ -250,14 +250,16 @@ matrix_anova <- matrix_anova[, !(colnames(matrix_anova) %in% c(sites_to_remove))
 df_anova <- anova_per_site(matrix_anova) 
 df_anova$LogP <- -log(df_anova$pvals)
 df_anova <- df_anova[!(is.na(df_anova$site)),] # remove sites that have unclear match to reference sequence
-
 ```
 
-## Correlation amongst sites
+Correlation amongst sites
+-------------------------
 
 Because we have relatively few construct comparisons relative to the number of variable sites, some sites have strong correlations between constructs (i.e., they show the same pattern of variation, therefore have the same signal).
 
-```{r corrsites}
+*Note: Groupping assignments of sites change relative to the original analysis, but the trend remains the same*
+
+``` r
 # Build correlation matrix amogst sites based on their variation pattern amongst constructs
 matrix_sites_only <- matrix_anova[,!(colnames(matrix_anova) %in% c("effect","covariate"))]
 matrix_sites_only[] <- sapply(matrix_sites_only,as.numeric)
@@ -266,7 +268,11 @@ cor_matrix[!lower.tri(cor_matrix)] <- 0 # Set upper diagonal to zero
 
 # Plot absolute correlation between sites to show clusters of highly colinear sites
 pheatmap(abs(cor(matrix_sites_only)),cluster_rows = T, border_color="black",fontsize_row=3,fontsize_col=3,cellheight=2,main = "Clusters of polymorphic sites")
+```
 
+![](Epistasis_few_sites_Tegu_correction_files/figure-markdown_github/corrsites-1.png)
+
+``` r
 # Remove highly colinear variables (sites with an absolute correlation > 0.8)
 matrix_anova_indep_1 <- matrix_sites_only[, !apply(cor_matrix, 2, function(x) any(abs(x) > 0.8, na.rm = TRUE))] # Selects an arbritary site as representatives
 matrix_anova_indep_1$effect <- matrix_anova$effect
@@ -296,7 +302,124 @@ df_anova <- df_anova %>% full_join(.,group_sites1,by="position") %>% full_join(.
 # Show ANOVA table with assigned groups
 knitr::kable(df_anova)
 ```
-```{r manplot, fig.width=10}
+
+| position |       Fvals|         R2|      pvals|  site|       LogP|  group80|  group99|
+|:---------|-----------:|----------:|----------:|-----:|----------:|--------:|--------:|
+| V125     |  17.0873560|  0.6686188|  0.0032818|   102|  5.7193733|        1|        1|
+| V203     |  17.0873560|  0.6686188|  0.0032818|   179|  5.7193733|        1|        1|
+| V248     |  17.0873560|  0.6686188|  0.0032818|   224|  5.7193733|        1|        1|
+| V251     |  17.0873560|  0.6686188|  0.0032818|   227|  5.7193733|        1|        1|
+| V440     |  17.0873560|  0.6686188|  0.0032818|   416|  5.7193733|        1|        1|
+| V545     |  17.0873560|  0.6686188|  0.0032818|   521|  5.7193733|        1|        1|
+| V912     |  17.0873560|  0.6686188|  0.0032818|   888|  5.7193733|        1|        1|
+| V1003    |  17.0873560|  0.6686188|  0.0032818|   979|  5.7193733|        1|        1|
+| V250     |  16.5883103|  0.6622654|  0.0035692|   226|  5.6354198|        2|        2|
+| V295     |  16.5883103|  0.6622654|  0.0035692|   271|  5.6354198|        2|        2|
+| V314     |  16.5883103|  0.6622654|  0.0035692|   290|  5.6354198|        2|        2|
+| V430     |  16.5883103|  0.6622654|  0.0035692|   406|  5.6354198|        2|        2|
+| V669     |  16.5883103|  0.6622654|  0.0035692|   645|  5.6354198|        2|        2|
+| V856     |  16.5883103|  0.6622654|  0.0035692|   832|  5.6354198|        2|        2|
+| V585     |  11.6496839|  0.5819922|  0.0091801|   561|  4.6907122|        2|        3|
+| V303     |   4.3975414|  0.3482034|  0.0692566|   279|  2.6699374|        2|        4|
+| V143     |   2.8382308|  0.2570679|  0.1305376|   119|  2.0360942|        3|        5|
+| V201     |   2.8382308|  0.2570679|  0.1305376|   177|  2.0360942|        3|        5|
+| V457     |   2.8382308|  0.2570679|  0.1305376|   433|  2.0360942|        3|        5|
+| V599     |   2.8382308|  0.2570679|  0.1305376|   575|  2.0360942|        3|        5|
+| V899     |   2.8382308|  0.2570679|  0.1305376|   875|  2.0360942|        3|        5|
+| V515     |   2.5353510|  0.2362369|  0.1499872|   491|  1.8972053|        4|        6|
+| V492     |   2.0621724|  0.2011832|  0.1889203|   468|  1.6664301|        4|        7|
+| V439     |   1.8697082|  0.1859637|  0.2086882|   415|  1.5669138|        5|        8|
+| V485     |   1.8400549|  0.1835658|  0.2119826|   461|  1.5512510|        5|        9|
+| V277     |   1.8400549|  0.1835658|  0.2119826|   253|  1.5512510|        5|       10|
+| V433     |   1.8400549|  0.1835658|  0.2119826|   409|  1.5512510|        5|       10|
+| V682     |   1.8400549|  0.1835658|  0.2119826|   658|  1.5512510|        5|       10|
+| V1029    |   1.8400549|  0.1835658|  0.2119826|  1005|  1.5512510|        5|       10|
+| V139     |   1.6003277|  0.1636370|  0.2414599|   115|  1.4210520|        6|       11|
+| V436     |   1.4940521|  0.1544802|  0.2563769|   412|  1.3611067|        7|       12|
+| V516     |   1.4493163|  0.1505641|  0.2630471|   492|  1.3354224|        7|       13|
+| V276     |   1.3468838|  0.1414562|  0.2792823|   252|  1.2755323|        7|       14|
+| V426     |   1.3468838|  0.1414562|  0.2792823|   402|  1.2755323|        7|       14|
+| V491     |   1.3468838|  0.1414562|  0.2792823|   467|  1.2755323|        7|       14|
+| V494     |   1.3468838|  0.1414562|  0.2792823|   470|  1.2755323|        7|       14|
+| V518     |   1.3468838|  0.1414562|  0.2792823|   494|  1.2755323|        7|       14|
+| V520     |   1.3468838|  0.1414562|  0.2792823|   496|  1.2755323|        7|       14|
+| V898     |   1.3468838|  0.1414562|  0.2792823|   874|  1.2755323|        7|       14|
+| V938     |   1.3033630|  0.1375257|  0.2866179|   914|  1.2496054|        7|       15|
+| V700     |   1.3033630|  0.1375257|  0.2866179|   676|  1.2496054|        7|       16|
+| V540     |   1.1943636|  0.1275186|  0.3062649|   516|  1.1833049|        7|       17|
+| V331     |   1.0382370|  0.1127642|  0.3380536|   307|  1.0845507|        8|       18|
+| V597     |   0.9713524|  0.1062863|  0.3532087|   573|  1.0406961|        8|       19|
+| V204     |   0.9061709|  0.0998798|  0.3690033|   180|  0.9969497|        9|       20|
+| V453     |   0.9061709|  0.0998798|  0.3690033|   429|  0.9969497|        9|       20|
+| V463     |   0.9061709|  0.0998798|  0.3690033|   439|  0.9969497|        9|       20|
+| V490     |   0.9061709|  0.0998798|  0.3690033|   466|  0.9969497|        9|       20|
+| V495     |   0.9061709|  0.0998798|  0.3690033|   471|  0.9969497|        9|       21|
+| V509     |   0.9061709|  0.0998798|  0.3690033|   485|  0.9969497|        9|       21|
+| V541     |   0.9061709|  0.0998798|  0.3690033|   517|  0.9969497|        9|       21|
+| V578     |   0.9061709|  0.0998798|  0.3690033|   554|  0.9969497|        9|       21|
+| V591     |   0.9061709|  0.0998798|  0.3690033|   567|  0.9969497|        9|       21|
+| V693     |   0.9061709|  0.0998798|  0.3690033|   669|  0.9969497|        9|       21|
+| V695     |   0.9061709|  0.0998798|  0.3690033|   671|  0.9969497|        9|       21|
+| V749     |   0.9061709|  0.0998798|  0.3690033|   725|  0.9969497|        9|       21|
+| V945     |   0.9061709|  0.0998798|  0.3690033|   921|  0.9969497|        9|       21|
+| V1017    |   0.9061709|  0.0998798|  0.3690033|   993|  0.9969497|        9|       21|
+| V298     |   0.9032274|  0.0995883|  0.3697422|   274|  0.9949492|        9|       22|
+| V95      |   0.7537607|  0.0845274|  0.4105749|    72|  0.8901968|        9|       23|
+| V136     |   0.7537607|  0.0845274|  0.4105749|   113|  0.8901968|        9|       23|
+| V176     |   0.7537607|  0.0845274|  0.4105749|   152|  0.8901968|        9|       23|
+| V431     |   0.7537607|  0.0845274|  0.4105749|   407|  0.8901968|        9|       23|
+| V489     |   0.7537607|  0.0845274|  0.4105749|   465|  0.8901968|        9|       23|
+| V536     |   0.7537607|  0.0845274|  0.4105749|   512|  0.8901968|        9|       23|
+| V692     |   0.7537607|  0.0845274|  0.4105749|   668|  0.8901968|        9|       23|
+| V903     |   0.7537607|  0.0845274|  0.4105749|   879|  0.8901968|        9|       23|
+| V915     |   0.7537607|  0.0845274|  0.4105749|   891|  0.8901968|        9|       23|
+| V1021    |   0.7537607|  0.0845274|  0.4105749|   997|  0.8901968|       10|       24|
+| V141     |   0.6883511|  0.0777734|  0.4307850|   117|  0.8421462|       11|       25|
+| V580     |   0.5933384|  0.0677796|  0.4632687|   556|  0.7694480|       11|       26|
+| V691     |   0.5210980|  0.0600319|  0.4909317|   667|  0.7114503|       11|       27|
+| V311     |   0.4926704|  0.0569470|  0.5026444|   287|  0.6878723|       12|       28|
+| V598     |   0.3891562|  0.0455370|  0.5501127|   574|  0.5976320|       13|       29|
+| V124     |   0.3046634|  0.0360128|  0.5960517|   101|  0.5174279|       13|       30|
+| V142     |   0.3046634|  0.0360128|  0.5960517|   118|  0.5174279|       13|       30|
+| V289     |   0.3046634|  0.0360128|  0.5960517|   265|  0.5174279|       13|       30|
+| V118     |   0.3038793|  0.0359235|  0.5965163|    95|  0.5166487|       14|       31|
+| V551     |   0.3038793|  0.0359235|  0.5965163|   527|  0.5166487|       14|       31|
+| V131     |   0.2503101|  0.0297829|  0.6303274|   108|  0.4615160|       14|       32|
+| V189     |   0.2503101|  0.0297829|  0.6303274|   165|  0.4615160|       14|       32|
+| V1036    |   0.2503101|  0.0297829|  0.6303274|  1012|  0.4615160|       14|       32|
+| V226     |   0.2438108|  0.0290324|  0.6347370|   202|  0.4545445|       15|       33|
+| V513     |   0.2438108|  0.0290324|  0.6347370|   489|  0.4545445|       15|       33|
+| V537     |   0.2438108|  0.0290324|  0.6347370|   513|  0.4545445|       15|       33|
+| V992     |   0.2438108|  0.0290324|  0.6347370|   968|  0.4545445|       15|       33|
+| V479     |   0.2294924|  0.0273750|  0.6447209|   455|  0.4389377|       16|       34|
+| V519     |   0.2294924|  0.0273750|  0.6447209|   495|  0.4389377|       16|       34|
+| V694     |   0.2294924|  0.0273750|  0.6447209|   670|  0.4389377|       16|       34|
+| V701     |   0.2294924|  0.0273750|  0.6447209|   677|  0.4389377|       16|       34|
+| V754     |   0.2294924|  0.0273750|  0.6447209|   730|  0.4389377|       16|       34|
+| V905     |   0.2294924|  0.0273750|  0.6447209|   881|  0.4389377|       16|       34|
+| V993     |   0.2294924|  0.0273750|  0.6447209|   969|  0.4389377|       16|       34|
+| V486     |   0.1795745|  0.0215513|  0.6829030|   462|  0.3814024|       17|       35|
+| V670     |   0.1355169|  0.0163518|  0.7223292|   646|  0.3252743|       18|       36|
+| V154     |   0.1305489|  0.0157620|  0.7272198|   130|  0.3185265|       18|       37|
+| V487     |   0.1229461|  0.0148580|  0.7349148|   463|  0.3080007|       18|       38|
+| V592     |   0.1229461|  0.0148580|  0.7349148|   568|  0.3080007|       18|       38|
+| V663     |   0.1229461|  0.0148580|  0.7349148|   639|  0.3080007|       18|       38|
+| V274     |   0.1052911|  0.0127521|  0.7538922|   250|  0.2825059|       19|       39|
+| V302     |   0.1052911|  0.0127521|  0.7538922|   278|  0.2825059|       19|       39|
+| V552     |   0.1052911|  0.0127521|  0.7538922|   528|  0.2825059|       19|       39|
+| V553     |   0.1052911|  0.0127521|  0.7538922|   529|  0.2825059|       19|       39|
+| V137     |   0.0422836|  0.0051612|  0.8422163|   114|  0.1717184|       20|       40|
+| V685     |   0.0250860|  0.0030686|  0.8780780|   661|  0.1300199|       20|       41|
+| V1026    |   0.0200566|  0.0024549|  0.8908806|  1002|  0.1155449|       21|       42|
+| V587     |   0.0167970|  0.0020568|  0.9000796|   563|  0.1052720|       22|       43|
+| V128     |   0.0125397|  0.0015363|  0.9135975|   105|  0.0903651|       23|       44|
+| V140     |   0.0125397|  0.0015363|  0.9135975|   116|  0.0903651|       23|       44|
+| V455     |   0.0125397|  0.0015363|  0.9135975|   431|  0.0903651|       23|       44|
+| V511     |   0.0125397|  0.0015363|  0.9135975|   487|  0.0903651|       23|       44|
+| V885     |   0.0125397|  0.0015363|  0.9135975|   861|  0.0903651|       23|       44|
+| V195     |   0.0000032|  0.0000004|  0.9986193|   171|  0.0013817|       24|       45|
+
+``` r
 # Manhattan plot-like plot showing the effect per site colored by colinear group
 ggplot(df_anova,aes(x=factor(site),y=LogP,fill=group80)) +
   geom_bar(stat = "identity") +
@@ -315,15 +438,18 @@ ggplot(df_anova,aes(x=factor(site),y=LogP,fill=group80)) +
   geom_hline(yintercept = -log(0.05),color="blue",linetype='dotted') +
   annotate("text",x=7,y=4.7,label="P < 0.01") + 
   annotate("text",x=7,y=3.1,label="P < 0.05")
-
 ```
 
-## Model selection, Part I
+![](Epistasis_few_sites_Tegu_correction_files/figure-markdown_github/manplot-1.png)
+
+Model selection, Part I
+-----------------------
 
 Build increasingly nested ANOVA models (by marginal R^2) and select best model based on LRT and AIC.
 
-```{r modsel, fig.width=10}
+*Note: The values of AIC and pLRT change relative to the original verison of the anlysis, but models A and D still seem to fit better the data (also see below in the `Model Selection, Part II`).*
 
+``` r
 # Select representative sites per colinear group organized by marginal R^2
 sorted_sites_by_R2 <- arrange(df_anova,desc(R2))$position
 independent_sorted_sites_by_R2_g80 <- sorted_sites_by_R2[sorted_sites_by_R2 %in% colnames(matrix_anova_indep_1)]
@@ -360,7 +486,22 @@ df_models_g80 <- data.frame(model,group,r2_per_group,adj_r2,p_LRT,aic)
 
 # Show first 10 models:
 knitr::kable(head(df_models_g80,10))
+```
 
+| model |  group|  r2\_per\_group|    adj\_r2|     p\_LRT|        aic|
+|:------|------:|---------------:|----------:|----------:|----------:|
+| a     |      1|       0.6686188|  0.5857735|         NA|  116.04364|
+| b     |      2|       0.7455152|  0.6364503|  0.1310956|  114.94279|
+| c     |      3|       0.7634662|  0.6057770|  0.4823091|  116.07309|
+| d     |      4|       0.7902382|  0.5804765|  0.4030138|  116.63310|
+| e     |      5|       0.7923621|  0.4809053|  0.8322240|  118.51037|
+| f     |      6|       0.8248085|  0.4160282|  0.4308232|  118.44206|
+| g     |      7|       0.9515375|  0.7576877|  0.0037197|  102.29007|
+| h     |      8|       0.9799502|  0.7995020|  0.0000444|   72.69779|
+| i     |      9|       0.9799502|  0.7995020|         NA|   72.69779|
+| j     |     10|       0.9799502|  0.7995020|         NA|   72.69779|
+
+``` r
 # Compute model statistics for increasingly nested linear models: Each model is a linear combination of all sites up to site (group) i (sites with an absolute correlation > 0.8)
 r2_per_group <- c()
 adj_r2 <- c()
@@ -392,10 +533,25 @@ df_models_g99 <- data.frame(model,group,r2_per_group,adj_r2,p_LRT,aic)
 
 # Show first 10 models:
 knitr::kable(head(df_models_g99,10))
+```
 
+| model |  group|  r2\_per\_group|    adj\_r2|     p\_LRT|       aic|
+|:------|------:|---------------:|----------:|----------:|---------:|
+| a     |      1|       0.6686188|  0.5857735|         NA|  116.0436|
+| b     |      2|       0.7170539|  0.5957913|  0.2576481|  116.1946|
+| c     |      3|       0.7453039|  0.5755064|  0.3970789|  116.9526|
+| d     |      4|       0.7902382|  0.5804765|  0.2786350|  116.6331|
+| e     |      5|       0.7902382|  0.5804765|         NA|  116.6331|
+| f     |      6|       0.7923621|  0.4809053|  0.8322240|  118.5104|
+| g     |      7|       0.7923621|  0.4809053|         NA|  118.5104|
+| h     |      8|       0.7923621|  0.4809053|         NA|  118.5104|
+| i     |      9|       0.8012438|  0.3374793|  0.7007516|  119.9817|
+| j     |     10|       0.8012438|  0.3374793|         NA|  119.9817|
+
+``` r
 # Plot results
 label1a <- "Best model: Model B\n (groups 1-2: 16 sites)"
-label1b <- expression(paste("R"^2,"= 0.775"))
+label1b <- expression(paste("R"^2,"= 0.745"))
 p1 <- ggplot(df_models_g80,aes(x=group,y=r2_per_group)) + geom_line(size=1.3) + theme_classic() +
   theme(axis.text.x = element_text(size=10),
         axis.text.y = element_text(size=10), 
@@ -406,7 +562,7 @@ p1 <- ggplot(df_models_g80,aes(x=group,y=r2_per_group)) + geom_line(size=1.3) + 
   annotate("text",x=11,y=0.75,label=label1a) + annotate("text",x=11,y=0.71,label=label1b)
 
 label2a <- "Best model: Model D\n (groups 1-4: 16 sites)"
-label2b <- expression(paste("R"^2,"= 0.827"))
+label2b <- expression(paste("R"^2,"= 0.79"))
 p2 <- ggplot(df_models_g99,aes(x=group,y=r2_per_group)) + geom_line(size=1.3) + theme_classic() +
   theme(axis.text.x = element_text(size=10),
         axis.text.y = element_text(size=10), 
@@ -417,14 +573,18 @@ p2 <- ggplot(df_models_g99,aes(x=group,y=r2_per_group)) + geom_line(size=1.3) + 
   annotate("text",x=20,y=0.8,label=label2a) + annotate("text",x=20,y=0.76,label=label2b)
 
 p1 + p2
-
 ```
 
-## The effect of divergence at the 16 sites
+![](Epistasis_few_sites_Tegu_correction_files/figure-markdown_github/modsel-1.png)
+
+The effect of divergence at the 16 sites
+----------------------------------------
 
 Replot the first figure but with the divergence at the 16 sites that we identified using ANOVA.
 
-```{r 16siteseffect}
+*Note that the correlation remains statistically significant, and the effect is basically the same*
+
+``` r
 # Compute divergence at the 16 sites 
 group_sites <- as.numeric(gsub("V","",arrange(df_anova,desc(R2))[1:16,]$position))
 group_aln <- filter_alignment_by_taxa_and_sites(taxa,group_sites,aln)
@@ -433,7 +593,21 @@ df_effect$DistanceFew <- pairwise_dists_group_sites[[1]]
 
 # Correlation
 cor.test(df_effect$DistanceFew,df_effect$PercentDiff)
+```
 
+    ## 
+    ##  Pearson's product-moment correlation
+    ## 
+    ## data:  df_effect$DistanceFew and df_effect$PercentDiff
+    ## t = 3.8868, df = 9, p-value = 0.003693
+    ## alternative hypothesis: true correlation is not equal to 0
+    ## 95 percent confidence interval:
+    ##  0.3651540 0.9434694
+    ## sample estimates:
+    ##       cor 
+    ## 0.7916259
+
+``` r
 # Plot
 ggplot(df_effect,aes(x=DistanceFew,y=PercentDiff),color=AAState) + 
   geom_point(size=4,shape=21,aes(fill = AAState)) +
@@ -451,16 +625,19 @@ ggplot(df_effect,aes(x=DistanceFew,y=PercentDiff),color=AAState) +
     legend.key = element_rect(fill = "white"),
     legend.text = element_text(size=16),
     legend.title = element_text(size=16)) +
-  annotate("text",x=5,y=180,label=expression(paste(rho, " = 0.78, P < 0.01")))
-
-
+  annotate("text",x=5,y=150,label=expression(paste(rho, " = 0.79, P < 0.01")))
 ```
 
-## Permutation test
+    ## `geom_smooth()` using formula 'y ~ x'
+
+![](Epistasis_few_sites_Tegu_correction_files/figure-markdown_github/16siteseffect-1.png)
+
+Permutation test
+----------------
 
 Here we are plotting a null distribution of correlations and comparing it with the observed correlation (making sure that the signal we're getting from the 16 sites is not an artifact).
 
-```{r perm}
+``` r
 # Repeated analyses on datasets that are permutations of the effect sizes on the constructs. 
 # This would give a null distribution for the procedure and show that the amount of variation we 
 # are explaining (nested ANOVA) with the sites/groups is not an artifact of the statistical procedure.
@@ -489,17 +666,24 @@ for(i in 1:1000){
 
 hist(null_r2,breaks = 30,xlab=expression(paste("R^2 on permutated effects \n(joint ANOVA model)")),main="")
 abline(v = get_R2(mod_group1.2) ,col="red")
+```
+
+![](Epistasis_few_sites_Tegu_correction_files/figure-markdown_github/perm-1.png)
+
+``` r
 p <- sum(null_r2>=get_R2(mod_group1.2))/length(null_r2) # pval = 0.003
 
 print(paste("P-value of observing an R^2 >= as observed: ", p))
-
 ```
 
-## Model selection, Part II
+    ## [1] "P-value of observing an R^2 >= as observed:  0.009"
+
+Model selection, Part II
+------------------------
 
 In the permutation section we showed that the signal we recovered from the 16 sites is unlikely to be an artifact. Here we will do a permutation test for increasingly nested models and plot the correlation between the divergence at the number of sites per group and the difference in functional effects, as a function of the cumulative number of sites per group.
 
-```{r modesel2, fig.width=10}
+``` r
 ##Effects of divergence at sites in group 1 through X --> Fit correlations for each nested model
 correlation_per_group <- function(df,grouping,bootstrap){
   if(grouping == 80){
@@ -601,10 +785,8 @@ p2 <- correlation_group99 %>% dplyr::filter(.,groups %in% 1:12) %>%
 
 
 p1 + p2
-
 ```
 
+![](Epistasis_few_sites_Tegu_correction_files/figure-markdown_github/modesel2-1.png)
+
 These figures show that the correlation between the divergence at the sites in the group and the difference in effects on activity (line) decreases with increasing number of sites (bars). This supports our finding that divergence at 16 sites explains a high fraction of the variation in the difference in effects between constructs with the same derived state.
-
-
-

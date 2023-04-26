@@ -27,6 +27,48 @@ invisible(lapply(packages, library, character.only=TRUE))
 
 This notebook contains the code for all panels in fig 4. 
 
+## Functions
+
+```{r}
+# Extract functional summary statistics of the constructs
+# This function was used to create the 'SE_%change' column in 'IC50_and_ATPase_Data.csv'
+extract_functional_info <- function(df,c1,c2,info){
+  # df: data frame with functional data ('IC50_and_ATPase_Data.csv')
+  # c1 and c2 are the construct names (str) (use `unique(df$construct)` to extract the construct names)
+  # info: a string indicating which info to retrieve ("IC50" or "Activity")
+  if(info == "IC50"){
+    d1 <- df %>% filter(construct == c1) %>% pull(IC50)
+    d2 <- df %>% filter(construct == c2) %>% pull(IC50)
+  }
+    if(info == "Activity"){
+    d1 <- df %>% filter(construct == c1) %>% pull(Activity)
+    d2 <- df %>% filter(construct == c2) %>% pull(Activity)
+  }
+  
+  #Standard error of the percent change of means
+  #https://stats.stackexchange.com/questions/376639/what-is-the-standard-error-of-the-difference-in-means-scaled-as-percent-differen
+  #https://www2.census.gov/programs-surveys/acs/tech_docs/accuracy/percchg.pdf
+
+  m1 <- mean(d1)
+  m2 <- mean(d2)
+  se1 <- sd(d1)/sqrt(length(d1))
+  se2 <- sd(d2)/sqrt(length(d2))
+  a <- abs(m2/m1)
+  b <- (se1^2)/(m1^2)
+  c <- (se2^2)/(m2^2)
+  se_perc_change <- a*sqrt(b+c)*100
+  
+  # returns a list: 1) mean value for construct1, 2) mean value for construct 2, 3) mean difference, 4) percent change, 5) SE percent change
+  mean_diff <- m2-m1
+  perc_change <- ((m2-m1)/m1)*100
+  l <- list(m1,m2,mean_diff,perc_change,se_perc_change)
+  n <- c("mean_c1","mean_c2","mean_diff","perc_change","se_perc_change")
+  names(l) <- n
+  return(l) 
+}
+
+```
+
 ## Panel B 
 
 Levels of CTS resistance (IC50) among wild-type enzymes.
@@ -284,29 +326,8 @@ ggplot(data_sum,aes(x=new_x,y=meanActivity)) +
 ```{r panelF, fig.width=8, fig.height=5}
 data <- read.csv("../data/mut_effects/percent_activity_changes.csv",h=T)
 
-#Standard error of the percent change of means
-#https://stats.stackexchange.com/questions/376639/what-is-the-standard-error-of-the-difference-in-means-scaled-as-percent-differen
-#https://www2.census.gov/programs-surveys/acs/tech_docs/accuracy/percchg.pdf
-
-# This function was used to create the 'SE_%change' column
-se_perc_change <- function(d1,d2){
-  # d1 and d2 are the trplicate measurements of each wt and mutant constructs, respectively (from 'IC50_and_ATPase_Data.csv')
-  m1 <- mean(d1)
-  m2 <- mean(d2)
-  se1 <- sd(d1)/sqrt(length(d1))
-  se2 <- sd(d2)/sqrt(length(d2))
-  
-  a <- abs(m2/m1)
-  b <- (se1^2)/(m1^2)
-  c <- (se2^2)/(m2^2)
-  
-  print(paste("mean dif: ",m2-m1,"\n","%change: ",((m2-m1)/m1)*100))
-  return(a*sqrt(b+c)*100)
-}
-
-
 p1 <- data %>%
-  #arrange(recalc_.change) %>% # First sort by val. This sorts the dataframe but NOT the factor levels
+  arrange(recalc_.change) %>% # First sort by val. This sorts the dataframe but NOT the factor levels
   mutate(subs=factor(subs, levels=unique(subs))) %>%   # Update the factor levels
   ggplot(aes(x=subs,y=recalc_.change)) +
   geom_hline(yintercept=0, linetype="dashed", color="black", size=1.1) +
