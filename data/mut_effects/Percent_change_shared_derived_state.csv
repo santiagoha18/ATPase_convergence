@@ -1,0 +1,12 @@
+﻿SpeciesA,SpeciesB,Sp_A,Sp_B,AAState,Distance,Perc_dist,PercentDiff,LogPercentDiff
+Ostrich,Leptodactylus,bird|Struthio_camelus_A1,frog|Leptodactylus_macrosternumS_A1,111R,77,7.403846154,46.06473815,1.663368607
+Rat,Xenodon,mammal|Rattus_norvegicus_A1,snake|Xenodon_rhabdocephalus_A1,111E,75,7.211538462,44.4559222,1.647929624
+Xenodon,Tupinambis,snake|Xenodon_rhabdocephalus_A1,lizard|Tupinambis_teguxin_A1,111T,49,7.403846154,191.872877,2.283013588
+Rhabdophis,Varanus,snake|Rhabdophis_subminiatus_A1,lizard|Varanus_exanthemathicus_A1,111H,52,5,57.42587802,1.759107644
+Chinchilla,Xenodon,mammal|Chinchilla_lanigera_A1,snake|Xenodon_rhabdocephalus_A1,122D,82,7.403846154,150.8296751,2.178486796
+Chinchilla,Tupinambis,mammal|Chinchilla_lanigera_A1,lizard|Tupinambis_teguxin_A1,122D,76,7.307692308,22.24844888,1.347299738
+Chinchilla,Leptodactylus,mammal|Chinchilla_lanigera_A1,frog|Leptodactylus_macrosternumS_A1,122D,86,7.403846154,8.040200607,0.905266885
+Xenodon,Tupinambis,snake|Xenodon_rhabdocephalus_A1,lizard|Tupinambis_teguxin_A1,122D,49,4.711538462,173.078124,2.238242179
+Xenodon,Leptodactylus,snake|Xenodon_rhabdocephalus_A1,frog|Leptodactylus_macrosternumS_A1,122D,80,7.403846154,158.8698757,2.201041556
+Tupinambis,Leptodactylus,lizard|Tupinambis_teguxin_A1,frog|Leptodactylus_macrosternumS_A1,122D,65,6.25,14.20824828,1.152540537
+Rat,Varanus,mammal|Rattus_norvegicus_A1,lizard|Varanus_exanthemathicus_A1,122H,67,7.403846154,68.3292549,1.834606685
