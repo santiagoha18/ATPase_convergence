@@ -7,8 +7,7 @@ This script has the analyses performed in fig 5. pertaining the finding that a s
 
 **Note**: This analysis includes the corrected version of the 'Tupinambis+Q111T' construct. **Results DON'T change**.
 
-Functions
----------
+## Functions
 
 ``` r
 # imports a fasta-formatted alignment and converts it into a matrix
@@ -160,8 +159,7 @@ adj_R2 <- function(model){
 } 
 ```
 
-Import data
------------
+## Import data
 
 ``` r
 # Import alignment of extant sequences
@@ -178,8 +176,7 @@ taxa <- c("bird|Struthio_camelus_A1","frog|Leptodactylus_macrosternumS_A1","mamm
           "snake|Rhabdophis_subminiatus_A1","mammal|Chinchilla_lanigera_A1")
 ```
 
-The effect of divergence at all sites
--------------------------------------
+## A small number of sites account for a large proportion of the differences in pleiotropic effects of the same substitution on divergent ATP1A1 backgrounds (Fig 5)
 
 Relationship between percent change (when change to the same derived amino acid state) and number of amino acid differences for the entire protein.
 
@@ -222,13 +219,12 @@ ggplot(df_effect,aes(x=Distance,y=PercentDiff),color=AAState) +
     legend.key = element_rect(fill = "white"),
     legend.text = element_text(size=16),
     legend.title = element_text(size=16)) +
-  annotate("text",x=65,y=180,label=expression(paste(rho, " = -0.29, P > 0.05")))
+  annotate("text",x=65,y=180,label=expression(paste(rho, " = -0.29, P > 0.05"))) + ggtitle("Fig 5A")
 ```
 
 ![](Epistasis_few_sites_Tegu_correction_files/figure-markdown_github/allsiteseffect-1.png)
 
-ANOVA per site
---------------
+### ANOVA per site
 
 Here we will perform an ANOVA for every variable site in the wild-type sequence amongst the constructs with functional data.
 
@@ -246,14 +242,13 @@ matrix_anova <- linear_model_matrix(constructs_aln,df_effect)
 sites_to_remove <- c("V1","V2","V9","V10","V12","V14","V15","V16","V17","V19","V20","V21","V22","V23","V25","V26","V27","V28","V29","V30","V31","V32","V33","V34","V35","V36","V43","V44","V45","V46","V48","V56","V57","V62","V63","V69","V76","V80","V134","V146")
 matrix_anova <- matrix_anova[, !(colnames(matrix_anova) %in% c(sites_to_remove))]
 
-# Perform and ANOVA per site 
+# Perform ANOVA per site 
 df_anova <- anova_per_site(matrix_anova) 
 df_anova$LogP <- -log(df_anova$pvals)
 df_anova <- df_anova[!(is.na(df_anova$site)),] # remove sites that have unclear match to reference sequence
 ```
 
-Correlation amongst sites
--------------------------
+### The extent of correlation among variant sites distinguishing wild-type ATP1A1 constructs (Fig S6)
 
 Because we have relatively few construct comparisons relative to the number of variable sites, some sites have strong correlations between constructs (i.e., they show the same pattern of variation, therefore have the same signal).
 
@@ -267,7 +262,7 @@ cor_matrix <- cor(matrix_sites_only)
 cor_matrix[!lower.tri(cor_matrix)] <- 0 # Set upper diagonal to zero
 
 # Plot absolute correlation between sites to show clusters of highly colinear sites
-pheatmap(abs(cor(matrix_sites_only)),cluster_rows = T, border_color="black",fontsize_row=3,fontsize_col=3,cellheight=2,main = "Clusters of polymorphic sites")
+pheatmap(abs(cor(matrix_sites_only)),cluster_rows = T, border_color="black",fontsize_row=3,fontsize_col=3,cellheight=2,main = "Clusters of polymorphic sites (Fig S6B)")
 ```
 
 ![](Epistasis_few_sites_Tegu_correction_files/figure-markdown_github/corrsites-1.png)
@@ -437,13 +432,12 @@ ggplot(df_anova,aes(x=factor(site),y=LogP,fill=group80)) +
   geom_hline(yintercept = -log(0.01),color="red",linetype='dotted') +
   geom_hline(yintercept = -log(0.05),color="blue",linetype='dotted') +
   annotate("text",x=7,y=4.7,label="P < 0.01") + 
-  annotate("text",x=7,y=3.1,label="P < 0.05")
+  annotate("text",x=7,y=3.1,label="P < 0.05") + ggtitle("Fig. S6A")
 ```
 
 ![](Epistasis_few_sites_Tegu_correction_files/figure-markdown_github/manplot-1.png)
 
-Model selection, Part I
------------------------
+### Model selection, Part I
 
 Build increasingly nested ANOVA models (by marginal R^2) and select best model based on LRT and AIC.
 
@@ -570,15 +564,14 @@ p2 <- ggplot(df_models_g99,aes(x=group,y=r2_per_group)) + geom_line(size=1.3) + 
   xlab("Group of colinear sites") + 
   ylab(expression(paste("R"^2," of nested models"))) + geom_vline(xintercept = 4,linetype="dashed",color="red") +
   ggtitle(expression(paste("Sites grouped by ", "|",rho,"|", " >0.99"))) + 
-  annotate("text",x=20,y=0.8,label=label2a) + annotate("text",x=20,y=0.76,label=label2b)
+  annotate("text",x=27,y=0.75,label=label2a) + annotate("text",x=27,y=0.71,label=label2b)
 
-p1 + p2
+p1 + p2 + plot_annotation("Fig S6C")
 ```
 
 ![](Epistasis_few_sites_Tegu_correction_files/figure-markdown_github/modsel-1.png)
 
-The effect of divergence at the 16 sites
-----------------------------------------
+## A small number of sites account for a large proportion of the differences in pleiotropic effects of the same substitution on divergent ATP1A1 backgrounds (Fig 5)
 
 Replot the first figure but with the divergence at the 16 sites that we identified using ANOVA.
 
@@ -591,7 +584,7 @@ group_aln <- filter_alignment_by_taxa_and_sites(taxa,group_sites,aln)
 pairwise_dists_group_sites <- get_pairwise_dist(group_aln,df_effect)
 df_effect$DistanceFew <- pairwise_dists_group_sites[[1]]
 
-# Correlation
+# Correlation with 16 sites
 cor.test(df_effect$DistanceFew,df_effect$PercentDiff)
 ```
 
@@ -625,17 +618,16 @@ ggplot(df_effect,aes(x=DistanceFew,y=PercentDiff),color=AAState) +
     legend.key = element_rect(fill = "white"),
     legend.text = element_text(size=16),
     legend.title = element_text(size=16)) +
-  annotate("text",x=5,y=150,label=expression(paste(rho, " = 0.79, P < 0.01")))
+  annotate("text",x=5,y=150,label=expression(paste(rho, " = 0.79, P < 0.01"))) + ggtitle("Fig 5B")
 ```
 
-    ## `geom_smooth()` using formula 'y ~ x'
+    ## `geom_smooth()` using formula = 'y ~ x'
 
 ![](Epistasis_few_sites_Tegu_correction_files/figure-markdown_github/16siteseffect-1.png)
 
-Permutation test
-----------------
+### The extent of correlation among variant sites distinguishing wild-type ATP1A1 constructs (Fig S6)
 
-Here we are plotting a null distribution of correlations and comparing it with the observed correlation (making sure that the signal we're getting from the 16 sites is not an artifact).
+Here we are plotting a null distribution of correlations using a permutation test and comparing it with the observed correlation (making sure that the signal we're getting from the 16 sites is not an artifact).
 
 ``` r
 # Repeated analyses on datasets that are permutations of the effect sizes on the constructs. 
@@ -664,7 +656,7 @@ for(i in 1:1000){
   null_r2 <- c(null_r2,r2)
 }
 
-hist(null_r2,breaks = 30,xlab=expression(paste("R^2 on permutated effects \n(joint ANOVA model)")),main="")
+hist(null_r2,breaks = 30,xlab=expression(paste("R^2 on permutated effects \n(joint ANOVA model)")),main="Fig S6E")
 abline(v = get_R2(mod_group1.2) ,col="red")
 ```
 
@@ -678,10 +670,9 @@ print(paste("P-value of observing an R^2 >= as observed: ", p))
 
     ## [1] "P-value of observing an R^2 >= as observed:  0.009"
 
-Model selection, Part II
-------------------------
+### Model selection, Part II
 
-In the permutation section we showed that the signal we recovered from the 16 sites is unlikely to be an artifact. Here we will do a permutation test for increasingly nested models and plot the correlation between the divergence at the number of sites per group and the difference in functional effects, as a function of the cumulative number of sites per group.
+In the permutation test above we showed that the signal we recovered from the 16 sites is unlikely to be an artifact. Here we will do a permutation test for increasingly nested models and plot the correlation between the divergence at the number of sites per group and the difference in functional effects, as a function of the cumulative number of sites per group.
 
 ``` r
 ##Effects of divergence at sites in group 1 through X --> Fit correlations for each nested model
@@ -784,7 +775,7 @@ p2 <- correlation_group99 %>% dplyr::filter(.,groups %in% 1:12) %>%
   ggtitle(expression(paste("Sites grouped by ", "|",rho,"|", " >0.99")))
 
 
-p1 + p2
+p1 + p2 + plot_annotation("Fig S6D")
 ```
 
 ![](Epistasis_few_sites_Tegu_correction_files/figure-markdown_github/modesel2-1.png)
