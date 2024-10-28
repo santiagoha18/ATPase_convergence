@@ -27,7 +27,21 @@ invisible(lapply(packages, library, character.only=TRUE))
 
 This script has the analyses performed in fig 5. pertaining the finding that a small number of sites account for a large proportion of the differences in pleiotropic effects of the same substitution on divergent ATP1A1 backgrounds. 
 
-**Note**: This analysis includes the corrected version of the 'Tupinambis+Q111T' construct. **Results DON'T change**. 
+**Note**: This analysis includes the corrected version of the 'TEG+Q111T' construct. **Results DON'T change**. 
+
+## Corrected experimental dataset
+
+Supplementary figures with experimental characterization of ATPase constructs, including the corrcted 'TEG+Q111T' construct.
+
+<img src="../supp_images/Figure_S4_Corrected.png" alt="" width="792" height="1080"/>
+
+*Figure S4.* Joint functional properties of 24 engineered Na,K-ATPases (NKAs) from eight vertebrate species. This corrected version contains the new functional data for TEG+111T. See main text for details.
+
+<img src="../supp_images/Figure_S5_Corrected.png" alt="" width="989" height="756"/>
+
+*Figure S5.* Western blot analysis of Na,K-ATPase with engineered $\alpha$-subunits produced in this study. This corrected version contains the new western blots for TEG+Q111T. See main text for details.
+
+Below are the analyses including the corrected version of the TEG+111T construct.
 
 ## Functions
 
